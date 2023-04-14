@@ -283,9 +283,7 @@ Media Querys:
     header {
         padding:11px 4%;
     }
-    #menu-icon {
-        display: initial;
-    }
+    
     header .navbar {
         position: absolute;
         top: -500px;
@@ -325,14 +323,4 @@ Media Querys:
     .informacao-container .box {
         margin-top: 6rem;
     }
-    .heading h1 {
-        font-size: 1.5rem;
-    }
-    .heading span {
-        font-size: 0.9rem;
-    }
-    .sobre {
-        flex-direction: column-reverse;
-    }
-    
 }
