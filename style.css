@@ -56,6 +56,16 @@ section {
     margin: 0.5rem 0 1.4rem;
 }
 
+.iniciomain {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    gap: 1rem;
+    text-align: center;
+    background-color: var(--second-color);
+}
 
 .btn {
     padding: 7px 16px;
@@ -150,11 +160,6 @@ img {
     padding-bottom: 5px;
 }
 
-body{
-    background: url(https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=730&q=80);
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-}
 .capa{
     position: fixed;
     width: 100%;
@@ -162,6 +167,9 @@ body{
     background: rgba(0,0,0,0.6);
     z-index: -1;
     top: 0;left: 0;
+    background: url(https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=730&q=80);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
 }
 
 #btn-menu{
