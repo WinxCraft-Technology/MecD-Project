@@ -332,3 +332,37 @@ Media Querys:
         margin-top: 6rem;
     }
 }
+
+.PDFs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    margin-top: 15vh;
+  }
+  
+  .PDFs label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .PDFs select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  #lista {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    height: 100px;
+  }
+  
+  #alterar-pdf {
+    width: 100%;
+    height: 1000px;
+  }
+  

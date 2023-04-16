@@ -27,38 +27,72 @@
                 <label for="btn-menu">☰</label>
             </div>
         </div>
+
     </header>
+    
 
     <main>
-        
+        <form class="PDFs">
+          <label for="filtro1">Filtrar por:</label>
+          <select id="filtro1">
+            <option value="0" selected disabled>Bgl 0</option>
+            <option value="1">Bgl 1</option>
+            <option value="2">Bgl 2</option>
+            <option value="3">Bgl 3</option>
+            <option value="4">Bgl 4</option>
+          </select>
+          <br>
+          <label for="filtro2">Filtrar por:</label>
+          <select id="filtro2">
+            <option value="00" selected disabled>Bgl 0</option>
+            <option value="5">Bgl 5</option>
+            <option value="6">Bgl 6</option>
+            <option value="7">Bgl 7</option>
+            <option value="8">Bgl 8</option>
+          </select>
+          <br>
+          <label for="filtro3">Filtrar por:</label>
+          <select id="filtro3">
+            <option value="000" selected disabled>Bgl 0</option>
+            <option value="9">Bgl 9</option>
+            <option value="10">Bgl 10</option>
+            <option value="11">Bgl 11</option>
+            <option value="12">Bgl 12</option>
+          </select>
+        </form>
+        <select id="lista"></select>
+
+      <embed src="" type="" id="alterar-pdf">
+      
         <div class="iniciomain"></div>
-        
+      
         <input type="checkbox" id="btn-menu">
         <div class="container-menu">
-            <div class="cont-menu">
-                <nav>
-                    <a href="index.html">Inicio</a>
-                    <a href="#">Área do administrador</a>
-                    <a href="main.html">Área MecD</a>
-                    <a href="#">PDFS</a>
-                    <a href="#">Sobre</a>
-                </nav>
-                <label for="btn-menu">✖️</label>
-            </div>
+          <div class="cont-menu">
+            <nav>
+              <a href="index.html">Inicio</a>
+              <a href="#">Área do administrador</a>
+              <a href="main.html">Área MecD</a>
+              <a href="#">PDFS</a>
+              <a href="#">Sobre</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+          </div>
         </div>
-
+      
         <section class="footer" id="footer">
-            <div class="links">
-                <a href="#">Políticas de Privacidade</a>
-                <a href="#">Termos De Uso</a>
-                <a href="#">Nossa empresa</a>
-            </div>
-            <br>
-            <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
+          <div class="links">
+            <a href="#">Políticas de Privacidade</a>
+            <a href="#">Termos De Uso</a>
+            <a href="#">Nossa empresa</a>
+          </div>
+          <br>
+          <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
         </section>
-        
-    </main>
-
+      </main>
+      
+    
+    <script src="scriptsPDF.js"></script>
 </body>
 
 </html>
