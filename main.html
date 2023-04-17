@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <!-- Icone da página -->
     <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
+
 </head>
 
-<body>
+<body onload="iniciarBanco()">
     <header class="header">
 
         <div class="logo">
@@ -70,16 +71,16 @@
 
         <input type="checkbox" id="btn-menu">
         <div class="container-menu">
-            <div class="cont-menu">
-                <nav>
-                    <a href="index.html">Inicio</a>
-                    <a href="#">Área do administrador</a>
-                    <a href="main.html">Área MecD</a>
-                    <a href="#">PDFS</a>
-                    <a href="#">Sobre</a>
-                </nav>
-                <label for="btn-menu">✖️</label>
-            </div>
+          <div class="cont-menu">
+            <nav>
+              <a href="index.html">Inicio</a>
+              <a href="#">Área do administrador</a>
+              <a href="main.html">Área MecD</a>
+              <a href="#">PDFS</a>
+              <a href="#">Sobre</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+          </div>
         </div>
 
         <section class="footer" id="footer">
@@ -95,6 +96,10 @@
 
 
     <script src="scriptsPDF.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
 </body>
 
 </html>
