@@ -97,7 +97,7 @@ section {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 41px rgb(14 55 54/14%);
-  padding: 5px;
+  padding: 1rem;
   transition: 0.2s;
 }
 img {
@@ -108,8 +108,8 @@ img {
   align-items: center;
 }
 .logo img {
-  width: 60px;
-  height: 45px;
+  width: 2rem;
+  vertical-align: middle;
 }
 .container {
   width: 90%;
@@ -129,8 +129,9 @@ img {
 .logo h1 {
   color: var(--third-color);
   font-weight: 400;
-  font-size: 22px;
-  margin-left: 10px;
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  display: inline-block;
 }
 .container .menu {
   float: right;
@@ -201,10 +202,10 @@ img {
 .cont-menu nav a {
   display: block;
   text-decoration: none;
-  padding: 20px;
+  padding: 2rem;
   color: var(--third-color);
   border-left: 5px solid transparent;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease-in-out;
 }
 .cont-menu nav a:hover {
   border-left: 5px solid var(--third-color);
@@ -223,7 +224,8 @@ img {
   flex-direction: column;
   align-items: center;
   background-color: var(--main-color);
-  padding: 20px;
+  padding: 1rem;
+  text-align: center;
 }
 .link {
   margin: 1rem 0 1rem;
@@ -233,6 +235,7 @@ img {
   font-weight: 500;
   color: var(--third-color);
   padding: 1rem;
+  margin-right: 1rem;
 }
 .link a:hover {
   color: var(--third-color);
@@ -242,72 +245,9 @@ img {
 }
 .copy {
   color: var(--third-color);
+  margin-top: 1rem;
 }
-@media (max-width: 1150px) {
-  header {
-    padding: 18px 7%;
-  }
-  section {
-    padding: 50px 7%;
-  }
-  .inicio-text h1 {
-    font-size: 3rem;
-  }
-  .inicio-text h2 {
-    font-size: 1.5rem;
-  }
-}
-@media (max-width: 991px) {
-  header {
-    padding: 18px 4%;
-  }
-  section {
-    padding: 50px 4%;
-  }
-}
-@media (max-width: 768px) {
-  header {
-    padding: 11px 4%;
-  }
-  header .navbar {
-    position: absolute;
-    top: -500px;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    box-shadow: 0 4px 4px rgb(14 55 54/14%);
-    border-top: 2px solid var(--main-color);
-    transition: 0.2s;
-    text-align: left;
-  }
-  .navba.active {
-    top: 100%;
-  }
-  .navbar a {
-    padding: 1.5rem;
-    display: block;
-    color: var(--second-color);
-  }
-  .inicio-text span {
-    font-size: 0.9rem;
-  }
-  .inicio-text h1 {
-    font-size: 2.4rem;
-  }
-  .inicio-text h2 {
-    font-size: 1.2rem;
-  }
-}
-@media (max-width: 768px) {
-  .inicio-text {
-    padding-top: inherit;
-  }
-  .informacao-container .box {
-    margin-top: 6rem;
-  }
-}
+
 .PDFs {
   display: flex;
   justify-content: space-between;
@@ -321,8 +261,9 @@ img {
   margin-right: 10px;
 }
 .PDFs select {
-  padding: 5px;
-  font-size: 14px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
   border: 1px solid var(--main-color);
   border-radius: 5px;
   outline: none;
@@ -331,6 +272,8 @@ img {
 #lista {
   display: block;
   margin-top: 20px;
+  padding: 1rem;
+  font-size: 1.2rem;
   width: 100%;
   height: 100px;
   background-color: var(--second-color);
@@ -339,4 +282,84 @@ img {
   width: 100%;
   height: 1000px;
   background-color: var(--second-color);
+}
+
+/* Para telas com no máximo 600px de largura */
+@media screen and (max-width: 600px) {
+  .inicio-text {
+    flex: 1 1 100%;
+  }
+  .inicio-text h1 {
+    font-size: 2.5rem;
+  }
+  .inicio-text h2 {
+    font-size: 1.5rem;
+  }
+  .container .menu {
+    display: none;
+  }
+  .container .btn-menu,
+  .logo {
+    display: block;
+  }
+}
+
+/* Para telas com no máximo 768px de largura */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+  .container .btn-menu,
+  .logo {
+    display: block;
+    line-height: normal;
+  }
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+  .container .menu {
+    position: absolute;
+    top: 100px;
+    right: -100%;
+    width: 100%;
+    display: block;
+    background-color: var(--main-color);
+    transition: 0.2s;
+    padding: 1rem;
+  }
+  .container .menu a {
+    display: block;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    margin-right: 0;
+    text-align: center;
+    border-bottom: none;
+    color: var(--third-color);
+  }
+  .container .menu a:hover {
+    background-color: var(--second-color);
+  }
+  .container .menu.active {
+    right: 0;
+  }
+}
+
+/* Para telas com no máximo 1024px de largura */
+@media screen and (max-width: 1024px) {
+  .inicio-text h1 {
+    font-size: 3rem;
+  }
+  .inicio-text h2 {
+    font-size: 1.6rem;
+  }
+  .container .menu a {
+    font-size: 1.4rem;
+  }
+}
+
+/* Para telas com no máximo 1200px de largura */
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 95%;
+  }
 }
