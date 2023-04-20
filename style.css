@@ -13,7 +13,7 @@
   --main-color: #1c1c1c;
   --second-color: #474554;
   --third-color: #fff;
-  --acept: #4CAF50;
+  --acept: #4caf50;
 }
 section {
   padding: 50px 10%;
@@ -29,20 +29,21 @@ section {
 }
 .inicio-text {
   flex: 1 1 17rem;
+  backdrop-filter: blur(3px);
 }
 .inicio-text span {
-  font-size: 1rem;
+  font-size: 2rem;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--third-color);
 }
 .inicio-text h1 {
-  font-size: 3.2rem;
+  font-size: 4.2rem;
   color: var(--third-color);
-  font-weight: bolder;
+  font-weight:bolder;
 }
 .inicio-text h2 {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   font-weight: 600;
   color: var(--third-color);
   text-transform: uppercase;
@@ -78,24 +79,28 @@ section {
 }
 .inputm {
   padding: 7px 16px;
-  border: 2px solid var(--acept);
   border-radius: 40px;
   color: var(--main-color);
   font-weight: 500;
   background: var(--third-color);
   transition: all 0.3s ease 0s;
 }
-.inputmn {
+.inputum {
   padding: 7px 16px;
-  border: 2px solid var(--third-color);
+  border: 2px solid var(--main-color);
   border-radius: 40px;
-  color: var(--third-color);
+  color: var(--second-color);
   font-weight: 500;
-  background: var(--main-color);
- 
+  background: var(--third-color);
+  transition: all 0.3s ease 0s;
 }
-::placeholder{
-  color: var(--third-color);
+.inputum:hover {
+  transition: all 0.3s ease 0s;
+  box-shadow: 0px 15px 20px var(--second-color);
+}
+::placeholder {
+  color: var(--main-color);
+  text-align: center;
 }
 .header {
   width: 100%;
@@ -175,8 +180,9 @@ img {
   top: 0;
   left: 0;
   background: url(https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=730&q=80);
-  background-size: 100vw 100vh;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: fixed;
 }
 #btn-menu {
   display: none;
@@ -260,7 +266,6 @@ img {
   color: var(--third-color);
   margin-top: 1rem;
 }
-
 .PDFs {
   display: flex;
   justify-content: space-between;
@@ -272,6 +277,7 @@ img {
 .PDFs label {
   font-size: 16px;
   margin-right: 10px;
+  color: var(--third-color);
 }
 .PDFs select {
   padding: 0.5rem;
@@ -290,38 +296,36 @@ img {
   width: 100%;
   height: 100px;
   background-color: var(--second-color);
+  color: var(--third-color);
 }
 #alterar-pdf {
   width: 100%;
   height: 1000px;
   background-color: var(--second-color);
 }
-
 .envio {
   background-color: var(--third-color);
   padding: 20px;
   border-radius: 10px;
 }
-
-form {
+.form-env {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 label {
   font-size: 16px;
   margin-bottom: 10px;
 }
-
 input[type="text"],
 input[type="file"] {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
-
+input[type="file"] {
+  border: none;
+}
 .btn-adm {
   background-color: var(--acept);
   color: var(--third-color);
@@ -330,12 +334,9 @@ input[type="file"] {
   border-radius: 5px;
   cursor: pointer;
 }
-
 .btn-adm:hover {
   background-color: #3e8e41;
 }
-
-/* Para telas com no máximo 600px de largura */
 @media screen and (max-width: 600px) {
   .inicio-text {
     flex: 1 1 100%;
@@ -354,8 +355,6 @@ input[type="file"] {
     display: block;
   }
 }
-
-/* Para telas com no máximo 768px de largura */
 @media screen and (max-width: 768px) {
   .container {
     width: 100%;
@@ -394,8 +393,6 @@ input[type="file"] {
     right: 0;
   }
 }
-
-/* Para telas com no máximo 1024px de largura */
 @media screen and (max-width: 1024px) {
   .inicio-text h1 {
     font-size: 3rem;
@@ -407,8 +404,6 @@ input[type="file"] {
     font-size: 1.4rem;
   }
 }
-
-/* Para telas com no máximo 1200px de largura */
 @media screen and (max-width: 1200px) {
   .container {
     width: 95%;
