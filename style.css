@@ -16,6 +16,7 @@
   --second-color: #474554;
   --third-color: #fff;
   --acept: #4caf50;
+  --acept-hover: #3e8e41;
 }
 
 section {
@@ -408,7 +409,57 @@ input[type="file"] {
 }
 
 .btn-adm:hover {
-  background-color: #3e8e41;
+  background-color: var(--acept-hover);
+}
+
+table {
+  border-collapse: collapse;
+  background-color: var(--third-color);
+  width: 100%;
+  margin-top: 4rem;
+  border-radius: 1rem;
+}
+th, td {
+  text-align: left;
+  padding: 1.5rem;
+  border: 1px solid var(--main-color);
+}
+
+.add{
+  display: inline-block;
+  padding: 8px;
+  background-color: var(--acept);
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+.edit{
+  display: inline-block;
+  padding: 8px;
+  background-color: var(--second-color);
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+.remove{
+  display: inline-block;
+  padding: 8px;
+  background-color: red;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+.add:hover{
+  background-color: var(--acept-hover);
+}
+.edit:hover{
+  background-color: var(--main-color);
+}
+.remove:hover{
+  background-color: #ff000032;
 }
 
 @media screen and (max-width: 600px) {

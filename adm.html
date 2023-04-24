@@ -1,79 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MECD-ADM</title>
     <!-- Link do estilo -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- Link das caixas -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
     <!-- Icone da página -->
     <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
-</head>
+  </head>
 
-<body onload="iniciarBanco()">
+  <body onload="iniciarBanco()">
     <header class="header">
+      <div class="logo">
+        <a href="#" class="logo"
+          ><img src="assets/gear-icon-png-2246.png" alt=""
+        /></a>
+        <h1>MecD</h1>
+      </div>
 
-        <div class="logo">
-            <a href="#" class="logo"><img src="assets/gear-icon-png-2246.png" alt=""></a>
-            <h1>MecD</h1>
+      <div class="container">
+        <div class="btn-menu">
+          <label for="btn-menu">☰</label>
         </div>
-
-        <div class="container">
-            <div class="btn-menu">
-                <label for="btn-menu">☰</label>
-            </div>
-        </div>
+      </div>
     </header>
 
     <main>
-        <div class="iniciomain">
-            <section>
-                <div class="envio">
-                    <h1>Enviar arquivo para o Firebase Storage</h1>
-                    <br>
-                    <form class="form-env">
-                        <input type="text" id="nome-mecanismo" placeholder="Insira o nome do PDF" class="inputum">
-                        <label for="file-input">Selecione um arquivo:</label>
-                        <input type="file" id="file-input" class="inputm">
-                        <button type="submit" id="submit-button" class="btn-adm">Enviar arquivo</button>
-                    </form>
-                </div>
-            </section>
-        </div>
-
-        <input type="checkbox" id="btn-menu">
-        <div class="container-menu">
-            <div class="cont-menu">
-                <nav>
-                    <a href="index.html">Inicio</a>
-                    <a href="adm.html">Área do administrador</a>
-                    <a href="main.html">Área MecD</a>
-                    <a href="#">PDFS</a>
-                    <a href="#">Sobre</a>
-                </nav>
-                <label for="btn-menu">✖️</label>
-            </div>
-        </div>
-
-        <section class="footer" id="footer">
-            <div class="links">
-                <a href="#">Políticas de Privacidade</a>
-                <a href="#">Termos De Uso</a>
-                <a href="#">Nossa empresa</a>
-            </div>
+      <div class="iniciomain">
+        <section>
             <br>
-            <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
+            <br>
+            <br>
+            <button class="add">Adicionar item</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Joãsdfasdfasdfasdfasdfsdfasdfo</td>
+                        <td>
+                            <button class="edit">Editar</button>
+                            <button class="remove">Remover</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Mariaasdasdasdasdasdasdasdasd</td>
+                        <td>
+                            <button class="edit">Editar</button>
+                            <button class="remove">Remover</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Carlofasdfasdfasdfsdfsfasfasdfasdfs</td>
+                        <td>
+                            <button class="edit">Editar</button>
+                            <button class="remove">Remover</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            
         </section>
+        <section>
+          <div class="envio">
+            <h1>Enviar arquivo para o Firebase Storage</h1>
+            <br />
+            <form class="form-env">
+              <input
+                type="text"
+                id="nome-mecanismo"
+                placeholder="Insira o nome do PDF"
+                class="inputum"
+              />
+              <label for="file-input">Selecione um arquivo:</label>
+              <input type="file" id="file-input" class="inputm" />
+              <button type="submit" id="submit-button" class="btn-adm">
+                Enviar arquivo
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <input type="checkbox" id="btn-menu" />
+      <div class="container-menu">
+        <div class="cont-menu">
+          <nav>
+            <a href="index.html">Inicio</a>
+            <a href="adm.html">Área do administrador</a>
+            <a href="main.html">Área MecD</a>
+            <a href="#">PDFS</a>
+            <a href="#">Sobre</a>
+          </nav>
+          <label for="btn-menu">✖️</label>
+        </div>
+      </div>
+
+      <section class="footer" id="footer">
+        <div class="links">
+          <a href="#">Políticas de Privacidade</a>
+          <a href="#">Termos De Uso</a>
+          <a href="#">Nossa empresa</a>
+        </div>
+        <br />
+        <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
+      </section>
     </main>
-</body>
+  </body>
 
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-<script src="scriptADM.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  <script src="scriptADM.js"></script>
 </html>
