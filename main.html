@@ -1,105 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MECD-MAIN</title>
     <!-- Link do estilo -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- Link das caixas -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
     <!-- Icone da página -->
     <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
+  </head>
 
-</head>
-
-<body onload="iniciarBanco()">
+  <body onload="iniciarBanco()">
     <header class="header">
+      <div class="logo">
+        <a href="index.html" class="logo"
+          ><img src="assets/gear-icon-png-2246.png" alt=""
+        /></a>
+        <h1>MecD</h1>
+      </div>
 
-        <div class="logo">
-            <a href="index.html" class="logo"><img src="assets/gear-icon-png-2246.png" alt=""></a>
-            <h1>MecD</h1>
+      <div class="container">
+        <div class="btn-menu">
+          <label for="btn-menu">☰</label>
         </div>
-
-        <div class="container">
-            <div class="btn-menu">
-                <label for="btn-menu">☰</label>
-            </div>
-        </div>
-
+      </div>
     </header>
 
-
     <main>
-        
-        <div class="iniciomain">
+      <div class="iniciomain">
         <form class="PDFs">
+          <div class="col1">
             <label for="filtro1">Filtrar por:</label>
             <select id="filtro1">
-                <option value="0" selected disabled>Bgl 0</option>
-                <option value="1">Bgl 1</option>
-                <option value="2">Bgl 2</option>
-                <option value="3">Bgl 3</option>
-                <option value="4">Bgl 4</option>
+              <option value="0" selected disabled>Filtro 1</option>
+              <option value="1">Bgl 1</option>
+              <option value="2">Bgl 2</option>
+              <option value="3">Bgl 3</option>
+              <option value="4">Bgl 4</option>
             </select>
-            <br>
             <label for="filtro2">Filtrar por:</label>
             <select id="filtro2">
-                <option value="00" selected disabled>Bgl 0</option>
-                <option value="5">Bgl 5</option>
-                <option value="6">Bgl 6</option>
-                <option value="7">Bgl 7</option>
-                <option value="8">Bgl 8</option>
+              <option value="00" selected disabled>Filtro 2</option>
+              <option value="5">Bgl 5</option>
+              <option value="6">Bgl 6</option>
+              <option value="7">Bgl 7</option>
+              <option value="8">Bgl 8</option>
             </select>
-            <br>
+            
+            
             <label for="filtro3">Filtrar por:</label>
             <select id="filtro3">
-                <option value="000" selected disabled>Bgl 0</option>
-                <option value="9">Bgl 9</option>
-                <option value="10">Bgl 10</option>
-                <option value="11">Bgl 11</option>
-                <option value="12">Bgl 12</option>
+              <option value="000" selected disabled>Filtro 3</option>
+              <option value="9">Bgl 9</option>
+              <option value="10">Bgl 10</option>
+              <option value="11">Bgl 11</option>
+              <option value="12">Bgl 12</option>
             </select>
+            </div>
+
+            <div class="col2">
+            <label for="filtro4">Filtrar por:</label>
+            
+            <select id="filtro4">
+              <option value="000" selected disabled>Filtro 4</option>
+              <option value="9">Bgl 9</option>
+              <option value="10">Bgl 10</option>
+              <option value="11">Bgl 11</option>
+              <option value="12">Bgl 12</option>
+            </select>
+            
+            
+            <label for="filtro5">Filtrar por:</label>
+            <select id="filtro5">
+              <option value="000" selected disabled>Filtro 5</option>
+              <option value="9">Bgl 9</option>
+              <option value="10">Bgl 10</option>
+              <option value="11">Bgl 11</option>
+              <option value="12">Bgl 12</option>
+            </select>
+            
+            <label for="filtro6">Filtrar por:</label>
+            <select id="filtro6">
+              <option value="000" selected disabled>Filtro 6</option>
+              <option value="9">Bgl 9</option>
+              <option value="10">Bgl 10</option>
+              <option value="11">Bgl 11</option>
+              <option value="12">Bgl 12</option>
+            </select>
+            </div>
+            <div class="col3">
+            <label for="filtro7">Filtrar por:</label>
+            <select id="filtro7">
+              <option value="000" selected disabled>Filtro 7</option>
+              <option value="9">Bgl 9</option>
+              <option value="10">Bgl 10</option>
+              <option value="11">Bgl 11</option>
+              <option value="12">Bgl 12</option>
+            </select>
+        </div>   
         </form>
 
         <select id="lista"></select>
 
-        <embed src="" type="" id="alterar-pdf">
-        </div>
+        <embed src="" type="" id="alterar-pdf" />
+      </div>
 
-        <input type="checkbox" id="btn-menu">
-        <div class="container-menu">
-          <div class="cont-menu">
-            <nav>
-              <a href="index.html">Inicio</a>
-              <a href="adm.html">Área do administrador</a>
-              <a href="main.html">Área MecD</a>
-              <a href="#">PDFS</a>
-              <a href="#">Sobre</a>
-            </nav>
-            <label for="btn-menu">✖️</label>
-          </div>
+      <input type="checkbox" id="btn-menu" />
+      <div class="container-menu">
+        <div class="cont-menu">
+          <nav>
+            <a href="index.html">Inicio</a>
+            <a href="adm.html">Área do administrador</a>
+            <a href="main.html">Área MecD</a>
+            <a href="#">PDFS</a>
+            <a href="#">Sobre</a>
+          </nav>
+          <label for="btn-menu">✖️</label>
         </div>
+      </div>
 
-        <section class="footer" id="footer">
-            <div class="links">
-                <a href="#">Políticas de Privacidade</a>
-                <a href="#">Termos De Uso</a>
-                <a href="#">Nossa empresa</a>
-            </div>
-            <br>
-            <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
-        </section>
+      <section class="footer" id="footer">
+        <div class="links">
+          <a href="#">Políticas de Privacidade</a>
+          <a href="#">Termos De Uso</a>
+          <a href="#">Nossa empresa</a>
+        </div>
+        <br />
+        <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
+      </section>
     </main>
-
 
     <script src="scriptsPDF.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-
-</body>
-
+  </body>
 </html>
