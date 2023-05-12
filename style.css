@@ -352,6 +352,11 @@ label {
   max-width: 33%;
 }
 
+#lista-pdfs{
+  background-color: white;
+  height: 11rem;
+}
+
 #lista {
   display: block;
   margin-top: 2rem;
