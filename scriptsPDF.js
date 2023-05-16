@@ -1,34 +1,93 @@
-const itens = [
-    { nome: "01 - Sulfidation", categoria1: "1", categoria2: "7", categoria3: "11" },
-    { nome: "02 - Wet H2S Damage", categoria1: "1", categoria2: "5", categoria3: "9" },
-    { nome: "03 - Creep and Stress Rupture", categoria1: "2", categoria2: "8", categoria3: "10" },
-    { nome: "04 - High-temperature H2_H2S Corrosion", categoria1: "3", categoria2: "5", categoria3: "12" },
-    { nome: "05 - Polythionic Acid Stress Corrosion Cracking", categoria1: "3", categoria2: "6", categoria3: "12" },
-    { nome: "06 - Naphthenic Acid Corrosion", categoria1: "4", categoria2: "6", categoria3: "11" },
-];
+// Função que inicializa o banco de dados quando a página carrega
+
+function iniciarBanco(){
+  const firebaseConfig = {
+    apiKey: "AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY",
+    authDomain: "mecd-project.firebaseapp.com",
+    projectId: "mecd-project",
+    storageBucket: "mecd-project.appspot.com",
+    messagingSenderId: "210905329240",
+    appId: "1:210905329240:web:ae1579ea9fb2ad218ce42d",
+    measurementId: "G-RPBV1LXF0P"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+}
   
 const select = document.getElementById("filtro1");
 const select2 = document.getElementById("filtro2");
 const select3 = document.getElementById("filtro3");
+const select4 = document.getElementById("filtro4");
 const lista = document.getElementById("lista")
-  
-function atualizarLista() {
+
+async function atualizarLista() {
   const categoriaSelecionada = select.value;
   const categoriaSelecionada2 = select2.value;
   const categoriaSelecionada3 = select3.value;
   lista.innerHTML = "";
-  
-  itens.forEach(item => {
-    if ((categoriaSelecionada === "0" && categoriaSelecionada2 === "00" && categoriaSelecionada3 === "000") || 
-        ((categoriaSelecionada === item.categoria1 || categoriaSelecionada === "0") && (categoriaSelecionada2 === item.categoria2 || categoriaSelecionada2 === "00") && (categoriaSelecionada3 === item.categoria3 || categoriaSelecionada3 === "000"))) {
-      const li = document.createElement("option");
-      li.innerText = item.nome;
-      lista.appendChild(li);
+
+  const db = firebase.firestore();
+  const mecanismosRef = db.collection("mecanismos");
+
+  let filtro1 = [];
+  let filtro2 = [];
+  let filtro3 = [];
+
+  if(categoriaSelecionada=="N1"){
+    filtro1 = ["Teste", "Corrosão Sob Isolamento"];
+  } else {
+    const querySnapshot = await mecanismosRef.where("TipodeUnidade", "==", categoriaSelecionada).get();
+    querySnapshot.forEach((doc) => {
+      filtro1.push(doc.data().Nome);
+    });    
+  }
+
+  if(categoriaSelecionada2=="N2"){
+    console.log("Nada")
+  } else {
+    const querySnapshot = await mecanismosRef.where("LoopdeCorrosao", "==", categoriaSelecionada2).get();
+    querySnapshot.forEach((doc) => {
+      filtro2.push(doc.data().Nome);
+    });   
+  }
+
+  if(categoriaSelecionada3=="N3"){
+    console.log("Nada")
+  } else {
+    const querySnapshot = await mecanismosRef.where("MaterialdeConstrucao", "==", categoriaSelecionada3).get();
+    querySnapshot.forEach((doc) => {
+      filtro3.push(doc.data().Nome);
+    });
+  }
+
+  const valoresRepetidos = [];
+
+  for (let i = 0; i < filtro1.length; i++) {
+    const valor = filtro1[i];
+
+    if (filtro2.indexOf(valor) !== -1 && filtro3.indexOf(valor) !== -1 && valoresRepetidos.indexOf(valor) === -1) {
+      valoresRepetidos.push(valor);
     }
-  });
+  }
+
+  console.log(valoresRepetidos);
+
+  for (let i = 0; i < valoresRepetidos.length; i++) {
+    const valor = valoresRepetidos[i];
+    const option = document.createElement("option");
+    option.innerText = valor;
+    lista.appendChild(option);
+  }
+
+  const numPDF = document.getElementById("lista");
+  const attNumPDF = numPDF.getElementsByTagName("option").length;
+    
+  document.getElementById("num-pdf").innerHTML = "Nº de Arquivos: " + attNumPDF
 }
   
-function atualizarPDF(){
+
+
+/*function atualizarPDF(){
 
   // Obtenha o mecanismo de dano selecionado
   var selectP = document.getElementById("lista")
@@ -52,30 +111,13 @@ function atualizarPDF(){
     console.error(error);
   });
 
-}
+  
+
+}*/
   
 select.addEventListener("change", atualizarLista);
 select2.addEventListener("change", atualizarLista);
 select3.addEventListener("change", atualizarLista);
-lista.addEventListener("change", atualizarPDF)
+select4.addEventListener("change", atualizarLista);
+//lista.addEventListener("change", atualizarPDF)
   
-atualizarLista();
-
-
-
-
-// Função que inicializa o banco de dados quando a página carrega
-
-function iniciarBanco(){
-  const firebaseConfig = {
-    apiKey: "AIzaSyBMDdaEil8VJvi-AjiMEKSs_IFYrfcfmDU",
-    authDomain: "testepdfpd.firebaseapp.com",
-    projectId: "testepdfpd",
-    storageBucket: "testepdfpd.appspot.com",
-    messagingSenderId: "619273138295",
-    appId: "1:619273138295:web:88547de11772e46f841672",
-    measurementId: "G-R6CXK9KJJX"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-}

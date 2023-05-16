@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MECD-FlUXOGRAMAS</title>
+    <!-- Link do estilo -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Link das caixas -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <!-- Icone da página -->
+    <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="#" class="logo"
+          ><img src="assets/gear-icon-png-2246.png" alt=""
+        /></a>
+        <h1>MecD</h1>
+      </div>
+
+      <div class="container">
+        <div class="btn-menu">
+          <label for="btn-menu">☰</label>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section>
+        <h1>Fluxogramas</h1>
+      </section>
+
+      <input type="checkbox" id="btn-menu" />
+      <div class="container-menu">
+        <div class="cont-menu">
+          <nav>
+            <a href="index.html">Inicio</a>
+            <a href="adm.html">Área do administrador</a>
+            <a href="main.html">Área MecD</a>
+            <a href="fluxograma.html">Fluxogramas</a>
+            <a href="#">Sobre</a>
+          </nav>
+          <label for="btn-menu">✖️</label>
+        </div>
+      </div>
+
+      <section class="footer" id="footer">
+        <div class="links">
+          <a href="#">Políticas de Privacidade</a>
+          <a href="#">Termos De Uso</a>
+          <a href="#">Nossa empresa</a>
+        </div>
+        <br />
+        <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
+      </section>
+    </main>
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  <script src="scriptADM.js"></script>
+</html>

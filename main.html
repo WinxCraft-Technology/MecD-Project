@@ -36,77 +36,80 @@
       <div class="iniciomain">
         <form class="PDFs">
           <div class="col1">
-            <label for="filtro1">Filtrar por:</label>
+            <label for="filtro1">Tipo de Unidade</label>
             <select id="filtro1">
-              <option value="0" selected disabled>Filtro 1</option>
-              <option value="1">Bgl 1</option>
-              <option value="2">Bgl 2</option>
-              <option value="3">Bgl 3</option>
-              <option value="4">Bgl 4</option>
+              <option value="N1" selected disabled>Tipo de Unidade</option>
+              <option value="Tratamento de Aminas">Tratamento de Aminas</option>
+              <option value="Alimentação de água ácida">Alimentação de água ácida</option>
+              <option value="A3">Bgl 3</option>
+              <option value="A4">Bgl 4</option>
             </select>
-            <label for="filtro2">Filtrar por:</label>
+            <label for="filtro2">Loop de Corrosão</label>
             <select id="filtro2">
-              <option value="00" selected disabled>Filtro 2</option>
-              <option value="5">Bgl 5</option>
-              <option value="6">Bgl 6</option>
-              <option value="7">Bgl 7</option>
-              <option value="8">Bgl 8</option>
+              <option value="N2" selected disabled>Loop de Corrosão</option>
+              <option value="Loop de Corrosão">Loop de Corrosão</option>
+              <option value="B2">Bgl 6</option>
+              <option value="B3">Bgl 7</option>
+              <option value="B4">Bgl 8</option>
             </select>
-            
-            
-            <label for="filtro3">Filtrar por:</label>
-            <select id="filtro3">
-              <option value="000" selected disabled>Filtro 3</option>
-              <option value="9">Bgl 9</option>
-              <option value="10">Bgl 10</option>
-              <option value="11">Bgl 11</option>
-              <option value="12">Bgl 12</option>
-            </select>
-            </div>
 
-            <div class="col2">
-            <label for="filtro4">Filtrar por:</label>
-            
-            <select id="filtro4">
-              <option value="000" selected disabled>Filtro 4</option>
-              <option value="9">Bgl 9</option>
-              <option value="10">Bgl 10</option>
-              <option value="11">Bgl 11</option>
-              <option value="12">Bgl 12</option>
+            <label for="filtro3">Material de Construção</label>
+            <select id="filtro3">
+              <option value="N3" selected disabled>Material de Construção</option>
+              <option value="Aço Carbono">Aço Carbono</option>
+              <option value="C2">Bgl 10</option>
+              <option value="C3">Bgl 11</option>
+              <option value="C4">Bgl 12</option>
             </select>
-            
-            
+
+            <label for="filtro4">Filtrar por:</label>
+
+            <select id="filtro4">
+              <option value="N4" selected disabled>Filtro 4</option>
+              <option value="D1">Bgl 9</option>
+              <option value="D2">Bgl 10</option>
+              <option value="D3">Bgl 11</option>
+              <option value="D4">Bgl 12</option>
+            </select>
+          </div>
+
+          <div class="col2">
             <label for="filtro5">Filtrar por:</label>
             <select id="filtro5">
-              <option value="000" selected disabled>Filtro 5</option>
-              <option value="9">Bgl 9</option>
-              <option value="10">Bgl 10</option>
-              <option value="11">Bgl 11</option>
-              <option value="12">Bgl 12</option>
+              <option value="N5" selected disabled>Filtro 5</option>
+              <option value="E1">Bgl 9</option>
+              <option value="E2">Bgl 10</option>
+              <option value="E3">Bgl 11</option>
+              <option value="E4">Bgl 12</option>
             </select>
-            
+
             <label for="filtro6">Filtrar por:</label>
             <select id="filtro6">
-              <option value="000" selected disabled>Filtro 6</option>
-              <option value="9">Bgl 9</option>
-              <option value="10">Bgl 10</option>
-              <option value="11">Bgl 11</option>
-              <option value="12">Bgl 12</option>
+              <option value="N6" selected disabled>Filtro 6</option>
+              <option value="F1">Bgl 9</option>
+              <option value="F2">Bgl 10</option>
+              <option value="F3">Bgl 11</option>
+              <option value="F4">Bgl 12</option>
             </select>
-            </div>
-            <div class="col3">
+
             <label for="filtro7">Filtrar por:</label>
-            <select id="filtro7">
-              <option value="000" selected disabled>Filtro 7</option>
-              <option value="9">Bgl 9</option>
-              <option value="10">Bgl 10</option>
-              <option value="11">Bgl 11</option>
-              <option value="12">Bgl 12</option>
+            <select id="filtro7" style="margin-bottom: 98px;">
+              <option value="N7" selected disabled>Filtro 7</option>
+              <option value="G1">Bgl 9</option>
+              <option value="G2">Bgl 10</option>
+              <option value="G3">Bgl 11</option>
+              <option value="G4">Bgl 12</option>
             </select>
-        </div>   
+
+            
+            
+          </div>
         </form>
 
-        <select id="lista"></select>
+        <div id="lista-pdfs">
+          <div><p id="num-pdf"></p></div>
+          <select id="lista"></select>
+        </div>
 
         <embed src="" type="" id="alterar-pdf" />
       </div>
@@ -118,7 +121,7 @@
             <a href="index.html">Inicio</a>
             <a href="adm.html">Área do administrador</a>
             <a href="main.html">Área MecD</a>
-            <a href="#">PDFS</a>
+            <a href="fluxograma.html">Fluxogramas</a>
             <a href="#">Sobre</a>
           </nav>
           <label for="btn-menu">✖️</label>
