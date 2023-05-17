@@ -78,6 +78,7 @@ section {
   font-weight: 500;
   background: var(--third-color);
   transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -216,6 +217,7 @@ img {
 
 #btn-menu {
   display: none;
+  cursor: pointer;
 }
 
 .container-menu {
