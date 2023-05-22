@@ -13,7 +13,7 @@
 
 :root {
   --main-color: #1c1c1c;
-  --second-color: #373A3E;
+  --second-color: #373a3e;
   --third-color: #fff;
   --acept: #4caf50;
   --acept-hover: #3e8e41;
@@ -70,7 +70,8 @@ section {
   background-color: var(--second-color);
 }
 
-.btn {
+.btn,
+.add {
   padding: 7px 16px;
   border: 2px solid var(--third-color);
   border-radius: 40px;
@@ -84,6 +85,11 @@ section {
 .btn:hover {
   color: #fff;
   background: var(--main-color);
+}
+
+.add:hover {
+  color: var(--third-color);
+  background-color: var(--main-color);
 }
 
 .btn:active {
@@ -317,7 +323,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  text-align:start;
+  text-align: start;
   align-items: center;
   margin: 2rem 4rem;
   margin-top: 15vh;
@@ -350,11 +356,11 @@ label {
   background-color: var(--third-color);
 }
 
-.col1 .col2 .col3{
+.col1 .col2 .col3 {
   max-width: 33%;
 }
 
-#lista-pdfs{
+#lista-pdfs {
   background-color: var(--second-color);
   height: 11rem;
 }
@@ -426,31 +432,23 @@ table {
   margin-top: 4rem;
   border-radius: 1rem;
 }
-th, td {
+th,
+td {
   text-align: left;
   padding: 1.5rem;
   border: 1px solid var(--main-color);
 }
 
-.add{
+.edit {
   display: inline-block;
   padding: 8px;
-  background-color: var(--acept);
+  background-color: #26a9b9;
   color: var(--third-color);
   border: none;
   cursor: pointer;
   border-radius: 0.25rem;
 }
-.edit{
-  display: inline-block;
-  padding: 8px;
-  background-color: #26A9B9;
-  color: var(--third-color);
-  border: none;
-  cursor: pointer;
-  border-radius: 0.25rem;
-}
-.remove{
+.remove {
   display: inline-block;
   padding: 8px;
   background-color: red;
@@ -459,28 +457,89 @@ th, td {
   cursor: pointer;
   border-radius: 0.25rem;
 }
-.add:hover{
-  background-color: var(--acept-hover);
+.edit:hover {
+  background-color: #3d5a70;
 }
-.edit:hover{
-  background-color: #3D5A70;
-}
-.remove:hover{
+.remove:hover {
   background-color: #ff000032;
 }
-.resetbtn{
+.resetbtn {
   display: inline-block;
   padding: 8px;
-  background-color: #26A9B9;
+  background-color: #26a9b9;
   color: var(--third-color);
   border: none;
   cursor: pointer;
   border-radius: 0.25rem;
   margin-top: 1rem;
 }
-.resetbtn:hover{
-  background-color: #3D5A70;
+.resetbtn:hover {
+  background-color: #3d5a70;
 }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4rem;
+}
+.gallery-item {
+  margin: 10px;
+}
+.gallery-item img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.fluxogramassec {
+  background-color: var(--second-color);
+}
+
+.btn-fluxo {
+  display: inline-block;
+  padding: 8px;
+  background-color: #26a9b9;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  margin-top: 4rem;
+  margin-left: 19rem;
+}
+
+.btn-fluxo:hover {
+  background-color: #3d5a70;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
   .inicio-text {
     flex: 1 1 100%;
