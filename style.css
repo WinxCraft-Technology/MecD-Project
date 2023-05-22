@@ -355,7 +355,7 @@ label {
 }
 
 #lista-pdfs{
-  background-color: white;
+  background-color: var(--second-color);
   height: 11rem;
 }
 
@@ -444,7 +444,7 @@ th, td {
 .edit{
   display: inline-block;
   padding: 8px;
-  background-color: var(--second-color);
+  background-color: #26A9B9;
   color: var(--third-color);
   border: none;
   cursor: pointer;
@@ -463,12 +463,24 @@ th, td {
   background-color: var(--acept-hover);
 }
 .edit:hover{
-  background-color: var(--main-color);
+  background-color: #3D5A70;
 }
 .remove:hover{
   background-color: #ff000032;
 }
-
+.resetbtn{
+  display: inline-block;
+  padding: 8px;
+  background-color: #26A9B9;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+}
+.resetbtn:hover{
+  background-color: #3D5A70;
+}
 @media screen and (max-width: 600px) {
   .inicio-text {
     flex: 1 1 100%;
