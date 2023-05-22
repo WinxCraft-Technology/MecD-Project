@@ -121,3 +121,12 @@ select3.addEventListener("change", atualizarLista);
 select4.addEventListener("change", atualizarLista);
 //lista.addEventListener("change", atualizarPDF)
   
+
+// Modal
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
