@@ -32,8 +32,78 @@
       </div>
     </header>
     <main>
-      <section>
-        <h1>Fluxogramas</h1>
+      <section class="fluxogramassec">
+        <button class="btn-fluxo" onclick="openModal()">
+          Filtros - Fluxogramas
+        </button>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Modal</h2>
+            <p>Conteúdo do modal...</p>
+          </div>
+        </div>
+        <div class="gallery">
+          <div class="gallery-item">
+            <a
+              href="https://moodle.com/pt/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets\Figuras\Fluxgramat.png" alt="Imagem 1" />
+            </a>
+          </div>
+          <div class="gallery-item">
+            <a
+              href="https://moodle.com/pt/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets\Figuras\Fluxgramat.png" alt="Imagem 2" />
+            </a>
+          </div>
+          <div class="gallery-item">
+            <a
+              href="https://moodle.com/pt/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets\Figuras\Fluxgramat.png" alt="Imagem 3" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="fluxogramassec">
+        <div class="gallery">
+          <div class="gallery-item">
+            <a
+              href="https://moodle.com/pt/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets\Figuras\Fluxgramat.png" alt="Imagem 1" />
+            </a>
+          </div>
+          <div class="gallery-item">
+            <a
+              href="https://moodle.com/pt/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets\Figuras\Fluxgramat.png" alt="Imagem 2" />
+            </a>
+          </div>
+          <div class="gallery-item">
+            <a
+              href="https://moodle.com/pt/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets\Figuras\Fluxgramat.png" alt="Imagem 3" />
+            </a>
+          </div>
+        </div>
       </section>
 
       <input type="checkbox" id="btn-menu" />
@@ -60,10 +130,9 @@
         <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
       </section>
     </main>
+    <script src="scriptFLUXO.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
   </body>
-
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-  <script src="scriptADM.js"></script>
 </html>
