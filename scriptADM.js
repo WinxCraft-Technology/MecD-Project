@@ -123,6 +123,7 @@ function adminEditar() {
 
 // Exibir nnos inputs os valores atuais dos campos
 var totalOpcoesEdit = 0;
+var numOpcaoEdit = totalOpcoesEdit+1
 
 document.getElementById("nameEdit").addEventListener("change", function() {
   var optionsEdit = document.getElementById("optionsEdit");
@@ -175,7 +176,28 @@ document.getElementById("nameEdit").addEventListener("change", function() {
           buttonElement.addEventListener("click", function(event) {
             var botaoClicado = event.target;
             var idBotao = botaoClicado.id;
-            console.log(idBotao)
+            
+            var substring = idBotao.substring(9);
+            var posicaoInt = parseInt(substring)
+
+            var apagar = document.getElementById("divopc"+posicaoInt+"E")
+
+            apagar.remove()
+            
+            for(i=posicaoInt+1;i<=totalOpcoesEdit;i++){
+              var posAtual = i-1
+              console.log("A")
+              var alterarInput = document.getElementById("opc"+i+"E")
+              var alterarDiv = document.getElementById("divopc"+i+"E")
+              var alterarBotao = document.getElementById("buttonopc"+i+"E")
+
+              alterarInput.id = "opc"+posAtual+"E"
+              alterarDiv.id = "divopc"+posAtual+"E"
+              alterarBotao.id = "buttonopc"+posAtual+"E"
+              
+            }
+            
+            totalOpcoesEdit--
           });
 
           addInDiv.appendChild(buttonElement);
@@ -193,7 +215,7 @@ document.getElementById("nameEdit").addEventListener("change", function() {
 
 
 // Adicionar novo input
-var numOpcaoEdit = totalOpcoesEdit+1
+
 function addOptionEdit() { 
   totalOpcoesEdit++
   var optionsEdit = document.getElementById("optionsEdit")
