@@ -257,7 +257,7 @@ function addOptionEdit() {
 
 
 
-function EditarFiltro() {
+function editarFiltro() {
   const selectElement = document.getElementById('nameEdit');
 
   // Obtenha o valor selecionado
@@ -301,6 +301,23 @@ function EditarFiltro() {
   }
 }
 
+
+function deletarFiltro() {
+  const selectElement = document.getElementById('nameEdit');
+  const valorSelecionado = selectElement.options[selectElement.selectedIndex].value;
+
+  const db = firebase.firestore();
+  const documentoRef = db.collection('filtros').doc(valorSelecionado);
+
+  documentoRef
+    .delete()
+    .then(() => {
+      console.log('Documento apagado com sucesso.');
+    })
+    .catch((error) => {
+      console.error('Erro ao apagar o documento:', error);
+    });
+}
 
 
 
