@@ -123,87 +123,74 @@ function adminEditar() {
 }
 
 
-// Exibir nnos inputs os valores atuais dos campos
+// Exibir nos inputs os valores atuais dos campos
+
 var totalOpcoesEdit = 0;
 var numOpcaoEdit = totalOpcoesEdit + 1
 
 document.getElementById("nameEdit").addEventListener("change", function () {
-  var optionsEdit = document.getElementById("optionsEdit");
+  const optionsEdit = document.getElementById("optionsEdit");
   optionsEdit.innerHTML = "";
-  var db = firebase.firestore();
-  var collection = db.collection("filtros");
 
-  var select = document.getElementById("nameEdit");
-  var valorSelecionado = select.value;
+  const db = firebase.firestore();
+  const collection = db.collection("filtros");
+
+  const select = document.getElementById("nameEdit");
+  const valorSelecionado = select.value;
 
   collection.doc(valorSelecionado).get()
     .then((doc) => {
       if (doc.exists) {
-        var data = doc.data();
-        var propriedades = [];
+        const data = doc.data();
+        const propriedades = Object.keys(data)
+          .filter(prop => prop.startsWith("opc"))
+          .sort();
 
-        for (var prop in data) {
-          if (prop.startsWith("opc")) {
-            propriedades.push(prop);
-          }
-        }
+        propriedades.forEach((prop, index) => {
+          const inputId = prop + "E";
+          const inputValue = data[prop];
 
-        propriedades.sort(); // Ordenar as propriedades
+          const divElement = document.createElement("div");
+          const idDiv = "div" + inputId;
+          divElement.id = idDiv;
+          optionsEdit.appendChild(divElement);
 
-        for (var i = 0; i < propriedades.length; i++) {
-          var prop = propriedades[i];
-          var inputId = prop + "E";
-          var inputValue = data[prop];
-
-          var divElement = document.createElement("div")
-          var idDiv = "div" + inputId
-          divElement.id = idDiv
-          optionsEdit.appendChild(divElement)
-
-
-          var inputElement = document.createElement("input");
+          const inputElement = document.createElement("input");
           inputElement.type = "text";
           inputElement.id = inputId;
           inputElement.value = inputValue;
-          var addInDiv = document.getElementById(idDiv)
-
+          const addInDiv = document.getElementById(idDiv);
           addInDiv.appendChild(inputElement);
 
-
-          var buttonElement = document.createElement("button");
+          const buttonElement = document.createElement("button");
           buttonElement.type = "button";
           buttonElement.id = "button" + inputId;
           buttonElement.innerHTML = "Deletar";
 
           buttonElement.addEventListener("click", function (event) {
-            var botaoClicado = event.target;
-            var idBotao = botaoClicado.id;
+            const botaoClicado = event.target;
+            const idBotao = botaoClicado.id;
+            const substring = idBotao.substring(9);
+            const posicaoInt = parseInt(substring);
+            const apagar = document.getElementById("divopc" + posicaoInt + "E");
+            apagar.remove();
 
-            var substring = idBotao.substring(9);
-            var posicaoInt = parseInt(substring)
+            for (let i = posicaoInt + 1; i <= totalOpcoesEdit; i++) {
+              const posAtual = i - 1;
+              const alterarInput = document.getElementById("opc" + i + "E");
+              const alterarDiv = document.getElementById("divopc" + i + "E");
+              const alterarBotao = document.getElementById("buttonopc" + i + "E");
 
-            var apagar = document.getElementById("divopc" + posicaoInt + "E")
-
-            apagar.remove()
-
-            for (i = posicaoInt + 1; i <= totalOpcoesEdit; i++) {
-              var posAtual = i - 1
-              console.log("A")
-              var alterarInput = document.getElementById("opc" + i + "E")
-              var alterarDiv = document.getElementById("divopc" + i + "E")
-              var alterarBotao = document.getElementById("buttonopc" + i + "E")
-
-              alterarInput.id = "opc" + posAtual + "E"
-              alterarDiv.id = "divopc" + posAtual + "E"
-              alterarBotao.id = "buttonopc" + posAtual + "E"
-
+              alterarInput.id = "opc" + posAtual + "E";
+              alterarDiv.id = "divopc" + posAtual + "E";
+              alterarBotao.id = "buttonopc" + posAtual + "E";
             }
 
-            totalOpcoesEdit--
+            totalOpcoesEdit--;
           });
 
           addInDiv.appendChild(buttonElement);
-        }
+        });
 
         totalOpcoesEdit = propriedades.length;
       } else {
@@ -216,64 +203,61 @@ document.getElementById("nameEdit").addEventListener("change", function () {
 });
 
 
+
 // Adicionar novo input
 
 function addOptionEdit() {
-  totalOpcoesEdit++
-  var optionsEdit = document.getElementById("optionsEdit")
+  totalOpcoesEdit++;
+  const optionsEdit = document.getElementById("optionsEdit");
 
-  var divElement = document.createElement("div")
-  var idDiv = "divopc" + totalOpcoesEdit + "E"
-  divElement.id = idDiv
-  optionsEdit.appendChild(divElement)
+  const divElement = document.createElement("div");
+  const idDiv = "divopc" + totalOpcoesEdit + "E";
+  divElement.id = idDiv;
+  optionsEdit.appendChild(divElement);
 
   const input = document.createElement("input");
   input.id = "opc" + totalOpcoesEdit + "E";
-  input.type = "text"
-  input.placeholder = "Insira o conteúdo da opção. Exemplo: Externo/Interno"
-  var addInDiv = document.getElementById(idDiv)
+  input.type = "text";
+  input.placeholder = "Insira o conteúdo da opção. Exemplo: Externo/Interno";
+  const addInDiv = document.getElementById(idDiv);
   addInDiv.appendChild(input);
 
-  var buttonElement = document.createElement("button");
+  const buttonElement = document.createElement("button");
   buttonElement.type = "button";
   buttonElement.id = "buttonopc" + totalOpcoesEdit + "E";
   buttonElement.innerHTML = "Deletar";
-  
 
   buttonElement.addEventListener("click", function (event) {
-    var botaoClicado = event.target;
-    var idBotao = botaoClicado.id;
+    const botaoClicado = event.target;
+    const idBotao = botaoClicado.id;
 
-    var substring = idBotao.substring(9);
-    var posicaoInt = parseInt(substring)
+    const substring = idBotao.substring(9);
+    const posicaoInt = parseInt(substring);
 
-    var apagar = document.getElementById("divopc" + posicaoInt + "E")
+    const apagar = document.getElementById("divopc" + posicaoInt + "E");
+    apagar.remove();
 
-    apagar.remove()
+    for (let i = posicaoInt + 1; i <= totalOpcoesEdit; i++) {
+      const posAtual = i - 1;
+      console.log("A");
+      const alterarInput = document.getElementById("opc" + i + "E");
+      const alterarDiv = document.getElementById("divopc" + i + "E");
+      const alterarBotao = document.getElementById("buttonopc" + i + "E");
 
-    for (i = posicaoInt + 1; i <= totalOpcoesEdit; i++) {
-      var posAtual = i - 1
-      console.log("A")
-      var alterarInput = document.getElementById("opc" + i + "E")
-      var alterarDiv = document.getElementById("divopc" + i + "E")
-      var alterarBotao = document.getElementById("buttonopc" + i + "E")
-
-      alterarInput.id = "opc" + posAtual + "E"
-      alterarDiv.id = "divopc" + posAtual + "E"
-      alterarBotao.id = "buttonopc" + posAtual + "E"
-
+      alterarInput.id = "opc" + posAtual + "E";
+      alterarDiv.id = "divopc" + posAtual + "E";
+      alterarBotao.id = "buttonopc" + posAtual + "E";
     }
 
-    totalOpcoesEdit--
+    totalOpcoesEdit--;
   });
 
   addInDiv.appendChild(buttonElement);
 }
 
 
-// Enviar alterações pro banco de dados
-function EditarFiltro() {
 
+function EditarFiltro() {
   const selectElement = document.getElementById('nameEdit');
 
   // Obtenha o valor selecionado
@@ -293,7 +277,6 @@ function EditarFiltro() {
     .catch((error) => {
       console.error('Erro ao apagar o documento:', error);
     });
-
 
   for (let i = 1; i <= totalOpcoesEdit; i++) {
     const opcao = "opc" + i + "E";
@@ -316,8 +299,8 @@ function EditarFiltro() {
         console.error('Erro ao inserir os novos dados:', error);
       });
   }
-
 }
+
 
 
 
