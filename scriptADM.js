@@ -1,4 +1,4 @@
-function iniciarBanco(){
+function iniciarBanco() {
   const firebaseConfig = {
     apiKey: "AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY",
     authDomain: "mecd-project.firebaseapp.com",
@@ -18,23 +18,23 @@ function iniciarBanco(){
 
 
 // Abrir/Fechar modal de adicionar filtros
-document.getElementById("addFiltro").addEventListener("click", function() {
+document.getElementById("addFiltro").addEventListener("click", function () {
   document.getElementById("modal").style.display = "block";
-  
+
 });
 
-document.getElementsByClassName("close")[0].addEventListener("click", function() {
+document.getElementsByClassName("close")[0].addEventListener("click", function () {
   document.getElementById("modal").style.display = "none";
 });
 
 // Editar Filtro
-document.getElementById("editarFiltro").addEventListener("click", function() {
+document.getElementById("editarFiltro").addEventListener("click", function () {
   document.getElementById("modalEdit").style.display = "block";
 
   adminEditar();
 })
 
-document.getElementsByClassName("closeEdit")[0].addEventListener("click", function() {
+document.getElementsByClassName("closeEdit")[0].addEventListener("click", function () {
   document.getElementById("modalEdit").style.display = "none";
 });
 
@@ -57,7 +57,9 @@ function adicionarFiltro() {
 
     db.collection("filtros")
       .doc(nome)
-      .set(filtro, { merge: true })
+      .set(filtro, {
+        merge: true
+      })
       .then(() => {
         console.log("Document successfully updated!");
       })
@@ -73,19 +75,19 @@ var numOpcao = 2;
 
 function addOption() {
   var divResultado = document.getElementById("novasOptions")
-  
+
   const label = document.createElement("label");
-  label.textContent = "Opção "+numOpcao+":";
+  label.textContent = "Opção " + numOpcao + ":";
   divResultado.appendChild(label);
 
   const input = document.createElement("input");
-  input.id = "opc"+numOpcao;
+  input.id = "opc" + numOpcao;
   input.type = "text"
   input.placeholder = "Insira o conteúdo da opção. Exemplo: Externo/Interno"
   divResultado.appendChild(input);
 
   numOpcao++
-  total = numOpcao-1
+  total = numOpcao - 1
 }
 
 
@@ -102,8 +104,8 @@ function adminEditar() {
   // Buscar os nomes dos documentos no Firestore
   db.collection("filtros")
     .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
         var nomeDocumento = doc.id;
 
         // Criar um elemento option
@@ -115,7 +117,7 @@ function adminEditar() {
         selectElement.appendChild(optionElement);
       });
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Erro ao buscar os valores:", error);
     });
 }
@@ -123,9 +125,9 @@ function adminEditar() {
 
 // Exibir nnos inputs os valores atuais dos campos
 var totalOpcoesEdit = 0;
-var numOpcaoEdit = totalOpcoesEdit+1
+var numOpcaoEdit = totalOpcoesEdit + 1
 
-document.getElementById("nameEdit").addEventListener("change", function() {
+document.getElementById("nameEdit").addEventListener("change", function () {
   var optionsEdit = document.getElementById("optionsEdit");
   optionsEdit.innerHTML = "";
   var db = firebase.firestore();
@@ -157,7 +159,7 @@ document.getElementById("nameEdit").addEventListener("change", function() {
           var idDiv = "div" + inputId
           divElement.id = idDiv
           optionsEdit.appendChild(divElement)
-          
+
 
           var inputElement = document.createElement("input");
           inputElement.type = "text";
@@ -167,36 +169,36 @@ document.getElementById("nameEdit").addEventListener("change", function() {
 
           addInDiv.appendChild(inputElement);
 
-          
+
           var buttonElement = document.createElement("button");
           buttonElement.type = "button";
           buttonElement.id = "button" + inputId;
           buttonElement.innerHTML = "Deletar";
 
-          buttonElement.addEventListener("click", function(event) {
+          buttonElement.addEventListener("click", function (event) {
             var botaoClicado = event.target;
             var idBotao = botaoClicado.id;
-            
+
             var substring = idBotao.substring(9);
             var posicaoInt = parseInt(substring)
 
-            var apagar = document.getElementById("divopc"+posicaoInt+"E")
+            var apagar = document.getElementById("divopc" + posicaoInt + "E")
 
             apagar.remove()
-            
-            for(i=posicaoInt+1;i<=totalOpcoesEdit;i++){
-              var posAtual = i-1
-              console.log("A")
-              var alterarInput = document.getElementById("opc"+i+"E")
-              var alterarDiv = document.getElementById("divopc"+i+"E")
-              var alterarBotao = document.getElementById("buttonopc"+i+"E")
 
-              alterarInput.id = "opc"+posAtual+"E"
-              alterarDiv.id = "divopc"+posAtual+"E"
-              alterarBotao.id = "buttonopc"+posAtual+"E"
-              
+            for (i = posicaoInt + 1; i <= totalOpcoesEdit; i++) {
+              var posAtual = i - 1
+              console.log("A")
+              var alterarInput = document.getElementById("opc" + i + "E")
+              var alterarDiv = document.getElementById("divopc" + i + "E")
+              var alterarBotao = document.getElementById("buttonopc" + i + "E")
+
+              alterarInput.id = "opc" + posAtual + "E"
+              alterarDiv.id = "divopc" + posAtual + "E"
+              alterarBotao.id = "buttonopc" + posAtual + "E"
+
             }
-            
+
             totalOpcoesEdit--
           });
 
@@ -216,15 +218,105 @@ document.getElementById("nameEdit").addEventListener("change", function() {
 
 // Adicionar novo input
 
-function addOptionEdit() { 
+function addOptionEdit() {
   totalOpcoesEdit++
   var optionsEdit = document.getElementById("optionsEdit")
 
+  var divElement = document.createElement("div")
+  var idDiv = "divopc" + totalOpcoesEdit + "E"
+  divElement.id = idDiv
+  optionsEdit.appendChild(divElement)
+
   const input = document.createElement("input");
-  input.id = "opc"+totalOpcoesEdit+"E";
+  input.id = "opc" + totalOpcoesEdit + "E";
   input.type = "text"
   input.placeholder = "Insira o conteúdo da opção. Exemplo: Externo/Interno"
-  optionsEdit.appendChild(input);
+  var addInDiv = document.getElementById(idDiv)
+  addInDiv.appendChild(input);
+
+  var buttonElement = document.createElement("button");
+  buttonElement.type = "button";
+  buttonElement.id = "buttonopc" + totalOpcoesEdit + "E";
+  buttonElement.innerHTML = "Deletar";
+  
+
+  buttonElement.addEventListener("click", function (event) {
+    var botaoClicado = event.target;
+    var idBotao = botaoClicado.id;
+
+    var substring = idBotao.substring(9);
+    var posicaoInt = parseInt(substring)
+
+    var apagar = document.getElementById("divopc" + posicaoInt + "E")
+
+    apagar.remove()
+
+    for (i = posicaoInt + 1; i <= totalOpcoesEdit; i++) {
+      var posAtual = i - 1
+      console.log("A")
+      var alterarInput = document.getElementById("opc" + i + "E")
+      var alterarDiv = document.getElementById("divopc" + i + "E")
+      var alterarBotao = document.getElementById("buttonopc" + i + "E")
+
+      alterarInput.id = "opc" + posAtual + "E"
+      alterarDiv.id = "divopc" + posAtual + "E"
+      alterarBotao.id = "buttonopc" + posAtual + "E"
+
+    }
+
+    totalOpcoesEdit--
+  });
+
+  addInDiv.appendChild(buttonElement);
+}
+
+
+// Enviar alterações pro banco de dados
+function EditarFiltro() {
+
+  const selectElement = document.getElementById('nameEdit');
+
+  // Obtenha o valor selecionado
+  const valorSelecionado = selectElement.options[selectElement.selectedIndex].value;
+
+  const db = firebase.firestore();
+
+  // Defina o caminho do documento que deseja apagar
+  const documentoRef = db.collection('filtros').doc(valorSelecionado);
+
+  // Apague as informações do documento
+  documentoRef
+    .delete()
+    .then(() => {
+      console.log('Documento apagado com sucesso.');
+    })
+    .catch((error) => {
+      console.error('Erro ao apagar o documento:', error);
+    });
+
+
+  for (let i = 1; i <= total; i++) {
+    const opcao = "opc" + i + "E";
+    const campo = "opc" + i;
+    const valor = document.getElementById(opcao).value;
+
+    const filtro = {
+      [campo]: valor
+    };
+
+    // Insira os novos dados no documento
+    documentoRef
+      .set(filtro, {
+        merge: true
+      })
+      .then(() => {
+        console.log('Novos dados inseridos com sucesso.');
+      })
+      .catch((error) => {
+        console.error('Erro ao inserir os novos dados:', error);
+      });
+  }
+
 }
 
 
