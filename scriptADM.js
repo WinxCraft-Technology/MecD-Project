@@ -295,7 +295,7 @@ function EditarFiltro() {
     });
 
 
-  for (let i = 1; i <= total; i++) {
+  for (let i = 1; i <= totalOpcoesEdit; i++) {
     const opcao = "opc" + i + "E";
     const campo = "opc" + i;
     const valor = document.getElementById(opcao).value;
