@@ -12,6 +12,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
     />
+    <link rel="stylesheet" href="adm.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Icone da página -->
     <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
   </head>
@@ -38,7 +41,53 @@
             <br>
             <br>
             <br>
-            <button class="add">Adicionar Filtro</button>
+            <button class="add" id="addFiltro">Adicionar Filtro</button>
+            <button class="add" id="editarFiltro">Editar Filtros</button>
+
+            <!--Modal para adicionar filtro novo-->
+            <div id="modal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Preencha o formulário</h2>
+                <form>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" placeholder="Tipo do seu filtro. Exemplo: Tipo de dano" required>
+                    <label for="opc1">Opção 1:</label>
+                    <input type="text" id="opc1" placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno">
+
+                    <!--Inputs gerados através do Javascript-->
+                    <div id="novasOptions">
+
+                    </div>
+
+                  <input type="button" value="Adicionar opção" onclick="addOption()">
+                  <input type="button" value="Enviar" onclick="adicionarFiltro()">
+                </form>
+              </div>
+            </div>
+
+            <!--Modal para editar filtros já criados-->
+            <div id="modalEdit" class="modalEdit">
+              <div class="modal-contentEdit">
+                <span class="closeEdit">&times;</span>
+                <h2>Preencha o formulário</h2>
+                <form>
+                    <label for="name">Escolha um filtro para alterar suas opções:</label>
+                    <select name="nameEdit" id="nameEdit">
+
+                    </select>
+                    <br><br>
+                    <div id="optionsEdit">
+
+                    </div>
+                    <br>
+                  <input type="button" value="Adicionar opção" onclick="addOptionEdit()">
+                  <input type="button" value="Enviar" onclick="enviarFiltro()">
+                </form>
+              </div>
+            </div>
+
+
             <table>
                 <thead>
                     <tr>

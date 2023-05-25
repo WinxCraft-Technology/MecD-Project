@@ -43,7 +43,7 @@ async function atualizarLista() {
   }
 
   if(categoriaSelecionada2=="N2"){
-    console.log("Nada")
+
   } else {
     const querySnapshot = await mecanismosRef.where("LoopdeCorrosao", "==", categoriaSelecionada2).get();
     querySnapshot.forEach((doc) => {
@@ -52,7 +52,7 @@ async function atualizarLista() {
   }
 
   if(categoriaSelecionada3=="N3"){
-    console.log("Nada")
+
   } else {
     const querySnapshot = await mecanismosRef.where("MaterialdeConstrucao", "==", categoriaSelecionada3).get();
     querySnapshot.forEach((doc) => {
