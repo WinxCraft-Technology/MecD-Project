@@ -170,6 +170,10 @@ h2 {
   border-color: var(--main-color);
 }
 
+.section {
+  flex: 1;
+}
+
 
 /* Media query para dispositivos com largura igual ou menor que 600px */
 @media (max-width: 600px) {
