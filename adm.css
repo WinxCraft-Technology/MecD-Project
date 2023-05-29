@@ -174,7 +174,6 @@ h2 {
   flex: 1;
 }
 
-
 /* Media query para dispositivos com largura igual ou menor que 600px */
 @media (max-width: 600px) {
   .modal-content,

@@ -331,7 +331,8 @@ img {
   padding: 1rem;
 }
 
-.PDFs label {
+.PDFs,
+.PDFsdois label {
   font-weight: bold;
   color: var(--third-color);
   margin-top: 1rem;
@@ -355,8 +356,19 @@ label {
   outline: none;
   background-color: var(--third-color);
 }
+.PDFsdois select {
+  width: 20rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--main-color);
+  border-radius: 0.35rem;
+  outline: none;
+  background-color: var(--third-color);
+}
 
-.col1{
+.col1 {
   max-width: 33%;
 }
 
@@ -385,6 +397,12 @@ label {
 }
 
 .envio {
+  background-color: var(--third-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.envio2 {
   background-color: var(--third-color);
   padding: 20px;
   border-radius: 10px;
@@ -463,6 +481,9 @@ td {
 .remove:hover {
   background-color: #ff000032;
 }
+.close:hover {
+  color: #ff000032;
+}
 .resetbtn {
   display: inline-block;
   padding: 8px;
@@ -531,8 +552,8 @@ td {
   border: 1px solid var(--third-color);
   width: 80%;
 }
-.fluxotitle{
-  color:var(--third-color)
+.fluxotitle {
+  color: var(--third-color);
 }
 .close {
   color: red;
@@ -620,7 +641,7 @@ td {
     flex-wrap: wrap;
   }
 
-  .PDFs .col1 .col2{
+  .PDFs .col1 .col2 {
     flex-basis: 100%;
   }
 }
