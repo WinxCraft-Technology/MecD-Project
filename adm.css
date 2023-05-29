@@ -24,7 +24,7 @@
   padding: 20px;
   border: 1px solid #888;
   width: 600px;
-  height: 300px;
+  height: 800px;
   border-radius: 2%;
 }
 
@@ -146,7 +146,7 @@ input[type="submit"]:hover {
   padding: 20px;
   border: 1px solid #888;
   width: 600px;
-  height: 300px;
+  height: 800px;
   border-radius: 2%;
 }
 
@@ -168,4 +168,23 @@ input[type="submit"]:hover {
 h2 {
   color: var(--third-color);
   border-color: var(--main-color);
+}
+
+
+/* Media query para dispositivos com largura igual ou menor que 600px */
+@media (max-width: 600px) {
+  .modal-content,
+  .modal-contentEdit {
+    width: 90%;
+    height: auto;
+    margin: 10% auto;
+  }
+}
+
+/* Media query para dispositivos com largura igual ou menor que 400px */
+@media (max-width: 400px) {
+  .modal-content,
+  .modal-contentEdit {
+    width: 95%;
+  }
 }
