@@ -51,17 +51,17 @@
                 <h2>Preencha o formulário</h2>
                 <form>
                     <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" placeholder="Tipo do seu filtro. Exemplo: Tipo de dano" required>
+                    <input class="inputdois" type="text" id="name" name="name" placeholder="Tipo do seu filtro. Exemplo: Tipo de dano" required>
                     <label for="opc1">Opção 1:</label>
-                    <input type="text" id="opc1" placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno">
+                    <input class="inputdois" type="text" id="opc1" placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno">
 
                     <!--Inputs gerados através do Javascript-->
                     <div id="novasOptions">
 
                     </div>
 
-                  <input type="button" value="Adicionar opção" onclick="addOption()">
-                  <input type="button" value="Enviar" onclick="adicionarFiltro()">
+                  <input class="editum" type="button" value="Adicionar opção" onclick="addOption()">
+                  <input class="btn-admm" type="button" value="Enviar" onclick="adicionarFiltro()">
                 </form>
               </div>
             </div>
@@ -81,9 +81,9 @@
 
                     </div>
                     <br>
-                  <input type="button" value="Adicionar opção" onclick="addOptionEdit()">
-                  <input type="button" value="Enviar" onclick="editarFiltro()">
-                  <input type="button" value="Deletar Filtro" onclick="deletarFiltro()">
+                  <input class="editum" type="button" value="Adicionar opção" onclick="addOptionEdit()">
+                  <input class="btn-admm" type="button" value="Enviar" onclick="editarFiltro()">
+                  <input class="removedois" type="button" value="Deletar Filtro" onclick="deletarFiltro()">
                 </form>
               </div>
             </div>

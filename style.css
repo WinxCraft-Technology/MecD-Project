@@ -345,7 +345,7 @@ label {
 }
 
 .PDFs select {
-  width: 20rem;
+  width: 50rem;
   padding: 0.5rem;
   font-size: 1.2rem;
   margin-right: 1rem;
@@ -356,7 +356,7 @@ label {
   background-color: var(--third-color);
 }
 
-.col1 .col2 .col3 {
+.col1{
   max-width: 33%;
 }
 
@@ -620,7 +620,7 @@ td {
     flex-wrap: wrap;
   }
 
-  .PDFs .col1 .col2 .col3 {
+  .PDFs .col1 .col2{
     flex-basis: 100%;
   }
 }
