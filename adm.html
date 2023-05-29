@@ -12,8 +12,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
     />
-    <link rel="stylesheet" href="adm.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="adm.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
 
     <!-- Icone da página -->
     <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
@@ -38,95 +41,90 @@
     <main>
       <div class="iniciomain">
         <section>
-            <br>
-            <br>
-            <br>
-            <button class="add" id="addFiltro">Adicionar Filtro</button>
-            <button class="add" id="editarFiltro">Editar Filtros</button>
+          <br />
+          <br />
+          <br />
+          <button class="add" id="addFiltro">Adicionar Filtro</button>
+          <button class="add" id="editarFiltro">Editar Filtros</button>
 
-            <!--Modal para adicionar filtro novo-->
-            <div id="modal" class="modal">
-              <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Preencha o formulário</h2>
-                <form>
-                    <label for="name">Nome:</label>
-                    <input class="inputdois" type="text" id="name" name="name" placeholder="Tipo do seu filtro. Exemplo: Tipo de dano" required>
-                    <label for="opc1">Opção 1:</label>
-                    <input class="inputdois" type="text" id="opc1" placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno">
+          <!--Modal para adicionar filtro novo-->
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Preencha o formulário</h2>
+              <form>
+                <label for="name">Nome:</label>
+                <input
+                  class="inputdois"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Tipo do seu filtro. Exemplo: Tipo de dano"
+                  required
+                />
+                <label for="opc1">Opção 1:</label>
+                <input
+                  class="inputdois"
+                  type="text"
+                  id="opc1"
+                  placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno"
+                />
 
-                    <!--Inputs gerados através do Javascript-->
-                    <div id="novasOptions">
+                <!--Inputs gerados através do Javascript-->
+                <div id="novasOptions"></div>
 
-                    </div>
-
-                  <input class="editum" type="button" value="Adicionar opção" onclick="addOption()">
-                  <input class="btn-admm" type="button" value="Enviar" onclick="adicionarFiltro()">
-                </form>
-              </div>
+                <input
+                  class="editum"
+                  type="button"
+                  value="Adicionar opção"
+                  onclick="addOption()"
+                />
+                <input
+                  class="btn-admm"
+                  type="button"
+                  value="Enviar"
+                  onclick="adicionarFiltro()"
+                />
+              </form>
             </div>
+          </div>
 
-            <!--Modal para editar filtros já criados-->
-            <div id="modalEdit" class="modalEdit">
-              <div class="modal-contentEdit">
-                <span class="closeEdit">&times;</span>
-                <h2>Preencha o formulário</h2>
-                <form>
-                    <label for="name">Escolha um filtro para alterar suas opções:</label>
-                    <select name="nameEdit" id="nameEdit">
-
-                    </select>
-                    <br><br>
-                    <div id="optionsEdit">
-
-                    </div>
-                    <br>
-                  <input class="editum" type="button" value="Adicionar opção" onclick="addOptionEdit()">
-                  <input class="btn-admm" type="button" value="Enviar" onclick="editarFiltro()">
-                  <input class="removedois" type="button" value="Deletar Filtro" onclick="deletarFiltro()">
-                </form>
-              </div>
+          <!--Modal para editar filtros já criados-->
+          <div id="modalEdit" class="modalEdit">
+            <div class="modal-contentEdit">
+              <span class="closeEdit">&times;</span>
+              <h2>Preencha o formulário</h2>
+              <form>
+                <label for="name"
+                  >Escolha um filtro para alterar suas opções:</label
+                >
+                <select name="nameEdit" id="nameEdit"></select>
+                <br /><br />
+                <div id="optionsEdit"></div>
+                <br />
+                <input
+                  class="editum"
+                  type="button"
+                  value="Adicionar opção"
+                  onclick="addOptionEdit()"
+                />
+                <input
+                  class="btn-admm"
+                  type="button"
+                  value="Enviar"
+                  onclick="editarFiltro()"
+                />
+                <input
+                  class="removedois"
+                  type="button"
+                  value="Deletar Filtro"
+                  onclick="deletarFiltro()"
+                />
+              </form>
             </div>
-
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Opções</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>futuramente o nome do filtro que deseja modificar</td>
-                        <td>
-                            <button class="edit">Editar</button>
-                            <button class="remove">Remover</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>futuramente o nome do filtro que deseja modificar</td>
-                        <td>
-                            <button class="edit">Editar</button>
-                            <button class="remove">Remover</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>futuramente o nome do filtro que deseja modificar</td>
-                        <td>
-                            <button class="edit">Editar</button>
-                            <button class="remove">Remover</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        
-            
+          </div>
         </section>
+
         <section>
           <div class="envio">
             <h1>Enviar PDFS para o Firebase Storage</h1>
