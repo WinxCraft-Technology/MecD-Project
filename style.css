@@ -459,7 +459,7 @@ td {
 
 .edit {
   display: inline-block;
-  padding: 8px;
+  padding: 10px;
   background-color: #26a9b9;
   color: var(--third-color);
   border: none;

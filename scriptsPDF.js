@@ -12,77 +12,115 @@ function iniciarBanco(){
   };
 
   firebase.initializeApp(firebaseConfig);
-}
+
+  exibirDocumentos()
   
-const select = document.getElementById("filtro1");
-const select2 = document.getElementById("filtro2");
-const select3 = document.getElementById("filtro3");
-const select4 = document.getElementById("filtro4");
-const lista = document.getElementById("lista")
+}
+
+
+function exibirDocumentos() {
+  const db = firebase.firestore();
+
+  // Obtém a referência para a div 'resultado'
+  const divResultado = document.getElementById("resultado");
+
+  // Limpa o conteúdo da div 'resultado'
+  divResultado.innerHTML = "";
+
+  // Obtém a lista de documentos
+  db.collection("filtros")
+      .get()
+      .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+              // Cria a label com o nome do documento
+              const label = document.createElement("label");
+              label.textContent = doc.id;
+              divResultado.appendChild(label);
+
+              // Cria o select para as coleções
+              const select = document.createElement("select");
+              var id = doc.id.replace(" ", "_");
+              select.id = id
+              select.className = "filtro-select"
+              divResultado.appendChild(select);
+
+              // Obtém as coleções do documento
+              db.collection("filtros")
+                  .doc(doc.id)
+                  .get()
+                  .then((docSnapshot) => {
+                      if (docSnapshot.exists) {
+                          const data = docSnapshot.data();
+                          // Itera sobre as coleções
+                          Object.keys(data).forEach((key) => {
+                              if (key !== "nome") {
+                                  // Cria a option para cada coleção
+                                  const option = document.createElement("option");
+                                  option.value = data[key];
+                                  option.textContent = data[key];
+                                  select.appendChild(option);
+                              }
+                          });
+                      }
+                  })
+                  .catch((error) => {
+                      console.error("Error getting document:", error);
+                  });
+          });
+      })
+      .catch((error) => {
+          console.error("Error getting documents:", error);
+      });
+}
+
 
 async function atualizarLista() {
-  const categoriaSelecionada = select.value;
-  const categoriaSelecionada2 = select2.value;
-  const categoriaSelecionada3 = select3.value;
-  lista.innerHTML = "";
+  const filtrosSelecionados = []; // Array para armazenar os filtros selecionados
+
+  // Exemplo de obtenção dos filtros selecionados (você pode adaptar essa lógica ao seu caso específico)
+  const selects = document.querySelectorAll('.filtro-select'); // Supondo que você está usando selects HTML para os filtros
+  selects.forEach((select) => {
+    const categoriaSelecionada = select.value;
+    const id = select.id.replace("_", " ");
+    
+    
+    if (categoriaSelecionada !== 'N') {
+      filtrosSelecionados.push({
+        campo: id, // ID do select que representa o campo do filtro
+        valor: categoriaSelecionada
+      });
+    }
+  });
 
   const db = firebase.firestore();
   const mecanismosRef = db.collection("mecanismos");
 
-  let filtro1 = [];
-  let filtro2 = [];
-  let filtro3 = [];
+  let filtroFinal = [];
 
-  if(categoriaSelecionada=="N1"){
-    filtro1 = ["Teste", "Corrosão Sob Isolamento"];
-  } else {
-    const querySnapshot = await mecanismosRef.where("TipodeUnidade", "==", categoriaSelecionada).get();
+  if (filtrosSelecionados.length > 0) {
+    let query = mecanismosRef;
+
+    filtrosSelecionados.forEach((filtro) => {
+      query = query.where(filtro.campo, "==", filtro.valor);
+    });
+
+    const querySnapshot = await query.get();
     querySnapshot.forEach((doc) => {
-      filtro1.push(doc.data().Nome);
-    });    
-  }
-
-  if(categoriaSelecionada2=="N2"){
-
-  } else {
-    const querySnapshot = await mecanismosRef.where("LoopdeCorrosao", "==", categoriaSelecionada2).get();
-    querySnapshot.forEach((doc) => {
-      filtro2.push(doc.data().Nome);
-    });   
-  }
-
-  if(categoriaSelecionada3=="N3"){
-
-  } else {
-    const querySnapshot = await mecanismosRef.where("MaterialdeConstrucao", "==", categoriaSelecionada3).get();
-    querySnapshot.forEach((doc) => {
-      filtro3.push(doc.data().Nome);
+      filtroFinal.push(doc.id);
     });
   }
 
-  const valoresRepetidos = [];
+  lista.innerHTML = ""; // Limpar a lista antes de atualizá-la
 
-  for (let i = 0; i < filtro1.length; i++) {
-    const valor = filtro1[i];
-
-    if (filtro2.indexOf(valor) !== -1 && filtro3.indexOf(valor) !== -1 && valoresRepetidos.indexOf(valor) === -1) {
-      valoresRepetidos.push(valor);
-    }
-  }
-
-  console.log(valoresRepetidos);
-
-  for (let i = 0; i < valoresRepetidos.length; i++) {
-    const valor = valoresRepetidos[i];
+  filtroFinal.forEach((valor) => {
     const option = document.createElement("option");
     option.innerText = valor;
     lista.appendChild(option);
-  }
+  });
 
   const numPDF = document.getElementById("lista");
   const attNumPDF = numPDF.getElementsByTagName("option").length;
-    
-  document.getElementById("num-pdf").innerHTML = "Nº de Arquivos: " + attNumPDF
+  document.getElementById("num-pdf").innerHTML = "Nº de Arquivos: " + attNumPDF;
 }
   
 
@@ -115,10 +153,10 @@ async function atualizarLista() {
 
 }*/
   
-select.addEventListener("change", atualizarLista);
+/*select.addEventListener("change", atualizarLista);
 select2.addEventListener("change", atualizarLista);
 select3.addEventListener("change", atualizarLista);
-select4.addEventListener("change", atualizarLista);
+select4.addEventListener("change", atualizarLista);*/
 //lista.addEventListener("change", atualizarPDF)
   
 
