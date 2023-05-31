@@ -77,8 +77,8 @@ function exibirDocumentos() {
 async function atualizarLista() {
   const filtrosSelecionados = []; // Array para armazenar os filtros selecionados
 
-  // Exemplo de obtenção dos filtros selecionados (você pode adaptar essa lógica ao seu caso específico)
-  const selects = document.querySelectorAll('.filtro-select'); // Supondo que você está usando selects HTML para os filtros
+
+  const selects = document.querySelectorAll('.filtro-select'); 
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
     const id = select.id.replace("_", " ");
