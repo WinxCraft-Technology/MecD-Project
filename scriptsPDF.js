@@ -130,3 +130,108 @@ function openModal() {
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
+
+
+/* Possivel Solução
+
+function iniciarBanco() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY",
+    authDomain: "mecd-project.firebaseapp.com",
+    projectId: "mecd-project",
+    storageBucket: "mecd-project.appspot.com",
+    messagingSenderId: "210905329240",
+    appId: "1:210905329240:web:ae1579ea9fb2ad218ce42d",
+    measurementId: "G-RPBV1LXF0P"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+}
+
+const select = document.getElementById("filtro1");
+const select2 = document.getElementById("filtro2");
+const select3 = document.getElementById("filtro3");
+const select4 = document.getElementById("filtro4");
+const lista = document.getElementById("lista");
+
+function filtrarPorCategoria() {
+  const categoriaSelecionada = select.value;
+  if (categoriaSelecionada === "N1") {
+    return ["Teste", "Corrosão Sob Isolamento"];
+  } else {
+    const db = firebase.firestore();
+    const mecanismosRef = db.collection("mecanismos");
+    return mecanismosRef.where("TipodeUnidade", "==", categoriaSelecionada).get()
+      .then(querySnapshot => {
+        const filtro = [];
+        querySnapshot.forEach(doc => {
+          filtro.push(doc.data().Nome);
+        });
+        return filtro;
+      });
+  }
+}
+
+function filtrarPorLoopDeCorrosao(filtroAnterior) {
+  const categoriaSelecionada2 = select2.value;
+  if (categoriaSelecionada2 === "N2") {
+    return filtroAnterior;
+  } else {
+    const db = firebase.firestore();
+    const mecanismosRef = db.collection("mecanismos");
+    return mecanismosRef.where("LoopdeCorrosao", "==", categoriaSelecionada2).get()
+      .then(querySnapshot => {
+        const filtro = [];
+        querySnapshot.forEach(doc => {
+          filtro.push(doc.data().Nome);
+        });
+        return filtro;
+      });
+  }
+}
+
+function filtrarPorMaterialDeConstrucao(filtroAnterior) {
+  const categoriaSelecionada3 = select3.value;
+  if (categoriaSelecionada3 === "N3") {
+    return filtroAnterior;
+  } else {
+    const db = firebase.firestore();
+    const mecanismosRef = db.collection("mecanismos");
+    return mecanismosRef.where("MaterialdeConstrucao", "==", categoriaSelecionada3).get()
+      .then(querySnapshot => {
+        const filtro = [];
+        querySnapshot.forEach(doc => {
+          filtro.push(doc.data().Nome);
+        });
+        return filtro;
+      });
+  }
+}
+
+function exibirFiltroFinal(filtroFinal) {
+  const valoresRepetidos = filtroFinal.filter((valor, index) => filtroFinal.indexOf(valor) === index);
+
+  lista.innerHTML = "";
+  for (let i = 0; i < valoresRepetidos.length; i++) {
+    const valor = valoresRepetidos[i];
+    const option = document.createElement("option");
+    option.innerText = valor;
+    lista.appendChild(option);
+  }
+
+  const attNumPDF = lista.getElementsByTagName("option").length;
+  document.getElementById("num-pdf").innerHTML = "Nº de Arquivos: " + attNumPDF;
+}
+
+async function atualizarLista() {
+  const filtroCategoria = await filtrarPorCategoria();
+  const filtroLoopDeCorrosao = await filtrarPorLoopDeCorrosao(filtroCategoria);
+  const filtroMaterialDeConstrucao = await filtrarPorMaterialDeConstrucao(filtroLoopDeCorrosao);
+  exibirFiltroFinal(filtroMaterialDeConstrucao);
+}
+
+select.addEventListener("change", atualizarLista);
+select2.addEventListener("change", atualizarLista);
+select3.addEventListener("change", atualizarLista);
+select4.addEventListener("change", atualizarLista);
+*/ 
