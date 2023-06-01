@@ -12,6 +12,8 @@ function iniciarBanco() {
   firebase.initializeApp(firebaseConfig);
   // Obtém a referência da coleção no Firestore
   var db = firebase.firestore();
+
+  addOption();
 }
 
 
@@ -71,22 +73,57 @@ function adicionarFiltro() {
 
 
 // Criar uma nova opção ao criar um filtro
-var numOpcao = 2;
+var numOpcao = 1;
 
 function addOption() {
   var divResultado = document.getElementById("novasOptions")
 
-  const label = document.createElement("label");
-  label.textContent = "Opção " + numOpcao + ":";
-  divResultado.appendChild(label);
+  const div = document.createElement("div")
+  divAtual = "divopc" + numOpcao
+  div.id = divAtual
+  divResultado.appendChild(div)
+  var divReferencia = document.getElementById(divAtual)
 
   const input = document.createElement("input");
   input.id = "opc" + numOpcao;
   input.type = "text"
   input.placeholder = "Insira o conteúdo da opção. Exemplo: Externo/Interno"
-  divResultado.appendChild(input);
+  divReferencia.appendChild(input);
+
+  const buttonElement = document.createElement("button");
+  buttonElement.type = "button";
+  buttonElement.id = "button" + "opc" + numOpcao;
+  buttonElement.className = "deletebutton"
+  buttonElement.innerHTML = "Deletar";
+
+  buttonElement.addEventListener("click", function (event) {
+    const botaoClicado = event.target;
+    const idBotao = botaoClicado.id;
+    const substring = idBotao.substring(9);
+    const posicaoInt = parseInt(substring);
+    const apagar = document.getElementById("divopc" + posicaoInt);
+    apagar.remove();
+    console.log(posicaoInt)
+
+    numOpcao--
+    for (let i = posicaoInt + 1; i <= numOpcao; i++) {
+      const posAtual = i - 1;
+      const alterarInput = document.getElementById("opc" + i);
+      const alterarDiv = document.getElementById("divopc" + i);
+      const alterarBotao = document.getElementById("buttonopc" + i);
+
+      alterarInput.id = "opc" + posAtual;
+      alterarDiv.id = "divopc" + posAtual;
+      alterarBotao.id = "buttonopc" + posAtual;
+    }
+
+    console.log(numOpcao)
+  });
+
+  divReferencia.appendChild(buttonElement);
 
   numOpcao++
+  console.log(numOpcao)
   total = numOpcao - 1
 }
 
@@ -101,6 +138,13 @@ function adminEditar() {
   // Referência para o elemento select
   var selectElement = document.getElementById("nameEdit");
   selectElement.innerHTML = ""
+  var optionElement = document.createElement("option");
+  optionElement.value = "Lista de Filtros";
+  optionElement.textContent = "Lista de Filtros";
+  optionElement.selected = "true";
+  optionElement.disabled = "true";
+  selectElement.appendChild(optionElement);
+
   // Buscar os nomes dos documentos no Firestore
   db.collection("filtros")
     .get()
@@ -165,6 +209,7 @@ document.getElementById("nameEdit").addEventListener("change", function () {
           const buttonElement = document.createElement("button");
           buttonElement.type = "button";
           buttonElement.id = "button" + inputId;
+          buttonElement.className = "deletebutton"
           buttonElement.innerHTML = "Deletar";
 
           buttonElement.addEventListener("click", function (event) {
@@ -225,6 +270,7 @@ function addOptionEdit() {
   const buttonElement = document.createElement("button");
   buttonElement.type = "button";
   buttonElement.id = "buttonopc" + totalOpcoesEdit + "E";
+  buttonElement.className = "deletebutton"
   buttonElement.innerHTML = "Deletar";
 
   buttonElement.addEventListener("click", function (event) {
@@ -239,7 +285,6 @@ function addOptionEdit() {
 
     for (let i = posicaoInt + 1; i <= totalOpcoesEdit; i++) {
       const posAtual = i - 1;
-      console.log("A");
       const alterarInput = document.getElementById("opc" + i + "E");
       const alterarDiv = document.getElementById("divopc" + i + "E");
       const alterarBotao = document.getElementById("buttonopc" + i + "E");
