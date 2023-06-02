@@ -20,7 +20,12 @@
 }
 
 section {
-  padding: 50px 10%;
+  padding: 50px 5%;
+  overflow-x: hidden;
+}
+
+.section {
+  flex:1;
 }
 
 .inicio {
@@ -368,8 +373,9 @@ label {
   background-color: var(--third-color);
 }
 
-.col1 {
+.col1, .col2 {
   max-width: 33%;
+  float: left;
 }
 
 #lista-pdfs {

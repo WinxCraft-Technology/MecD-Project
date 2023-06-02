@@ -191,3 +191,86 @@ h2 {
     width: 95%;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .inicio-text {
+    flex: 1 1 100%;
+  }
+  .inicio-text h1 {
+    font-size: 2.5rem;
+  }
+  .inicio-text h2 {
+    font-size: 1.5rem;
+  }
+  .container .menu {
+    display: none;
+  }
+  .container .btn-menu,
+  .logo {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+  .container .btn-menu,
+  .logo {
+    display: block;
+    line-height: normal;
+  }
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+  .container .menu {
+    position: absolute;
+    top: 100px;
+    right: -100%;
+    width: 100%;
+    display: block;
+    background-color: var(--main-color);
+    transition: 0.2s;
+    padding: 1rem;
+  }
+  .container .menu a {
+    display: block;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    margin-right: 0;
+    text-align: center;
+    border-bottom: none;
+    color: var(--third-color);
+  }
+  .container .menu a:hover {
+    background-color: var(--second-color);
+  }
+  .container .menu.active {
+    right: 0;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .inicio-text h1 {
+    font-size: 3rem;
+  }
+  .inicio-text h2 {
+    font-size: 1.6rem;
+  }
+  .container .menu a {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .PDFs {
+    flex-wrap: wrap;
+  }
+
+  .PDFs .col1 .col2 {
+    flex-basis: 100%;
+  }
+}
