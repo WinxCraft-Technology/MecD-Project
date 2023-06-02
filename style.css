@@ -375,7 +375,6 @@ label {
 
 .col1, .col2 {
   max-width: 33%;
-  display: inline-block;
   float: left;
 }
 
