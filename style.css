@@ -26,7 +26,6 @@ section {
 
 .section {
   flex:1;
-  flex-direction: row;
 }
 
 .inicio {
