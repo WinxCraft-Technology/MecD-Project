@@ -87,16 +87,36 @@
       <section class="section">
         <h2>Gerenciamento de Filtros</h2>
         <div class="envio">
-          <h3>Enviar PDFS para o Firebase Storage</h3>
-          <br />
-          <form class="form-env">
-            <input type="text" id="nome-mecanismo" placeholder="Insira o nome do PDF" class="inputum" />
-            <label for="file-input">Selecione um arquivo:</label>
-            <input type="file" id="file-input" class="inputm" />
-            <button type="submit" id="submit-button" class="btn-adm">
-              Enviar arquivo
-            </button>
-          </form>
+          <button onclick="listarFiltros()">Adicionar Mecanismo</button>
+          <button onclick="editarMecanismo()">Editar Mecanismo</button>
+          <br>
+          <br>
+          <div id="addMecanismo" style="display:none;">
+            <label for="input_nomeMecanismo_add">Nome do Mecanismo</label>
+            <input type="text" id="input_nomeMecanismo_add" placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento">
+            <label for="select_filtros">Selecione os filtros correspondentes a este Mecanismo de Dano</label>
+            <div id="lista_filtros">
+
+            </div>
+
+            <button type="button" onclick="adicionarMecanismo()">Adicionar Mecanismo</button>
+          </div>
+
+          <div id="editarMecanismo">
+            <label for="select_nomeMecanismo_edit">Escolha um Mecanismo de Dano</label>
+            <select name="select_nomeMecanismo_edit" id="select_nomeMecanismo_edit">
+
+            </select>
+            <label for="input_nomeMecanismo_edit">Insira um novo nome para o seu Mecanismo de Dano</label>
+            <input type="text" id="input_nomeMecanismo_edit" placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento">
+
+            <div id="filtros_editar">
+
+            </div>
+            <button type="button" onclick="enviarEditarmecanismo()">Atualizar Mecanismo de Dano</button>
+            <button type="button" onclick="deletarMecanismo()">Deletar Mecanismo de Dano</button>
+          </div>
+
         </div>
       </section>
     </div>

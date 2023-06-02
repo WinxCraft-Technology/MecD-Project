@@ -29,6 +29,7 @@ function exibirDocumentos() {
 
   // Obtém a lista de documentos
   db.collection("filtros")
+    .orderBy("dataupload")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -57,7 +58,7 @@ function exibirDocumentos() {
               optionDefault.textContent = "Sem Filtro";
               select.appendChild(optionDefault);
               Object.keys(data).forEach((key) => {
-                if([key]!="filtropai"){
+                if([key]!="filtropai" && [key]!="dataupload"){
                   const option = document.createElement("option");
                   option.value = data[key];
                   option.textContent = data[key];

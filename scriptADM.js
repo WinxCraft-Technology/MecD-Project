@@ -364,3 +364,225 @@ function deletarFiltro() {
     });
 }
 
+
+var totalFiltros;
+
+function listarFiltros() {
+  document.getElementById("addMecanismo").style = "display:block;"
+  const db = firebase.firestore();
+
+  // Obtém a referência para a div 'resultado'
+  const divResultado = document.getElementById("lista_filtros");
+
+  // Limpa o conteúdo da div 'resultado'
+  divResultado.innerHTML = "";
+
+  // Obtém a lista de documentos
+  db.collection("filtros")
+    .orderBy("dataupload")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Cria a label com o nome do documento
+        const label = document.createElement("label");
+        label.textContent = doc.id;
+        divResultado.appendChild(label);
+
+        // Cria o select para as coleções
+        const select = document.createElement("select");
+        var id = doc.id.replace(" ", "_");
+        select.id = id
+        select.className = "filtro-select"
+        divResultado.appendChild(select);
+
+        // Obtém as coleções do documento
+        db.collection("filtros")
+          .doc(doc.id)
+          .get()
+          .then((docSnapshot) => {
+            if (docSnapshot.exists) {
+              const data = docSnapshot.data();
+              // Itera sobre as coleções
+              const optionDefault = document.createElement("option");
+              optionDefault.value = "Sem Filtro";
+              optionDefault.textContent = "Sem Filtro";
+              select.appendChild(optionDefault);
+              Object.keys(data).forEach((key) => {
+                if ([key] != "filtropai" && [key] != "dataupload") {
+                  const option = document.createElement("option");
+                  option.value = data[key];
+                  option.textContent = data[key];
+                  select.appendChild(option);
+                }
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error getting document:", error);
+          });
+      });
+    })
+    .catch((error) => {
+      console.error("Error getting documents:", error);
+    });
+}
+
+function adicionarMecanismo() {
+  const nome = document.getElementById("input_nomeMecanismo_add").value;
+  const db = firebase.firestore();
+
+  const selects = document.querySelectorAll('.filtro-select');
+  selects.forEach((select) => {
+    const categoriaSelecionada = select.value;
+    const id = select.id.replace("_", " ");
+
+    const dados = {
+      [id]: categoriaSelecionada
+    }
+
+    db.collection("mecanismos")
+      .doc(nome)
+      .set(dados, {
+        merge: true
+      })
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+      .catch((error) => {
+        console.error("Error updating document: ", error);
+      });
+  });
+}
+
+function editarMecanismo() {
+  document.getElementById("editarMecanismo").style = "display:block;";
+  document.getElementById("addMecanismo").style = "display:none;";
+  const db = firebase.firestore();
+
+  const select_mecanismo = document.getElementById("select_nomeMecanismo_edit");
+  const divResultado = document.getElementById("filtros_editar");
+  select_mecanismo.innerHTML=""
+  divResultado.innerHTML=""
+  db.collection("mecanismos")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const option = document.createElement("option");
+        option.value = doc.id;
+        option.textContent = doc.id;
+
+        select_mecanismo.appendChild(option);
+      })
+
+      select_mecanismo.addEventListener("change", function (event) {
+        // Limpa o conteúdo da div 'resultado'
+        divResultado.innerHTML = "";
+        // Obtém a lista de documentos
+        db.collection("filtros")
+          .orderBy("dataupload")
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              // Cria a label com o nome do documento
+              const label = document.createElement("label");
+              label.textContent = doc.id;
+              divResultado.appendChild(label);
+
+              // Cria o select para as coleções
+              const select = document.createElement("select");
+              var id = doc.id.replace(" ", "_");
+              select.id = id
+              select.className = "filtro-selectEdit"
+              divResultado.appendChild(select);
+
+              // Obtém as coleções do documento
+              db.collection("filtros")
+                .doc(doc.id)
+                .get()
+                .then((docSnapshot) => {
+                  if (docSnapshot.exists) {
+                    const data = docSnapshot.data();
+                    // Itera sobre as coleções
+                    const optionDefault = document.createElement("option");
+                    optionDefault.value = "Sem Filtro";
+                    optionDefault.textContent = "Sem Filtro";
+                    select.appendChild(optionDefault);
+                    Object.keys(data).forEach((key) => {
+                      if ([key] != "filtropai" && [key] != "dataupload") {
+                        const option = document.createElement("option");
+                        option.value = data[key];
+                        option.textContent = data[key];
+                        select.appendChild(option);
+                      }
+                    });
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error getting document:", error);
+                });
+            });
+          })
+          .catch((error) => {
+            console.error("Error getting documents:", error);
+          });
+      })
+    })
+}
+
+
+function enviarEditarmecanismo() {
+  const nome = document.getElementById("input_nomeMecanismo_edit").value;
+  const db = firebase.firestore();
+
+  const select = document.getElementById("select_nomeMecanismo_edit");
+  const valorSelecionado = select.value;
+  const documentoRef = db.collection('mecanismos').doc(valorSelecionado);
+
+  documentoRef
+    .delete()
+    .then(() => {
+      console.log('Documento apagado com sucesso.');
+    })
+    .catch((error) => {
+      console.error('Erro ao apagar o documento:', error);
+    });
+
+  const selects = document.querySelectorAll('.filtro-selectEdit');
+  selects.forEach((select) => {
+    const categoriaSelecionada = select.value;
+    const id = select.id.replace("_", " ");
+
+    const dados = {
+      [id]: categoriaSelecionada
+    }
+
+    db.collection("mecanismos")
+      .doc(nome)
+      .set(dados, {
+        merge: true
+      })
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+      .catch((error) => {
+        console.error("Error updating document: ", error);
+      });
+  });
+}
+
+function deletarMecanismo() {
+  const db = firebase.firestore();
+
+  const select = document.getElementById("select_nomeMecanismo_edit");
+  const valorSelecionado = select.value;
+  const documentoRef = db.collection('mecanismos').doc(valorSelecionado);
+
+  documentoRef
+    .delete()
+    .then(() => {
+      console.log('Documento apagado com sucesso.');
+    })
+    .catch((error) => {
+      console.error('Erro ao apagar o documento:', error);
+    });
+}
