@@ -1,6 +1,8 @@
 /* Importação de fontes */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200&display=swap");
 
+
+
 /* Definindo estilos para toda página web */
 * {
   margin: 0;
@@ -13,6 +15,8 @@
   font-family: "Poppins", sans-serif;
 }
 
+
+
 /* Defindo variáveis de cores */
 :root {
   --main-color: #1c1c1c;
@@ -22,9 +26,167 @@
   --acept-hover: #3e8e41;
 }
 
-section {
-  padding: 50px 5%;
-  overflow-x: hidden;
+
+
+
+/* Estilo da Header/Menu */
+.header {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: var(--third-color);
+  background-color: var(--main-color);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 41px rgb(14 55 54/14%);
+  padding: 1rem;
+  transition: 0.2s;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 2rem;
+  vertical-align: middle;
+}
+
+.logo h1 {
+  color: var(--third-color);
+  font-weight: 400;
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  display: inline-block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.container .btn-menu,
+.logo {
+  float: right;
+  line-height: 100px;
+}
+
+.container .btn-menu label {
+  color: var(--third-color);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.container {
+  float: right;
+  line-height: 100px;
+  margin-left: auto;
+}
+
+.container a {
+  display: inline-block;
+  padding: 15px;
+  line-height: normal;
+  text-decoration: none;
+  color: var(--third-color);
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.container a:hover {
+  border-bottom: 2px solid var(--third-color);
+  padding-bottom: 5px;
+}
+
+#btn-menu {
+  display: none;
+  cursor: pointer;
+}
+
+#btn-menu:checked ~ .container-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+#btn-menu:checked ~ .container-menu .cont-menu {
+  transform: translateX(0%);
+}
+
+.container-menu {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  top: 45px;
+  left: 0;
+  transition: all 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cont-menu {
+  width: 100%;
+  max-width: 250px;
+  background: var(--main-color);
+  height: 100vh;
+  position: fixed;
+  transition: all 0.5s ease;
+  transform: translateX(100%);
+  right: 0;
+}
+
+.cont-menu nav {
+  transform: translateY(15%);
+}
+
+.cont-menu nav a {
+  display: block;
+  text-decoration: none;
+  padding: 2rem;
+  color: var(--third-color);
+  border-left: 5px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.cont-menu nav a:hover {
+  border-left: 5px solid var(--third-color);
+  background: #1f1f1f;
+}
+
+.cont-menu label {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: var(--second-color);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+
+
+/* Estilo da Home Page */
+
+.capa {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  top: 0;
+  left: 0;
+  background: url(https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=730&q=80);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
 }
 
 .inicio {
@@ -63,17 +225,6 @@ section {
   margin: 0.5rem 0 1.4rem;
 }
 
-.iniciomain {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-  background-color: var(--second-color);
-}
-
 .btn,
 .add {
   padding: 7px 16px;
@@ -102,192 +253,10 @@ section {
   transition: all 0.3s ease 0s;
 }
 
-.inputm {
-  padding: 7px 16px;
-  border-radius: 40px;
-  color: var(--main-color);
-  font-weight: 500;
-  background: var(--third-color);
-  transition: all 0.3s ease 0s;
-}
 
-.inputum {
-  padding: 7px 16px;
-  border: 2px solid var(--main-color);
-  border-radius: 40px;
-  color: var(--second-color);
-  font-weight: 500;
-  background: var(--third-color);
-  transition: all 0.3s ease 0s;
-}
 
-.inputum:hover {
-  transition: all 0.3s ease 0s;
-  box-shadow: 0px 15px 20px var(--second-color);
-}
 
-::placeholder {
-  color: var(--main-color);
-  text-align: center;
-}
-
-.header {
-  width: 100%;
-  height: 100px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  color: var(--third-color);
-  background-color: var(--main-color);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 41px rgb(14 55 54/14%);
-  padding: 1rem;
-  transition: 0.2s;
-}
-
-img {
-  width: 100%;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  width: 2rem;
-  vertical-align: middle;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.container .btn-menu,
-.logo {
-  float: right;
-  line-height: 100px;
-}
-
-.container .btn-menu label {
-  color: var(--third-color);
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.logo h1 {
-  color: var(--third-color);
-  font-weight: 400;
-  font-size: 2rem;
-  margin-left: 0.5rem;
-  display: inline-block;
-}
-
-.container .menu {
-  float: right;
-  line-height: 100px;
-  margin-left: auto;
-}
-
-.container .menu a {
-  display: inline-block;
-  padding: 15px;
-  line-height: normal;
-  text-decoration: none;
-  color: var(--third-color);
-  transition: all 0.3s ease;
-  border-bottom: 2px solid transparent;
-  font-size: 15px;
-  margin-right: 5px;
-}
-
-.container .menu a:hover {
-  border-bottom: 2px solid var(--third-color);
-  padding-bottom: 5px;
-}
-
-.capa {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-  top: 0;
-  left: 0;
-  background: url(https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=730&q=80);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: fixed;
-}
-
-#btn-menu {
-  display: none;
-  cursor: pointer;
-}
-
-.container-menu {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100vh;
-  top: 45px;
-  left: 0;
-  transition: all 0.5s ease;
-  opacity: 0;
-  visibility: hidden;
-}
-
-#btn-menu:checked ~ .container-menu {
-  opacity: 1;
-  visibility: visible;
-}
-
-.cont-menu {
-  width: 100%;
-  max-width: 250px;
-  background: var(--main-color);
-  height: 100vh;
-  position: fixed;
-  transition: all 0.5s ease;
-  transform: translateX(100%);
-  right: 0;
-}
-
-#btn-menu:checked ~ .container-menu .cont-menu {
-  transform: translateX(0%);
-}
-
-.cont-menu nav {
-  transform: translateY(15%);
-}
-
-.cont-menu nav a {
-  display: block;
-  text-decoration: none;
-  padding: 2rem;
-  color: var(--third-color);
-  border-left: 5px solid transparent;
-  transition: all 0.2s ease-in-out;
-}
-
-.cont-menu nav a:hover {
-  border-left: 5px solid var(--third-color);
-  background: #1f1f1f;
-}
-
-.cont-menu label {
-  position: absolute;
-  right: 5px;
-  top: 10px;
-  color: var(--second-color);
-  cursor: pointer;
-  font-size: 18px;
-}
+/* Footer */
 
 .footer {
   display: flex;
@@ -323,6 +292,22 @@ img {
   margin-top: 1rem;
 }
 
+
+
+
+/* Estilo da área MECD - Main */
+
+.iniciomain {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  background-color: var(--second-color);
+}
+
 .PDFs {
   display: flex;
   flex-wrap: wrap;
@@ -343,12 +328,6 @@ img {
   margin-bottom: 0.1rem;
 }
 
-label {
-  font-size: 1.5rem;
-  display: block;
-  margin-bottom: 10px;
-}
-
 .PDFs select {
   width: 50rem;
   padding: 0.5rem;
@@ -360,21 +339,25 @@ label {
   outline: none;
   background-color: var(--third-color);
 }
-.PDFsdois select {
-  width: 20rem;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  margin-right: 1rem;
-  margin-top: 0.5rem;
-  border: 1px solid var(--main-color);
-  border-radius: 0.35rem;
-  outline: none;
-  background-color: var(--third-color);
-}
 
-.col1, .col2 {
+.col1,
+.col2 {
   max-width: 33%;
   float: left;
+}
+
+.resetbtn {
+  display: inline-block;
+  padding: 8px;
+  background-color: #26a9b9;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+}
+.resetbtn:hover {
+  background-color: #3d5a70;
 }
 
 #lista-pdfs {
@@ -401,11 +384,10 @@ label {
   background-color: var(--second-color);
 }
 
-.envio {
-  background-color: var(--third-color);
-  padding: 20px;
-  border-radius: 10px;
-}
+
+
+
+/* Estilo da área de ADM */
 
 .envio2 {
   background-color: var(--third-color);
@@ -413,10 +395,228 @@ label {
   border-radius: 10px;
 }
 
-.form-env {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.btn-adm {
+  background-color: var(--acept);
+  color: var(--third-color);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-adm:hover {
+  background-color: var(--acept-hover);
+}
+
+.edit {
+  display: inline-block;
+  padding: 10px;
+  background-color: #26a9b9;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.edit:hover {
+  background-color: #3d5a70;
+}
+
+.inputdois {
+  padding: 7px 16px;
+  border: 2px solid var(--main-color);
+  border-radius: 40px;
+  color: var(--second-color);
+  font-weight: 500;
+  background: var(--third-color);
+  transition: all 0.3s ease 0s;
+}
+
+.inputdois:hover {
+  transition: all 0.3s ease 0s;
+  box-shadow: 0px 15px 20px var(--second-color);
+}
+
+.editum {
+  display: inline-block;
+  padding: 8px;
+  background-color: #26a9b9;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.editum:hover {
+  background-color: #3d5a70;
+}
+
+.btn-admm {
+  background-color: var(--acept);
+  color: var(--third-color);
+  padding: 8px;
+  width: 8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-admm:hover {
+  background-color: var(--acept-hover);
+}
+
+.removedois {
+  display: inline-block;
+  padding: 8px;
+  background-color: red;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.removedois:hover {
+  background-color: #ff000032;
+}
+
+.envio {
+  background-color: var(--third-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.remove {
+  display: inline-block;
+  padding: 8px;
+  background-color: red;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.remove:hover {
+  background-color: #ff000032;
+}
+.close:hover {
+  color: #ff000032;
+}
+
+
+
+
+/* Modais??? */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 600px;
+  height: 800px;
+  border-radius: 2%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modalEdit {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contentEdit {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 600px;
+  height: 800px;
+  border-radius: 2%;
+}
+
+
+
+
+/* Estilo de elementos */
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 80%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+h2 {
+  color: white;
+  border-color: var(--main-color);
+}
+
+section {
+  padding: 50px 5%;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+label {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 10px;
 }
 
 label {
@@ -435,19 +635,6 @@ input[type="file"] {
   border: none;
 }
 
-.btn-adm {
-  background-color: var(--acept);
-  color: var(--third-color);
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-adm:hover {
-  background-color: var(--acept-hover);
-}
-
 table {
   border-collapse: collapse;
   background-color: var(--third-color);
@@ -455,6 +642,7 @@ table {
   margin-top: 4rem;
   border-radius: 1rem;
 }
+
 th,
 td {
   text-align: left;
@@ -462,46 +650,32 @@ td {
   border: 1px solid var(--main-color);
 }
 
-.edit {
-  display: inline-block;
-  padding: 10px;
-  background-color: #26a9b9;
-  color: var(--third-color);
-  border: none;
-  cursor: pointer;
-  border-radius: 0.25rem;
+.section {
+  flex: 1;
 }
-.remove {
-  display: inline-block;
-  padding: 8px;
-  background-color: red;
-  color: var(--third-color);
-  border: none;
-  cursor: pointer;
-  border-radius: 0.25rem;
+
+::placeholder {
+  color: var(--main-color);
+  text-align: center;
 }
-.edit:hover {
-  background-color: #3d5a70;
+
+
+
+
+/* Estilo dos Fluxogramas */
+
+.PDFsdois select {
+  width: 20rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--main-color);
+  border-radius: 0.35rem;
+  outline: none;
+  background-color: var(--third-color);
 }
-.remove:hover {
-  background-color: #ff000032;
-}
-.close:hover {
-  color: #ff000032;
-}
-.resetbtn {
-  display: inline-block;
-  padding: 8px;
-  background-color: #26a9b9;
-  color: var(--third-color);
-  border: none;
-  cursor: pointer;
-  border-radius: 0.25rem;
-  margin-top: 1rem;
-}
-.resetbtn:hover {
-  background-color: #3d5a70;
-}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -538,35 +712,13 @@ td {
   background-color: #3d5a70;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: var(--second-color);
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid var(--third-color);
-  width: 80%;
-}
 .fluxotitle {
   color: var(--third-color);
 }
-.close {
-  color: red;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
+
+
+
+/* Media Querys */
 
 @media screen and (max-width: 600px) {
   .inicio-text {
