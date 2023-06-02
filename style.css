@@ -19,8 +19,17 @@
   --acept-hover: #3e8e41;
 }
 
+main {
+  overflow-x: hidden;
+}
+
 section {
   padding: 50px 10%;
+}
+
+.section {
+  flex:1;
+  flex-direction: row;
 }
 
 .inicio {
