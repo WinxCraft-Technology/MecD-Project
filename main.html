@@ -7,6 +7,7 @@
     <title>Filtragem - MecD</title>
     <!-- Link do estilo -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="adm.css" />
     <!-- Link das caixas -->
     <link
       rel="stylesheet"
@@ -34,25 +35,30 @@
 
     <main>
       <div class="iniciomain">
-        <form class="PDFs">
-          <div class="col1">
-            <br>
-            <br>
-            <br>
-            
+        <section class="section">
+          <form class="PDFs">
+            <div class="col1">
+              <br />
+              <br />
+              <br />
 
-            <label for="">Opções:</label>
-            <div id="resultado"></div>
-            <button type="button" class="resetbtn" onclick="atualizarLista()">Resetar Filtros</button>
+              <label for="">Opções:</label>
+              <div id="resultado"></div>
+              <button type="button" class="resetbtn" onclick="atualizarLista()">
+                Resetar Filtros
+              </button>
+            </div>
+          </form>
+        </section>
+        
+        <section class="section">
+          <div id="lista-pdfs">
+            <div><p id="num-pdf"></p></div>
+            <select id="lista"></select>
           </div>
-        </form>
 
-        <div id="lista-pdfs">
-          <div><p id="num-pdf"></p></div>
-          <select id="lista"></select>
-        </div>
-
-        <embed src="" type="" id="alterar-pdf" />
+          <embed src="" type="" id="alterar-pdf" />
+        </section>
       </div>
 
       <input type="checkbox" id="btn-menu" />
