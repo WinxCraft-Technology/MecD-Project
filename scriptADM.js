@@ -455,6 +455,9 @@ function adicionarMecanismo() {
   });
 }
 
+// Variável para controlar se a função editarMecanismo está em uso ou não
+let editarMecanismoEmUso = false;
+
 function editarMecanismo() {
   console.log("A")
   document.getElementById("editarMecanismo").style.display = "block";
@@ -481,62 +484,85 @@ function editarMecanismo() {
       });
     });
 
-  // Limpa o conteúdo da div 'filtros_editar'
+  // Marca a função editarMecanismo como em uso
+  editarMecanismoEmUso = true;
+}
+
+// Adiciona o evento de alteração apenas uma vez
+const select_mecanismo = document.getElementById("select_nomeMecanismo_edit");
+select_mecanismo.addEventListener("change", handleSelectChange);
+
+function handleSelectChange(event) {
+  if (!editarMecanismoEmUso) {
+    return;
+  }
+
+  const divResultado = document.getElementById("filtros_editar");
+  // Limpa o conteúdo da div 'resultado'
   divResultado.innerHTML = "";
 
-  select_mecanismo.addEventListener("change", function (event) {
-    // Limpa o conteúdo da div 'resultado'
-    divResultado.innerHTML = "";
+  const db = firebase.firestore();
 
-    // Obtém a lista de documentos
-    db.collection("filtros")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          // Cria a label com o nome do documento
-          const label = document.createElement("label");
-          label.textContent = doc.id;
-          divResultado.appendChild(label);
+  // Obtém a lista de documentos
+  db.collection("filtros")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Cria a label com o nome do documento
+        const label = document.createElement("label");
+        label.textContent = doc.id;
+        divResultado.appendChild(label);
 
-          // Cria o select para as coleções
-          const select = document.createElement("select");
-          var id = doc.id.replace(" ", "_");
-          select.id = id;
-          select.className = "filtro-selectEdit";
-          divResultado.appendChild(select);
+        // Cria o select para as coleções
+        const select = document.createElement("select");
+        var id = doc.id.replace(" ", "_");
+        select.id = id;
+        select.className = "filtro-selectEdit";
+        divResultado.appendChild(select);
 
-          // Obtém as coleções do documento
-          db.collection("filtros")
-            .doc(doc.id)
-            .get()
-            .then((docSnapshot) => {
-              if (docSnapshot.exists) {
-                const data = docSnapshot.data();
-                // Itera sobre as coleções
-                const optionDefault = document.createElement("option");
-                optionDefault.value = "Sem Filtro";
-                optionDefault.textContent = "Sem Filtro";
-                select.appendChild(optionDefault);
-                Object.keys(data).forEach((key) => {
-                  if ([key] != "filtropai" && [key] != "dataupload") {
-                    const option = document.createElement("option");
-                    option.value = data[key];
-                    option.textContent = data[key];
-                    select.appendChild(option);
-                  }
-                });
-              }
-            })
-            .catch((error) => {
-              console.error("Error getting document:", error);
-            });
-        });
-      })
-      .catch((error) => {
-        console.error("Error getting documents:", error);
+        // Obtém as coleções do documento
+        db.collection("filtros")
+          .doc(doc.id)
+          .get()
+          .then((docSnapshot) => {
+            if (docSnapshot.exists) {
+              const data = docSnapshot.data();
+              // Itera sobre as coleções
+              const optionDefault = document.createElement("option");
+              optionDefault.value = "Sem Filtro";
+              optionDefault.textContent = "Sem Filtro";
+              select.appendChild(optionDefault);
+              Object.keys(data).forEach((key) => {
+                if ([key] != "filtropai" && [key] != "dataupload") {
+                  const option = document.createElement("option");
+                  option.value = data[key];
+                  option.textContent = data[key];
+                  select.appendChild(option);
+                }
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error getting document:", error);
+          });
       });
-  });
+    })
+    .catch((error) => {
+      console.error("Error getting documents:", error);
+    });
 }
+
+// Função para limpar a tela quando a função editarMecanismo não está mais em uso
+function limparTela() {
+  if (!editarMecanismoEmUso) {
+    // Limpar os elementos relevantes na tela
+    document.getElementById("editarMecanismo").style.display = "none";
+    // ...
+  }
+}
+
+
+
 
 
 
