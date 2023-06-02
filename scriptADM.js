@@ -379,7 +379,6 @@ function listarFiltros() {
 
   // Obtém a lista de documentos
   db.collection("filtros")
-    .orderBy("dataupload")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -479,7 +478,6 @@ function editarMecanismo() {
         divResultado.innerHTML = "";
         // Obtém a lista de documentos
         db.collection("filtros")
-          .orderBy("dataupload")
           .get()
           .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
