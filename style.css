@@ -19,12 +19,9 @@
   --acept-hover: #3e8e41;
 }
 
-main {
-  overflow-x: hidden;
-}
-
 section {
-  padding: 50px 10%;
+  padding: 50px 5%;
+  overflow-x: hidden;
 }
 
 .section {
@@ -377,8 +374,10 @@ label {
   background-color: var(--third-color);
 }
 
-.col1 {
+.col1, .col2 {
   max-width: 33%;
+  display: inline-block;
+  float: left;
 }
 
 #lista-pdfs {
