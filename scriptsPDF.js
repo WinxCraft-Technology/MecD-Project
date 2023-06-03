@@ -81,12 +81,10 @@ function exibirDocumentos() {
 async function atualizarLista() {
   const filtrosSelecionados = []; // Array para armazenar os filtros selecionados
 
-
   const selects = document.querySelectorAll('.filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
     const id = select.id.replace("_", " ");
-
 
     filtrosSelecionados.push({
       campo: id, // ID do select que representa o campo do filtro
@@ -102,21 +100,19 @@ async function atualizarLista() {
   if (filtrosSelecionados.length > 0) {
     let query = mecanismosRef;
 
-
     filtrosSelecionados.forEach((filtro) => {
-      if(filtro.valor != "Sem Filtro") {
+      if (filtro.valor != "Sem Filtro") {
         query = query.where(filtro.campo, "==", filtro.valor);
       }
-      
     });
 
     const querySnapshot = await query.get();
     querySnapshot.forEach((doc) => {
       filtroFinal.push(doc.id);
     });
-
   }
 
+  const lista = document.getElementById("lista");
   lista.innerHTML = ""; // Limpar a lista antes de atualizá-la
 
   filtroFinal.forEach((valor) => {
@@ -129,3 +125,39 @@ async function atualizarLista() {
   const attNumPDF = numPDF.getElementsByTagName("option").length;
   document.getElementById("num-pdf").innerHTML = "Nº de Arquivos: " + attNumPDF;
 }
+
+// Adicionar evento de alteração a cada elemento do filtro
+const selects = document.querySelectorAll('.filtro-select');
+selects.forEach((select) => {
+  select.addEventListener("change", atualizarLista);
+});
+
+// Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
+function atualizarFiltrosFilho() {
+  const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
+  const filtroFilho = document.getElementById("FiltroFilho");
+
+  filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
+
+  if (filtroPrincipal === "Petroquimica") {
+    const opcoes = ["A1", "A2", "A3"];
+    opcoes.forEach((opcao) => {
+      const option = document.createElement("option");
+      option.value = opcao;
+      option.textContent = opcao;
+      filtroFilho.appendChild(option);
+    });
+  } else if (filtroPrincipal === "Refinaria") {
+    const opcoes = ["B1", "B2", "B3"];
+    opcoes.forEach((opcao) => {
+      const option = document.createElement("option");
+      option.value = opcao;
+      option.textContent = opcao;
+      filtroFilho.appendChild(option);
+    });
+  }
+}
+
+// Adicionar evento de alteração ao seletor do filtro principal
+const filtroPrincipal = document.getElementById("FiltroPrincipal");
+filtroPrincipal.addEventListener("change", atualizarFiltrosFilho);

@@ -43,14 +43,23 @@
 
               <label for="">Opções:</label>
               <label>Tipo de Industria</label>
-              <select name="FiltroPrincipal" id="FiltroPrincipal" class="filtroPai">
+              <select name="FiltroPrincipal" id="FiltroPrincipal" class=".filtro-select" onclick="atualizarLista()">
                 <option value="Petroquimica">Petroquímica</option>
                 <option value="Refinaria">Refinaria</option>
               </select>
               <label for="FiltroFilho">Unidade de Processo</label>
-              <select name="Unidade-de-Processo" id="FiltroFilho"></select>
+              <select name="Unidade-de-Processo" id="FiltroFilho" class=".filtro-select" onclick="atualizarLista()">
+                <option value="">A1</option>
+                <option value="">A2</option>
+                <option value="">A3</option>
+                <option value="">B1</option>
+                <option value="">B2</option>
+                <option value="">B3</option>
+              </select>
               <label for="Loop-de-Corrosão">Loop de Corrosão</label>
-              <select name="Loop-de-Corrosão" id="FiltroNeto"></select>
+              <select name="Loop-de-Corrosão" id="FiltroNeto" class=".filtro-select" onclick="atualizarLista()">
+
+              </select>
               <div id="resultado"></div>
               <button type="button" class="resetbtn" onclick="atualizarLista()">
                 Resetar Filtros
