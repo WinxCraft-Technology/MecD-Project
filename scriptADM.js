@@ -563,10 +563,6 @@ function limparTela() {
 
 
 
-
-
-
-
 function enviarEditarmecanismo() {
   const nome = document.getElementById("input_nomeMecanismo_edit").value;
   const db = firebase.firestore();
