@@ -16,31 +16,6 @@ function iniciarBanco() {
   addOption();
 }
 
-
-
-
-// Abrir/Fechar modal de adicionar filtros
-document.getElementById("addFiltro").addEventListener("click", function () {
-  document.getElementById("modal").style.display = "block";
-
-});
-
-document.getElementsByClassName("close")[0].addEventListener("click", function () {
-  document.getElementById("modal").style.display = "none";
-});
-
-// Editar Filtro
-document.getElementById("editarFiltro").addEventListener("click", function () {
-  document.getElementById("modalEdit").style.display = "block";
-
-  adminEditar();
-})
-
-document.getElementsByClassName("closeEdit")[0].addEventListener("click", function () {
-  document.getElementById("modalEdit").style.display = "none";
-});
-
-
 // Adicionar filtros novos no banco de dados
 
 var total = 1;
@@ -64,6 +39,7 @@ function adicionarFiltro() {
       })
       .then(() => {
         console.log("Document successfully updated!");
+        location.reload();
       })
       .catch((error) => {
         console.error("Error updating document: ", error);
@@ -73,7 +49,7 @@ function adicionarFiltro() {
 
 
 // Criar uma nova opção ao criar um filtro
-var numOpcao = 1;
+var numOpcao = 2;
 
 function addOption() {
   var divResultado = document.getElementById("novasOptions")
@@ -103,7 +79,6 @@ function addOption() {
     const posicaoInt = parseInt(substring);
     const apagar = document.getElementById("divopc" + posicaoInt);
     apagar.remove();
-    console.log(posicaoInt)
 
     numOpcao--
     for (let i = posicaoInt + 1; i <= numOpcao; i++) {
@@ -117,20 +92,19 @@ function addOption() {
       alterarBotao.id = "buttonopc" + posAtual;
     }
 
-    console.log(numOpcao)
   });
 
   divReferencia.appendChild(buttonElement);
 
   numOpcao++
-  console.log(numOpcao)
   total = numOpcao - 1
 }
 
 
 
-//Exibe a lista com os filtros criados, para selecioanr um
+document.getElementById("editarFiltro").addEventListener("click", adminEditar);
 
+//Exibe a lista com os filtros criados, para selecioanr um
 function adminEditar() {
   // Referência para o Firestore
   var db = firebase.firestore();
@@ -339,6 +313,7 @@ function editarFiltro() {
       })
       .then(() => {
         console.log('Novos dados inseridos com sucesso.');
+        location.reload();
       })
       .catch((error) => {
         console.error('Erro ao inserir os novos dados:', error);
@@ -358,6 +333,7 @@ function deletarFiltro() {
     .delete()
     .then(() => {
       console.log('Documento apagado com sucesso.');
+      location.reload();
     })
     .catch((error) => {
       console.error('Erro ao apagar o documento:', error);
@@ -368,7 +344,6 @@ function deletarFiltro() {
 var totalFiltros;
 
 function listarFiltros() {
-  console.log("B")
   document.getElementById("editarMecanismo").style.display = "none";
   document.getElementById("addMecanismo").style.display = "block";
   const db = firebase.firestore();
@@ -448,6 +423,7 @@ function adicionarMecanismo() {
       })
       .then(() => {
         console.log("Document successfully updated!");
+        location.reload();
       })
       .catch((error) => {
         console.error("Error updating document: ", error);
@@ -459,7 +435,6 @@ function adicionarMecanismo() {
 let editarMecanismoEmUso = false;
 
 function editarMecanismo() {
-  console.log("A")
   document.getElementById("editarMecanismo").style.display = "block";
   document.getElementById("addMecanismo").style.display = "none";
 
@@ -471,6 +446,14 @@ function editarMecanismo() {
 
   // Limpa o conteúdo da div 'filtros_editar'
   divResultado.innerHTML = "";
+
+  const option = document.createElement("option");
+  option.value = "Selecione um mecanismo para editar";
+  option.textContent = "Selecione um mecanismo para editar";
+  option.disabled = "true";
+  option.selected = "true";
+
+  select_mecanismo.appendChild(option);
 
   db.collection("mecanismos")
     .get()
@@ -596,6 +579,7 @@ function enviarEditarmecanismo() {
       })
       .then(() => {
         console.log("Document successfully updated!");
+        location.reload();
       })
       .catch((error) => {
         console.error("Error updating document: ", error);
@@ -614,6 +598,7 @@ function deletarMecanismo() {
     .delete()
     .then(() => {
       console.log('Documento apagado com sucesso.');
+      location.reload();
     })
     .catch((error) => {
       console.error('Erro ao apagar o documento:', error);
@@ -643,14 +628,6 @@ function mostrarModalEditarFiltros() {
   modalEditarFiltros.style.display = "block";
 }
 
-// Função para ocultar todos os modais
-function fecharModais() {
-  var modalAdicionarFiltro = document.querySelector(".adicionarfiltros");
-  modalAdicionarFiltro.style.display = "none";
-
-  var modalEditarFiltros = document.querySelector(".editarfiltros");
-  modalEditarFiltros.style.display = "none";
-}
 
 // Evento de clique no botão "Adicionar Filtro"
 var btnAddFiltro = document.getElementById("addFiltro");
@@ -660,52 +637,18 @@ btnAddFiltro.addEventListener("click", mostrarModalAdicionarFiltro);
 var btnEditarFiltro = document.getElementById("editarFiltro");
 btnEditarFiltro.addEventListener("click", mostrarModalEditarFiltros);
 
-// Evento de clique no botão de fechar do modal
-var btnFecharModal = document.getElementsByClassName("close");
-for (var i = 0; i < btnFecharModal.length; i++) {
-  btnFecharModal[i].addEventListener("click", fecharModais);
+function openModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "block";
 }
 
-
-
-
-
-// Função para mostrar o modal de confirmação de exclusão de filtro
-function mostrarModalConfirmacaoExclusao() {
-  var modalExclusao = document.getElementById("modalExclusao");
-  modalExclusao.style.display = "block";
+function closeModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
 }
 
-// Função para ocultar o modal de confirmação de exclusão de filtro
-function fecharModalConfirmacaoExclusao() {
-  var modalExclusao = document.getElementById("modalExclusao");
-  modalExclusao.style.display = "none";
+function confirmDelete() {
+  // Lógica para excluir o item aqui
+  deletarFiltro();
+  closeModal();
 }
-
-
-
-// Função para verificar se o nome do filtro foi digitado corretamente
-function verificarNomeFiltro() {
-  var nomeFiltroInput = document.getElementById("nomeFiltroInput");
-  var nomeFiltro = nomeFiltroInput.value.trim();
-
-  if (nomeFiltro === "Nome do Filtro") {
-    var btnDeletarFiltro = document.getElementById("btnDeletarFiltro");
-    btnDeletarFiltro.disabled = false;
-  } else {
-    var btnDeletarFiltro = document.getElementById("btnDeletarFiltro");
-    btnDeletarFiltro.disabled = true;
-  }
-}
-
-// Evento de clique no botão "Deletar Filtro"
-var btnDeletarFiltro = document.getElementById("deletarFiltro");
-btnDeletarFiltro.addEventListener("click", mostrarModalConfirmacaoExclusao);
-
-// Evento de clique no botão de cancelar do modal de confirmação de exclusão de filtro
-var btnCancelModalExclusao = document.getElementById("btnCancelModalExclusao");
-btnCancelModalExclusao.addEventListener("click", fecharModalConfirmacaoExclusao);
-
-// Evento de digitação no input do nome do filtro
-var nomeFiltroInput = document.getElementById("nomeFiltroInput");
-nomeFiltroInput.addEventListener("input", verificarNomeFiltro);

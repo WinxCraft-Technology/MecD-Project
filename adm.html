@@ -38,64 +38,52 @@
         <div class="envio2">
           <h3>Adicionar e Editar filtros</h3>
           <button class="btn-adm" id="addFiltro">Adicionar Filtro</button>
-          <br />
-          <br />
           <button class="edit" id="editarFiltro">Editar Filtros</button>
+
+          <div class="adicionarfiltros" id="div_addfiltro" style="display: none;">
+            <form>
+              <label for="name">Nome:</label>
+              <input class="inputdois" type="text" id="name" name="name"
+                placeholder="Tipo do seu filtro. Exemplo: Tipo de dano" required />
+
+              <h4>Adicione, abaixo, as opções correspondentes a este filtro.</h4>
+
+              <div id="divopc1">
+                <input id="opc1" type="text" placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno">
+              </div>
+
+              <!--Inputs gerados através do Javascript-->
+              <div id="novasOptions"></div>
+
+              <input class="editum" type="button" value="Adicionar opção" onclick="addOption()" />
+              <input class="btn-admm" type="button" value="Enviar" onclick="adicionarFiltro()" />
+            </form>
+          </div>
+
+          <div class="editarfiltros" id="div_editarfiltro" style="display: none;">
+            <form>
+              <label for="name">Escolha um filtro para alterar suas opções:</label>
+              <select name="nameEdit" id="nameEdit"></select>
+              <br /><br />
+              <div id="optionsEdit"></div>
+              <br />
+              <input class="editum" type="button" value="Adicionar opção" onclick="addOptionEdit()" />
+              <input class="btn-admm" type="button" value="Enviar" onclick="editarFiltro()" />
+              <input class="removedois" type="button" value="Deletar Filtro"
+                onclick="openModal()" />
+            </form>
+          </div>
         </div>
       </section>
 
-      <!--Modal para adicionar filtro novo-->
-      <div class="adicionarfiltros" style="display:none">
+
+      <!--Modal para confirmar exclusão de filtro-->
+      <div id="myModal" class="modal">
         <div class="modal-content">
-          <span class="close">&times;</span>
-          <form>
-            <label for="name">Nome:</label>
-            <input class="inputdois" type="text" id="name" name="name"
-              placeholder="Tipo do seu filtro. Exemplo: Tipo de dano" required />
-
-            <h4>Adicione, abaixo, as opções correspondentes a este filtro.</h4>
-
-            <!--Inputs gerados através do Javascript-->
-            <div id="novasOptions"></div>
-
-            <input class="editum" type="button" value="Adicionar opção" onclick="addOption()" />
-            <input class="btn-admm" type="button" value="Enviar" onclick="adicionarFiltro()" />
-          </form>
-        </div>
-      </div>
-
-      <!--Modal para editar filtros já criados-->
-      <div class="editarfiltros" style="display: none;">
-        <div class="modal-contentEdit">
-          <span class="closeEdit">&times;</span>
-          <h2>Preencha o formulário</h2>
-          <form>
-            <label for="name">Escolha um filtro para alterar suas opções:</label>
-            <select name="nameEdit" id="nameEdit"></select>
-            <br /><br />
-            <div id="optionsEdit"></div>
-            <br />
-            <input class="editum" type="button" value="Adicionar opção" onclick="addOptionEdit()" />
-            <input class="btn-admm" type="button" value="Enviar" onclick="editarFiltro()" />
-            <input class="removedois" type="button" value="Deletar Filtro"
-              onclick="mostrarModalConfirmacaoExclusao()" />
-          </form>
-        </div>
-      </div>
-
-      <!-- Modal de Confirmação de Exclusão do Filtro -->
-      <!-- Modal de Confirmação de Exclusão do Filtro -->
-      <div id="modalExclusao" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Confirmação de Exclusão</h2>
-          <p>Por favor, digite "<span id="nomeFiltroSelecionado"></span>" para confirmar a exclusão:</p>
-          <input type="text" id="nomeFiltroInput" placeholder="Nome do Filtro" />
-          <div class="modal-buttons">
-            <button id="btnDeletarFiltro" class="btn-confirm" disabled>Deletar</button>
-            <button id="btnCancelModalExclusao" class="btn-cancel"
-              onclick="fecharModalConfirmacaoExclusao()">Cancelar</button>
-          </div>
+          <span class="close" onclick="closeModal()">&times;</span>
+          <p>Deseja realmente excluir?</p>
+          <button type="submit" onclick="confirmDelete()">Sim</button>
+          <button onclick="closeModal()">Não</button>
         </div>
       </div>
 
