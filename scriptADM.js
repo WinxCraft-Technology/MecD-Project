@@ -619,3 +619,93 @@ function deletarMecanismo() {
       console.error('Erro ao apagar o documento:', error);
     });
 }
+
+
+
+
+
+
+// Função para mostrar o modal de adicionar filtro
+function mostrarModalAdicionarFiltro() {
+  var modalAdicionarFiltro = document.querySelector(".adicionarfiltros");
+  modalAdicionarFiltro.style.display = "block";
+
+  var modalEditarFiltros = document.querySelector(".editarfiltros");
+  modalEditarFiltros.style.display = "none";
+}
+
+// Função para mostrar o modal de editar filtros
+function mostrarModalEditarFiltros() {
+  var modalAdicionarFiltro = document.querySelector(".adicionarfiltros");
+  modalAdicionarFiltro.style.display = "none";
+
+  var modalEditarFiltros = document.querySelector(".editarfiltros");
+  modalEditarFiltros.style.display = "block";
+}
+
+// Função para ocultar todos os modais
+function fecharModais() {
+  var modalAdicionarFiltro = document.querySelector(".adicionarfiltros");
+  modalAdicionarFiltro.style.display = "none";
+
+  var modalEditarFiltros = document.querySelector(".editarfiltros");
+  modalEditarFiltros.style.display = "none";
+}
+
+// Evento de clique no botão "Adicionar Filtro"
+var btnAddFiltro = document.getElementById("addFiltro");
+btnAddFiltro.addEventListener("click", mostrarModalAdicionarFiltro);
+
+// Evento de clique no botão "Editar Filtros"
+var btnEditarFiltro = document.getElementById("editarFiltro");
+btnEditarFiltro.addEventListener("click", mostrarModalEditarFiltros);
+
+// Evento de clique no botão de fechar do modal
+var btnFecharModal = document.getElementsByClassName("close");
+for (var i = 0; i < btnFecharModal.length; i++) {
+  btnFecharModal[i].addEventListener("click", fecharModais);
+}
+
+
+
+
+
+// Função para mostrar o modal de confirmação de exclusão de filtro
+function mostrarModalConfirmacaoExclusao() {
+  var modalExclusao = document.getElementById("modalExclusao");
+  modalExclusao.style.display = "block";
+}
+
+// Função para ocultar o modal de confirmação de exclusão de filtro
+function fecharModalConfirmacaoExclusao() {
+  var modalExclusao = document.getElementById("modalExclusao");
+  modalExclusao.style.display = "none";
+}
+
+
+
+// Função para verificar se o nome do filtro foi digitado corretamente
+function verificarNomeFiltro() {
+  var nomeFiltroInput = document.getElementById("nomeFiltroInput");
+  var nomeFiltro = nomeFiltroInput.value.trim();
+
+  if (nomeFiltro === "Nome do Filtro") {
+    var btnDeletarFiltro = document.getElementById("btnDeletarFiltro");
+    btnDeletarFiltro.disabled = false;
+  } else {
+    var btnDeletarFiltro = document.getElementById("btnDeletarFiltro");
+    btnDeletarFiltro.disabled = true;
+  }
+}
+
+// Evento de clique no botão "Deletar Filtro"
+var btnDeletarFiltro = document.getElementById("deletarFiltro");
+btnDeletarFiltro.addEventListener("click", mostrarModalConfirmacaoExclusao);
+
+// Evento de clique no botão de cancelar do modal de confirmação de exclusão de filtro
+var btnCancelModalExclusao = document.getElementById("btnCancelModalExclusao");
+btnCancelModalExclusao.addEventListener("click", fecharModalConfirmacaoExclusao);
+
+// Evento de digitação no input do nome do filtro
+var nomeFiltroInput = document.getElementById("nomeFiltroInput");
+nomeFiltroInput.addEventListener("input", verificarNomeFiltro);
