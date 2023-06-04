@@ -101,7 +101,7 @@
                 <label for="name"
                   >Escolha um filtro para alterar suas opções:</label
                 >
-                <select name="nameEdit" id="nameEdit"></select>
+                <select class="select" name="nameEdit" id="nameEdit"></select>
                 <br /><br />
                 <div id="optionsEdit"></div>
                 <br />
@@ -133,7 +133,9 @@
           <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <p>Deseja realmente excluir?</p>
-            <button class="btn-adm" type="submit" onclick="confirmDelete()">Sim</button>
+            <button class="btn-adm" type="submit" onclick="confirmDelete()">
+              Sim
+            </button>
             <button class="remove" onclick="closeModal()">Não</button>
           </div>
         </div>
@@ -162,8 +164,12 @@
               >
 
               <div id="lista_filtros"></div>
-              <br>
-              <button class="btn-adm" type="button" onclick="adicionarMecanismo()">
+              <br />
+              <button
+                class="btn-adm"
+                type="button"
+                onclick="adicionarMecanismo()"
+              >
                 Adicionar Mecanismo
               </button>
             </div>
@@ -173,6 +179,7 @@
                 >Escolha um Mecanismo de Dano</label
               >
               <select
+                class="select"
                 name="select_nomeMecanismo_edit"
                 id="select_nomeMecanismo_edit"
               ></select>
@@ -187,7 +194,11 @@
 
               <div id="filtros_editar"></div>
 
-              <button class="edit" type="button" onclick="enviarEditarmecanismo()">
+              <button
+                class="edit"
+                type="button"
+                onclick="enviarEditarmecanismo()"
+              >
                 Atualizar Mecanismo de Dano
               </button>
               <button class="remove" type="button" onclick="deletarMecanismo()">

@@ -653,6 +653,21 @@ td {
   border: 1px solid var(--main-color);
 }
 
+select {
+  width: 200px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid var(--third-color);
+  border-radius: 5px;
+  background-color: var(--third-color);
+  color: var(--main-color);
+}
+
+select option {
+  background-color: var(--third-color);
+  color: var(--main-color);
+}
+
 .section {
   flex: 1;
 }
