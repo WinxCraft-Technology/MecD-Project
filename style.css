@@ -1,8 +1,6 @@
 /* Importação de fontes */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200&display=swap");
 
-
-
 /* Definindo estilos para toda página web */
 * {
   margin: 0;
@@ -15,8 +13,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-
-
 /* Defindo variáveis de cores */
 :root {
   --main-color: #1c1c1c;
@@ -25,9 +21,6 @@
   --acept: #4caf50;
   --acept-hover: #3e8e41;
 }
-
-
-
 
 /* Estilo da Header/Menu */
 .header {
@@ -170,9 +163,6 @@
   font-size: 18px;
 }
 
-
-
-
 /* Estilo da Home Page */
 
 .capa {
@@ -238,7 +228,7 @@
 }
 
 .btn:hover {
-  color: #fff;
+  color: var(--third-color);
   background: var(--main-color);
 }
 
@@ -252,9 +242,6 @@
   box-shadow: 0px 15px 20px #ffff;
   transition: all 0.3s ease 0s;
 }
-
-
-
 
 /* Footer */
 
@@ -291,9 +278,6 @@
   color: var(--third-color);
   margin-top: 1rem;
 }
-
-
-
 
 /* Estilo da área MECD - Main */
 
@@ -384,12 +368,9 @@
   background-color: var(--second-color);
 }
 
-
-
-
 /* Estilo da área de ADM */
 
-.envio2 {
+.envio {
   background-color: var(--third-color);
   padding: 20px;
   border-radius: 10px;
@@ -399,6 +380,8 @@
   background-color: var(--acept);
   color: var(--third-color);
   padding: 10px;
+  height: 3rem;
+  width: 10rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -411,6 +394,8 @@
 .edit {
   display: inline-block;
   padding: 10px;
+  height: 3rem;
+  width: 10rem;
   background-color: #26a9b9;
   color: var(--third-color);
   border: none;
@@ -419,6 +404,20 @@
 }
 
 .edit:hover {
+  background-color: #3d5a70;
+}
+
+.editum {
+  display: inline-block;
+  padding: 8px;
+  background-color: #26a9b9;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.editum:hover {
   background-color: #3d5a70;
 }
 
@@ -437,20 +436,6 @@
   box-shadow: 0px 15px 20px var(--second-color);
 }
 
-.editum {
-  display: inline-block;
-  padding: 8px;
-  background-color: #26a9b9;
-  color: var(--third-color);
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.editum:hover {
-  background-color: #3d5a70;
-}
-
 .btn-admm {
   background-color: var(--acept);
   color: var(--third-color);
@@ -463,6 +448,21 @@
 
 .btn-admm:hover {
   background-color: var(--acept-hover);
+}
+
+.btn-adm-envio {
+  background-color: var(--main-color);
+  color: var(--third-color);
+  padding: 6px;
+  width: 7rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid var(--main-color);
+}
+.btn-adm-envio:hover {
+  background-color: var(--third-color);
+  color: var(--main-color);
 }
 
 .removedois {
@@ -478,16 +478,24 @@
 .removedois:hover {
   background-color: #ff000032;
 }
-
-.envio {
-  background-color: var(--third-color);
-  padding: 20px;
-  border-radius: 10px;
+.deletebutton {
+  display: inline-block;
+  padding: 8px;
+  background-color: red;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
+.deletebutton:hover {
+  background-color: #ff000032;
+}
 .remove {
   display: inline-block;
   padding: 8px;
+  height: 3rem;
+  width: 10rem;
   background-color: red;
   color: var(--third-color);
   border: none;
@@ -501,9 +509,6 @@
 .close:hover {
   color: #ff000032;
 }
-
-
-
 
 /* Modais??? */
 
@@ -566,9 +571,6 @@
   border-radius: 2%;
 }
 
-
-
-
 /* Estilo de elementos */
 
 form {
@@ -602,6 +604,7 @@ input[type="submit"]:hover {
 h2 {
   color: white;
   border-color: var(--main-color);
+  font-size: 1.4rem;
 }
 
 section {
@@ -659,9 +662,6 @@ td {
   text-align: center;
 }
 
-
-
-
 /* Estilo dos Fluxogramas */
 
 .PDFsdois select {
@@ -715,8 +715,6 @@ td {
 .fluxotitle {
   color: var(--third-color);
 }
-
-
 
 /* Media Querys */
 
