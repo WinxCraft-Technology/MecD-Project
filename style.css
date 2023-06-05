@@ -6,10 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-padding-top: 2rem;
   text-decoration: none;
-  list-style: none;
-  scroll-behavior: smooth;
   font-family: "Poppins", sans-serif;
 }
 
@@ -379,7 +376,6 @@
   color: var(--third-color);
   padding: 10px;
   height: 3rem;
-  width: 10rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -393,7 +389,6 @@
   display: inline-block;
   padding: 10px;
   height: 3rem;
-  width: 10rem;
   background-color: #26a9b9;
   color: var(--third-color);
   border: none;
@@ -402,20 +397,6 @@
 }
 
 .edit:hover {
-  background-color: #3d5a70;
-}
-
-.editum {
-  display: inline-block;
-  padding: 8px;
-  background-color: #26a9b9;
-  color: var(--third-color);
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.editum:hover {
   background-color: #3d5a70;
 }
 
@@ -835,13 +816,13 @@ select option {
 }
 
 @media (max-width: 767px) {
-  .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit,.editum {
+  .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit {
     font-size: 0.8em;
   }
 }
 
 @media (max-width: 480px) {
-  .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit,.editum{
+  .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit {
     font-size: 0.6em;
   }
 }
