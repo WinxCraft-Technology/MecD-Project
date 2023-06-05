@@ -620,7 +620,7 @@ td {
 }
 
 select {
-  width: 200px;
+  width: 100%;
   padding: 5px;
   font-size: 16px;
   border: 1px solid var(--main-color);
@@ -820,11 +820,13 @@ input[type="submit"] {
 @media (max-width: 767px) {
   .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit {
     font-size: 0.8em;
+    width:100%;
   }
 }
 
 @media (max-width: 480px) {
   .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit {
     font-size: 0.6em;
+    width:100%;
   }
 }
