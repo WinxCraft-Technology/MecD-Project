@@ -6,7 +6,7 @@ function gerarToken() {
 
 function isAutenticado() { 
     var token = localStorage.getItem("token");
-    return token !== null;
+    return token !== null && && token.startsWith("token_");
 }
 
 // Verifica se o usuário está autenticado.
