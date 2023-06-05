@@ -313,7 +313,7 @@
 }
 
 .PDFs select {
-  width: 50rem;
+  width: 100%;
   padding: 0.5rem;
   font-size: 1.2rem;
   margin-right: 1rem;
@@ -326,8 +326,7 @@
 
 .col1,
 .col2 {
-  max-width: 33%;
-  float: left;
+  flex-basis: 50%;
 }
 
 .resetbtn {
@@ -350,14 +349,13 @@
 }
 
 #lista {
-  display: block;
+  display: flex;
   margin-top: 2rem;
   padding: 2rem;
   font-size: 1.2rem;
   margin-left: 5rem;
   margin-right: 5rem;
-  width: 50rem;
-  height: 100px;
+  width: 50%;
   background-color: var(--second-color);
   color: var(--third-color);
 }
@@ -754,6 +752,7 @@ select option {
 @media screen and (max-width: 768px) {
   .container {
     width: 100%;
+    padding: 0 1rem;
   }
   .container .btn-menu,
   .logo {
@@ -789,6 +788,7 @@ select option {
     right: 0;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .inicio-text h1 {
     font-size: 3rem;
@@ -806,12 +806,42 @@ select option {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (min-width: 768px) {
   .PDFs {
-    flex-wrap: wrap;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
-  .PDFs .col1 .col2 {
+  .col1 {
+    flex: 0 0 40%;
+    margin-right: 1rem;
+  }
+
+  .col2 {
+    flex: 0 0 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .PDFs {
+    flex-direction: column;
+  }
+
+  .col1,
+  .col2 {
     flex-basis: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit,.editum {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-adm,.btn-adm-envio,.btn-admm,.remove,.removedois,.edit,.editum{
+    font-size: 0.6em;
   }
 }
