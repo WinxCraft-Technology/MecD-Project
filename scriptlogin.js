@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function() {
 function gerarToken() {
   var timestamp = new Date().getTime(); // Obtém o timestamp atual
   var token = "token_" + timestamp; // Gera um token usando o timestamp
@@ -37,3 +38,4 @@ document
       alert("Nome de usuário ou senha inválidos!");
     }
   });
+});
