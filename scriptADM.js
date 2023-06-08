@@ -480,6 +480,10 @@ function handleSelectChange(event) {
     return;
   }
 
+  var selectElement = document.getElementById("select_nomeMecanismo_edit");
+  var valorSelecionado = selectElement.value;
+  document.getElementById("input_nomeMecanismo_edit").value = valorSelecionado
+
   const divResultado = document.getElementById("filtros_editar");
   // Limpa o conteúdo da div 'resultado'
   divResultado.innerHTML = "";

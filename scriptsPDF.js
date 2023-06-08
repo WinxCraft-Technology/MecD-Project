@@ -17,6 +17,11 @@ function iniciarBanco() {
 
 }
 
+// Adicionar evento de alteração a cada elemento do filtro
+const selects = document.querySelectorAll('.filtro-select');
+selects.forEach((select) => {
+  select.addEventListener("change", atualizarLista);
+});
 
 function exibirDocumentos() {
   const db = firebase.firestore();
@@ -43,6 +48,7 @@ function exibirDocumentos() {
         var id = doc.id.replace(" ", "_");
         select.id = id
         select.className = "filtro-select"
+        select.addEventListener("change", atualizarLista);
         divResultado.appendChild(select);
 
         // Obtém as coleções do documento
@@ -125,12 +131,6 @@ async function atualizarLista() {
   const attNumPDF = numPDF.getElementsByTagName("option").length;
   document.getElementById("num-pdf").innerHTML = "Nº de Arquivos: " + attNumPDF;
 }
-
-// Adicionar evento de alteração a cada elemento do filtro
-const selects = document.querySelectorAll('.filtro-select');
-selects.forEach((select) => {
-  select.addEventListener("change", atualizarLista);
-});
 
 // Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
 function atualizarFiltrosFilho() {
