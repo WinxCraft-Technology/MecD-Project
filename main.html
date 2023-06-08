@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filtragem - MecD</title>
     <!-- Link do estilo -->
     <link rel="stylesheet" href="style.css" />
@@ -20,9 +20,15 @@
     <header class="header">
       <div class="logo">
         <a href="index.html" class="logo"
-          ><img src="assets/gear-icon-png-2246.png" alt=""
-        /></a>
-        <h1>MecD</h1>
+          ><img src="assets/gear-icon-png-2246.png" alt="" />
+          <h1>MecD</h1></a
+        >
+      </div>
+
+      <div class="logo-dois">
+        <a href="index.html">
+          <img src="/assets/Logo_800_600.png" alt="" />
+        </a>
       </div>
 
       <div class="container">
@@ -43,13 +49,23 @@
 
               <label for="">Opções:</label>
               <label>Tipo de Industria</label>
-              <select name="FiltroPrincipal" id="FiltroPrincipal" class="filtro-select" onclick="atualizarLista()">
+              <select
+                name="FiltroPrincipal"
+                id="FiltroPrincipal"
+                class="filtro-select"
+                onclick="atualizarLista()"
+              >
                 <option value="Sem Filtro">Sem Filtro</option>
                 <option value="Petroquimica">Petroquímica</option>
                 <option value="Refinaria">Refinaria</option>
               </select>
               <label for="FiltroFilho">Unidade de Processo</label>
-              <select name="Unidade-de-Processo" id="FiltroFilho" class="filtro-select" onclick="atualizarLista()">
+              <select
+                name="Unidade-de-Processo"
+                id="FiltroFilho"
+                class="filtro-select"
+                onclick="atualizarLista()"
+              >
                 <option value="Sem Filtro">Sem Filtro</option>
                 <option value="A1">A1</option>
                 <option value="A2">A2</option>
@@ -59,25 +75,33 @@
                 <option value="B3">B3</option>
               </select>
               <label for="Loop-de-Corrosão">Loop de Corrosão</label>
-              <select name="Loop-de-Corrosão" id="FiltroNeto" class="filtro-select" onclick="atualizarLista()">
+              <select
+                name="Loop-de-Corrosão"
+                id="FiltroNeto"
+                class="filtro-select"
+                onclick="atualizarLista()"
+              >
                 <option value="Sem Filtro">Sem Filtro</option>
-
               </select>
               <div id="resultado"></div>
-              <button type="button" class="resetbtn" onclick="window.location.reload()">
+              <button
+                type="button"
+                class="resetbtn"
+                onclick="window.location.reload()"
+              >
                 Resetar Filtros
               </button>
             </div>
-          </form>
 
-          
             <div id="lista-pdfs" class="col2">
               <div><p id="num-pdf"></p></div>
               <select id="lista"></select>
             </div>
+          </form>
 
-            <embed src="" type="" id="alterar-pdf" />
-            
+          
+
+          <embed src="" type="" id="alterar-pdf" />
         </section>
       </div>
 
@@ -88,7 +112,7 @@
             <a href="index.html">Inicio</a>
             <a href="ADMlogin.html">Área do administrador</a>
             <a href="main.html">Área MecD</a>
-            <a href="#">Fluxogramas</a>
+            <a href="https://polya.com.br">Polya</a>
             <a href="#">Sobre</a>
           </nav>
           <label for="btn-menu">✖️</label>
@@ -112,6 +136,3 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
   </body>
 </html>
-
-
-
