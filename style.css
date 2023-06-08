@@ -374,6 +374,10 @@
   background-color: var(--second-color);
 }
 
+#num-pdf {
+  font-size: 15px;
+}
+
 /* Estilo da área de ADM */
 
 .envio {
