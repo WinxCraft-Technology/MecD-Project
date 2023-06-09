@@ -132,7 +132,7 @@ querySnapshot.forEach((doc) => {
         if (doc.exists) {
           const IDMecanismo = doc.data().IDMecanismo;
 
-            botao.setAttribute('href', 'https://www.polya.com.br/ead/mod/pdfannotator/view.php?id=' + IDMecanismo);
+            botao.setAttribute('href', IDMecanismo);
           
         } else {
           console.log("Documento não encontrado");

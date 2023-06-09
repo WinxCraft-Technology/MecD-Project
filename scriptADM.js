@@ -17,7 +17,6 @@ function iniciarBanco() {
 }
 
 // Adicionar filtros novos no banco de dados
-
 var total = 1;
 
 function adicionarFiltro() {
