@@ -278,7 +278,41 @@ function addOptionEdit() {
 // Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
 function atualizarFiltrosFilho() {
   const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
-  const filtroFilho = document.getElementById("FiltroFilho");
+  const filtroFilho2 = document.getElementById("filtroFilho2");
+
+  filtroFilho2.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
+
+  if (filtroPrincipal === "Petroquimica") {
+    const opcoes = ["A1", "A2", "A3"];
+    opcoes.forEach((opcao) => {
+      const option = document.createElement("option");
+      option.value = opcao;
+      option.textContent = opcao;
+      filtroFilho2.appendChild(option);
+    });
+  } else if (filtroPrincipal === "Refinaria") {
+    const opcoes = ["B1", "B2", "B3"];
+    opcoes.forEach((opcao) => {
+      const option = document.createElement("option");
+      option.value = opcao;
+      option.textContent = opcao;
+      filtroFilho2.appendChild(option);
+    });
+  }
+}
+
+// Adicionar evento de alteração ao seletor do filtro principal
+const filtroPrincipal2 = document.getElementById("FiltroPrincipal2");
+filtroPrincipal.addEventListener("change", atualizarFiltrosFilho);
+
+
+
+
+
+// Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
+function atualizarFiltrosFilho() {
+  const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
+  const filtroFilho = document.getElementById("filtroFilho");
 
   filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
 

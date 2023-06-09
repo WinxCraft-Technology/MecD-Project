@@ -1,403 +1,271 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administração - MecD</title>
-    <!-- Link do estilo -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Link das caixas -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
 
-    <!-- Icone da página -->
-    <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administração - MecD</title>
+  <!-- Link do estilo -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Link das caixas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-  <body onload="iniciarBanco()">
-    <header class="header">
-      <div class="logo">
-        <a href="index.html" class="logo"
-          ><img src="assets/gear-icon-png-2246.png" alt="" />
-          <h1>MecD</h1></a
-        >
+  <!-- Icone da página -->
+  <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
+</head>
+
+<body onload="iniciarBanco()">
+  <header class="header">
+    <div class="logo">
+      <a href="index.html" class="logo"><img src="assets/gear-icon-png-2246.png" alt="" />
+        <h1>MecD</h1>
+      </a>
+    </div>
+
+    <div class="logo-dois">
+      <a href="https://polya.com.br" target="_blank">
+        <img src="/assets/Logo_800_600.png" alt="" />
+      </a>
+    </div>
+
+    <div class="container">
+      <div class="btn-menu">
+        <label for="btn-menu">
+          <img src="assets/hamburger-menu-icon-png-9.jpg" alt="Menu" />
+        </label>
       </div>
+    </div>
+  </header>
 
-      <div class="logo-dois">
-        <a href="https://polya.com.br" target="_blank">
-          <img src="/assets/Logo_800_600.png" alt="" />
-        </a>
-      </div>
+  <main class="contentadm">
+    <div class="iniciomain">
+      <!--Gerenciamento de Filtros-->
+      <section class="section">
+        <h2>Gerenciamento de Filtros</h2>
+        <div class="envio">
+          <h3>Adicionar e Editar filtros</h3>
+          <button class="btn-adm" id="addFiltro">Adicionar Filtro</button>
+          <button class="edit" id="editarFiltro">Editar Filtros</button>
 
-      <div class="container">
-        <div class="btn-menu">
-          <label for="btn-menu">
-            <img src="assets/hamburger-menu-icon-png-9.jpg" alt="Menu" />
-          </label>
-        </div>
-      </div>
-    </header>
+          <div class="adicionarfiltros" id="div_addfiltro" style="display: none">
+            <form>
+              <label for="name">Nome:</label>
+              <input type="text" id="name" name="name" placeholder="Tipo do seu filtro. Exemplo: Tipo de dano"
+                required />
 
-    <main class="contentadm">
-      <div class="iniciomain">
-        <!--Gerenciamento de Filtros-->
-        <section class="section">
-          <h2>Gerenciamento de Filtros</h2>
-          <div class="envio">
-            <h3>Adicionar e Editar filtros</h3>
-            <button class="btn-adm" id="addFiltro">Adicionar Filtro</button>
-            <button class="edit" id="editarFiltro">Editar Filtros</button>
+              <h4>
+                Adicione, abaixo, as opções correspondentes a este filtro.
+              </h4>
 
-            <div
-              class="adicionarfiltros"
-              id="div_addfiltro"
-              style="display: none"
-            >
-              <form>
-                <label for="name">Nome:</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Tipo do seu filtro. Exemplo: Tipo de dano"
-                  required
-                />
+              <div id="divopc1">
+                <input id="opc1" type="text" placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno" />
+              </div>
 
-                <h4>
-                  Adicione, abaixo, as opções correspondentes a este filtro.
-                </h4>
+              <!--Inputs gerados através do Javascript-->
+              <div id="novasOptions"></div>
 
-                <div id="divopc1">
-                  <input
-                    id="opc1"
-                    type="text"
-                    placeholder="Insira o conteúdo da opção. Exemplo: Externo/Interno"
-                  />
-                </div>
-
-                <!--Inputs gerados através do Javascript-->
-                <div id="novasOptions"></div>
-
-                <input
-                  class="btn-adm"
-                  type="button"
-                  value="Adicionar opção"
-                  onclick="addOption()"
-                />
-                <input
-                  class="btn-adm-envio"
-                  type="button"
-                  value="Enviar"
-                  onclick="adicionarFiltro()"
-                />
-              </form>
-            </div>
-
-            <div
-              class="editarfiltros"
-              id="div_editarfiltro"
-              style="display: none"
-            >
-              <form>
-                <label for="name"
-                  >Escolha um filtro para alterar suas opções:</label
-                >
-                <select class="select" name="nameEdit" id="nameEdit"></select>
-                <br /><br />
-                <div id="optionsEdit"></div>
-                <br />
-                <input
-                  class="btn-adm"
-                  type="button"
-                  value="Adicionar opção"
-                  onclick="addOptionEdit()"
-                />
-                <input
-                  class="btn-adm-envio"
-                  type="button"
-                  value="Enviar"
-                  onclick="editarFiltro()"
-                />
-                <input
-                  class="removedois"
-                  type="button"
-                  value="Deletar Filtro"
-                  onclick="openModal()"
-                />
-              </form>
-            </div>
+              <input class="btn-adm" type="button" value="Adicionar opção" onclick="addOption()" />
+              <input class="btn-adm-envio" type="button" value="Enviar" onclick="adicionarFiltro()" />
+            </form>
           </div>
-        </section>
 
-        <!--Modal para confirmar exclusão de filtro-->
-        <div id="myModal" class="modal">
-          <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p>Deseja realmente excluir?</p>
-            <button class="btn-adm" type="submit" onclick="confirmDelete()">
-              Sim
-            </button>
-            <button class="remove" onclick="closeModal()">Não</button>
+          <div class="editarfiltros" id="div_editarfiltro" style="display: none">
+            <form>
+              <label for="name">Escolha um filtro para alterar suas opções:</label>
+              <select class="select" name="nameEdit" id="nameEdit"></select>
+              <br /><br />
+              <div id="optionsEdit"></div>
+              <br />
+              <input class="btn-adm" type="button" value="Adicionar opção" onclick="addOptionEdit()" />
+              <input class="btn-adm-envio" type="button" value="Enviar" onclick="editarFiltro()" />
+              <input class="removedois" type="button" value="Deletar Filtro" onclick="openModal()" />
+            </form>
           </div>
         </div>
+      </section>
 
-        <!--Gerenciamento de Mecanismos-->
-        <section class="sectionadm">
-          <h2>Gerenciamento de Mecanismos</h2>
-          <div class="envio">
-            <h3>Adicionar e Editar Mecanismos</h3>
-            <button class="btn-adm" onclick="listarFiltrosMecanismos()">
+      <!--Modal para confirmar exclusão de filtro-->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <p>Deseja realmente excluir?</p>
+          <button class="btn-adm" type="submit" onclick="confirmDelete()">
+            Sim
+          </button>
+          <button class="remove" onclick="closeModal()">Não</button>
+        </div>
+      </div>
+
+      <!--Gerenciamento de Mecanismos-->
+      <section class="sectionadm">
+        <h2>Gerenciamento de Mecanismos</h2>
+        <div class="envio">
+          <h3>Adicionar e Editar Mecanismos</h3>
+          <button class="btn-adm" onclick="listarFiltrosMecanismos()">
+            Adicionar Mecanismo
+          </button>
+          <button class="edit" onclick="editarMecanismo()">
+            Editar Mecanismo
+          </button>
+          <div id="addMecanismo" style="display: none">
+            <label for="input_nomeMecanismo_add">Nome do Mecanismo</label>
+            <input type="text" id="input_nomeMecanismo_add"
+              placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento" />
+            <label for="input_IDMecanismo_add">Link do Mecanismo</label>
+            <input type="text" id="input_IDMecanismo_add"
+              placeholder="Insira aqui o Link do Mecanismo de Dano. Exemplo: www.google.com" />
+            <label for="select_filtros">Selecione os filtros correspondentes a este Mecanismo de
+              Dano</label>
+
+            <label>Tipo de Industria</label>
+            <select name="FiltroPrincipal" id="FiltroPrincipal" class="filtro-select" onclick="atualizarLista()">
+              <option value="Sem Filtro">Sem Filtro</option>
+              <option value="Petroquimica">Petroquímica</option>
+              <option value="Refinaria">Refinaria</option>
+            </select>
+            <label for="FiltroFilho">Unidade de Processo</label>
+            <select name="Unidade-de-Processo" id="FiltroFilho" class="filtro-select" onclick="atualizarLista()">
+              <option value="Sem Filtro">Sem Filtro</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="A3">A3</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2</option>
+              <option value="B3">B3</option>
+            </select>
+            <div id="lista_filtros"></div>
+
+            <br />
+            <button class="btn-adm" type="button" onclick="adicionarMecanismo()">
               Adicionar Mecanismo
             </button>
-            <button class="edit" onclick="editarMecanismo()">
-              Editar Mecanismo
-            </button>
-            <div id="addMecanismo" style="display: none">
-              <label for="input_nomeMecanismo_add">Nome do Mecanismo</label>
-              <input
-                type="text"
-                id="input_nomeMecanismo_add"
-                placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento"
-              />
-              <label for="input_IDMecanismo_add">Link do Mecanismo</label>
-              <input
-                type="text"
-                id="input_IDMecanismo_add"
-                placeholder="Insira aqui o Link do Mecanismo de Dano. Exemplo: www.google.com"
-              />
-              <label for="select_filtros"
-                >Selecione os filtros correspondentes a este Mecanismo de
-                Dano</label
-              >
-
-              <label>Tipo de Industria</label>
-              <select
-                name="FiltroPrincipal"
-                id="FiltroPrincipal"
-                class="filtro-select"
-                onclick="atualizarLista()"
-              >
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
-              </select>
-              <label for="FiltroFilho">Unidade de Processo</label>
-              <select
-                name="Unidade-de-Processo"
-                id="FiltroFilho"
-                class="filtro-select"
-                onclick="atualizarLista()"
-              >
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="A1">A1</option>
-                <option value="A2">A2</option>
-                <option value="A3">A3</option>
-                <option value="B1">B1</option>
-                <option value="B2">B2</option>
-                <option value="B3">B3</option>
-              </select>
-            <div id="lista_filtros"></div>
-
-              <br />
-              <button
-                class="btn-adm"
-                type="button"
-                onclick="adicionarMecanismo()"
-              >
-                Adicionar Mecanismo
-              </button>
-            </div>
-
-            <div id="editarMecanismo" style="display: none">
-              <label for="select_nomeMecanismo_edit"
-                >Escolha um Mecanismo de Dano</label
-              >
-              <select
-                class="select"
-                name="select_nomeMecanismo_edit"
-                IDMecanismo="select_IDmecanimso_edit"
-                id="select_nomeMecanismo_edit"
-              ></select>
-              <label for="input_nomeMecanismo_edit"
-                >Insira um novo nome para o seu Mecanismo de Dano</label
-              >
-              <input
-                type="text"
-                id="input_nomeMecanismo_edit"
-                placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento"
-              />
-              <label for="input_IDMecanismo_edit"
-              >Insira um novo ID para o seu Mecanismo de Dano</label
-            >
-            <input
-              type="text"
-              id="input_IDMecanismo_edit"
-              placeholder="Insira aqui o ID do Mecanismo de Dano. Exemplo: 1914"
-            />
-              
-              <div id="filtros_editar"></div>
-
-              <button
-                class="edit"
-                type="button"
-                onclick="enviarEditarmecanismo()"
-              >
-                Atualizar Mecanismo
-              </button>
-              <button class="remove" type="button" onclick="deletarMecanismo()">
-                Deletar Mecanismo
-              </button>
-            </div>
           </div>
-        </section>
+
+          <div id="editarMecanismo" style="display: none">
+            <label for="select_nomeMecanismo_edit">Escolha um Mecanismo de Dano</label>
+            <select class="select" name="select_nomeMecanismo_edit" IDMecanismo="select_IDmecanimso_edit"
+              id="select_nomeMecanismo_edit"></select>
+            <label for="input_nomeMecanismo_edit">Insira um novo nome para o seu Mecanismo de Dano</label>
+            <input type="text" id="input_nomeMecanismo_edit"
+              placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento" />
+            <label for="input_IDMecanismo_edit">Insira um novo ID para o seu Mecanismo de Dano</label>
+            <input type="text" id="input_IDMecanismo_edit"
+              placeholder="Insira aqui o ID do Mecanismo de Dano. Exemplo: 1914" />
+
+            <div id="filtros_editar"></div>
+
+            <button class="edit" type="button" onclick="enviarEditarmecanismo()">
+              Atualizar Mecanismo
+            </button>
+            <button class="remove" type="button" onclick="deletarMecanismo()">
+              Deletar Mecanismo
+            </button>
+          </div>
+        </div>
+      </section>
 
 
-        <!--Gerenciamento de Fluxogramas-->
-<section class="sectionadm">
-  <h2>Gerenciamento de Fluxogramas</h2>
-  <div class="envio">
-    <h3>Adicionar e Editar Fluxogramas</h3>
-    <button class="btn-adm" onclick="listarFiltrosFluxograma()">
-      Adicionar Fluxograma
-    </button>
-    <button class="edit" onclick="editarFluxograma()">
-      Editar Fluxograma
-    </button>
-    <div id="addFluxograma" style="display: none">
-      <label for="input_nomeFluxograma_add">Nome do Fluxograma</label>
-      <input
-        type="text"
-        id="input_nomeFluxograma_add"
-        placeholder="Insira aqui o nome do Fluxograma de Dano. Exemplo: Corrosão Sob Isolamento"
-      />
-      <label for="input_IDFluxograma_add">Link do Fluxograma</label>
-      <input
-        type="text"
-        id="input_IDFluxograma_add"
-        placeholder="Insira aqui o Link do Fluxograma de Dano. Exemplo: www.google.com"
-      />
-      <label for="select_filtros"
-                >Selecione os filtros correspondentes a este Fluxograma</label>
+      <!--Gerenciamento de Fluxogramas-->
+      <section class="sectionadm">
+        <h2>Gerenciamento de Fluxogramas</h2>
+        <div class="envio">
+          <h3>Adicionar e Editar Fluxogramas</h3>
+          <button class="btn-adm" onclick="listarFiltrosFluxograma()">
+            Adicionar Fluxograma
+          </button>
+          <button class="edit" onclick="editarFluxograma()">
+            Editar Fluxograma
+          </button>
+          <div id="addFluxograma" style="display: none">
+            <label for="input_nomeFluxograma_add">Nome do Fluxograma</label>
+            <input type="text" id="input_nomeFluxograma_add"
+              placeholder="Insira aqui o nome do Fluxograma de Dano. Exemplo: Corrosão Sob Isolamento" />
+            <label for="input_IDFluxograma_add">Link do Fluxograma</label>
+            <input type="text" id="input_IDFluxograma_add"
+              placeholder="Insira aqui o Link do Fluxograma de Dano. Exemplo: www.google.com" />
+            <label for="select_filtros">Selecione os filtros correspondentes a este Fluxograma</label>
 
-              <label>Tipo de Industria</label>
-              <select
-                name="FiltroPrincipal"
-                id="FiltroPrincipal"
-                class="filtro-select"
-                onclick="atualizarLista()"
-              >
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
-              </select>
-              <label for="FiltroFilho">Unidade de Processo</label>
-              <select
-                name="Unidade-de-Processo"
-                id="FiltroFilho"
-                class="filtro-select"
-                onclick="atualizarLista()"
-              >
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="A1">A1</option>
-                <option value="A2">A2</option>
-                <option value="A3">A3</option>
-                <option value="B1">B1</option>
-                <option value="B2">B2</option>
-                <option value="B3">B3</option>
-              </select>
+            <label>Tipo de Industria</label>
+            <select name="Tipo de Industria" id="FiltroPrincipal2" class="filtro-select" onclick="atualizarLista()">
+              <option value="Sem Filtro">Sem Filtro</option>
+              <option value="Petroquimica">Petroquímica</option>
+              <option value="Refinaria">Refinaria</option>
+            </select>
+            <label for="FiltroFilho">Unidade de Processo</label>
+            <select name="Unidade-de-Processo" id="FiltroFilho2" class="filtro-select" onclick="atualizarLista()">
+              <option value="Sem Filtro">Sem Filtro</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="A3">A3</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2</option>
+              <option value="B3">B3</option>
+            </select>
             <div id="lista_filtros"></div>
 
-      <br />
-      <button
-        class="btn-adm"
-        type="button"
-        onclick="adicionarFluxograma()"
-      >
-        Adicionar Fluxograma
-      </button>
-    </div>
+            <br />
+            <button class="btn-adm" type="button" onclick="adicionarFluxograma()">
+              Adicionar Fluxograma
+            </button>
+          </div>
 
-    <div id="editarFluxograma" style="display: none">
-      <label for="select_nomeFluxograma_edit"
-        >Escolha um Fluxograma de Dano</label
-      >
-      <select
-        class="select"
-        name="select_nomeFluxograma_edit"
-        IDFluxograma="select_IDfluxograma_edit"
-        id="select_nomeFluxograma_edit"
-      ></select>
-      <label for="input_nomeFluxograma_edit"
-        >Insira um novo nome para o seu Fluxograma de Dano</label
-      >
-      <input
-        type="text"
-        id="input_nomeFluxograma_edit"
-        placeholder="Insira aqui o nome do Fluxograma de Dano. Exemplo: Corrosão Sob Isolamento"
-      />
-      <label for="input_IDFluxograma_edit"
-      >Insira um novo Link para o seu Fluxograma de Dano</label
-    >
-    
-    <input
-      type="text"
-      id="input_IDFluxograma_edit"
-      placeholder="Insira aqui o ID do Fluxograma de Dano. Exemplo: 1914"
-    />
-      
-      <div id="filtros_editar"></div>
+          <div id="editarFluxograma" style="display: none">
+            <label for="select_nomeFluxograma_edit">Escolha um Fluxograma de Dano</label>
+            <select class="select" name="select_nomeFluxograma_edit" IDFluxograma="select_IDfluxograma_edit"
+              id="select_nomeFluxograma_edit"></select>
+            <label for="input_nomeFluxograma_edit">Insira um novo nome para o seu Fluxograma de Dano</label>
+            <input type="text" id="input_nomeFluxograma_edit"
+              placeholder="Insira aqui o nome do Fluxograma de Dano. Exemplo: Corrosão Sob Isolamento" />
+            <label for="input_IDFluxograma_edit">Insira um novo Link para o seu Fluxograma de Dano</label>
 
-      <button
-        class="edit"
-        type="button"
-        onclick="enviarEditarFluxograma()"
-      >
-        Atualizar Fluxograma
-      </button>
-      <button class="remove" type="button" onclick="deletarFluxograma()">
-        Deletar Fluxograma
-      </button>
-    </div>
-  </div>
-</section>
+            <input type="text" id="input_IDFluxograma_edit"
+              placeholder="Insira aqui o ID do Fluxograma de Dano. Exemplo: 1914" />
 
-      </div>
+            <div id="filtros_editar"></div>
 
-      <input type="checkbox" id="btn-menu" />
-      <div class="container-menu">
-        <div class="cont-menu">
-          <nav>
-            <a href="index.html">Inicio</a>
-            <a href="ADMlogin.html">Área do administrador</a>
-            <a href="main.html">Área MecD</a>
-            <a href="https://polya.com.br">Polya</a>
-            <a href="#">Sobre</a>
-          </nav>
-          <label for="btn-menu">✖️</label>
+            <button class="edit" type="button" onclick="enviarEditarFluxograma()">
+              Atualizar Fluxograma
+            </button>
+            <button class="remove" type="button" onclick="deletarFluxograma()">
+              Deletar Fluxograma
+            </button>
+          </div>
         </div>
-      </div>
-
-      <section class="footer" id="footer">
-        <div class="links">
-          <a href="#">Políticas de Privacidade</a>
-          <a href="#">Termos De Uso</a>
-          <a href="#">Nossa empresa</a>
-        </div>
-        <br />
-        <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
       </section>
-    </main>
-  </body>
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-  <script src="scriptADM.js"></script>
+    </div>
+
+    <input type="checkbox" id="btn-menu" />
+    <div class="container-menu">
+      <div class="cont-menu">
+        <nav>
+          <a href="index.html">Inicio</a>
+          <a href="ADMlogin.html">Área do administrador</a>
+          <a href="main.html">Área MecD</a>
+          <a href="https://polya.com.br">Polya</a>
+          <a href="#">Sobre</a>
+        </nav>
+        <label for="btn-menu">✖️</label>
+      </div>
+    </div>
+
+    <section class="footer" id="footer">
+      <div class="links">
+        <a href="#">Políticas de Privacidade</a>
+        <a href="#">Termos De Uso</a>
+        <a href="#">Nossa empresa</a>
+      </div>
+      <br />
+      <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
+    </section>
+  </main>
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="scriptADM.js"></script>
+
 </html>
