@@ -78,7 +78,7 @@
 }
 
 .container .btn-menu,
-.logo{
+.logo {
   float: right;
   line-height: 100px;
 }
@@ -352,7 +352,7 @@
   background-color: var(--third-color);
 }
 
-.sectionMain{
+.sectionMain {
   display: flex;
 }
 
@@ -366,7 +366,6 @@
   padding: 20px;
   align-items: center;
 }
-
 
 .col1,
 .col2 {
@@ -409,6 +408,10 @@
 
 #num-pdf {
   font-size: 2rem;
+}
+
+#iten {
+  color: var(--third-color);
 }
 
 /* Estilo da área de ADM */
@@ -810,8 +813,57 @@ input[type="submit"] {
   .logo h1 {
     font-size: 1.5rem;
   }
-  .container .menu {
+  .logo-dois {
+    display: none;
+  }
+  .btn-menu {
     position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .container-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .container-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .cont-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .cont-menu nav {
+    margin-top: 2rem;
+  }
+
+  .cont-menu nav a {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .cont-menu nav a:hover {
+    color: #ccc;
+  }
+  .container .menu {
+    position: relative;
     top: 100px;
     right: -100%;
     width: 100%;
@@ -819,6 +871,13 @@ input[type="submit"] {
     background-color: var(--main-color);
     transition: 0.2s;
     padding: 1rem;
+  }
+  .cont-menu label {
+    display: block;
+    margin-top: 2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #fff;
   }
   .container .menu a {
     display: block;
@@ -846,6 +905,21 @@ input[type="submit"] {
   }
   .container .menu a {
     font-size: 1.4rem;
+  }
+  .logo-dois {
+    display: block;
+  }
+
+  .container {
+    position: static;
+  }
+
+  .btn-menu {
+    display: none;
+  }
+
+  .container-menu {
+    display: none;
   }
 }
 
@@ -909,5 +983,3 @@ input[type="submit"] {
     width: 100%;
   }
 }
-
-
