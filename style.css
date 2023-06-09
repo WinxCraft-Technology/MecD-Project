@@ -869,6 +869,9 @@ input[type="submit"] {
   .col2 {
     flex-basis: 100%;
   }
+  .logo-dois {
+    display: block;
+  }
 }
 
 @media (max-width: 767px) {
