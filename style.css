@@ -971,4 +971,25 @@ input[type="submit"] {
     font-size: 0.6em;
     width: 100%;
   }
+  .logo-dois{
+    display: none;
+  }
+  .inicio-text h1 {
+    font-size: 0.9rem;
+  }
+  .inicio-text h2 {
+    font-size: 1rem;
+  }
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 2rem;
+    vertical-align: middle;
+  }
 }
