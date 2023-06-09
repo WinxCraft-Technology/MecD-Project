@@ -769,9 +769,6 @@ input[type="submit"] {
 /* Media Querys */
 
 @media screen and (max-width: 600px) {
-  .inicio-text {
-    flex: 1 1 100%;
-  }
   .inicio-text h1 {
     font-size: 2.5rem;
   }
@@ -785,8 +782,22 @@ input[type="submit"] {
   .logo {
     display: block;
   }
+  .iniciomain {
+    display: flex;
+    flex-direction: column;
+  }
+  .section {
+    margin-bottom: 20px;
+  }
+  .section:first-child {
+    order: 2;
+  }
+  .section:last-child {
+    order: 1;
+  }
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
   .container {
     width: 100%;
     padding: 0 1rem;
@@ -826,7 +837,7 @@ input[type="submit"] {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   .inicio-text h1 {
     font-size: 3rem;
   }
@@ -837,7 +848,8 @@ input[type="submit"] {
     font-size: 1.4rem;
   }
 }
-@media screen and (max-width: 1200px) {
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
   .container {
     width: 95%;
   }
@@ -860,7 +872,7 @@ input[type="submit"] {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .PDFs {
     flex-direction: column;
   }
@@ -898,22 +910,4 @@ input[type="submit"] {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .iniciomain {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .section {
-    margin-bottom: 20px;
-  }
-
-  .section:first-child {
-    order: 2;
-  }
-
-  .section:last-child {
-    order: 1;
-  }
-}
 
