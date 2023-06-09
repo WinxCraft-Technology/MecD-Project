@@ -86,6 +86,7 @@ function exibirDocumentos() {
 
 async function atualizarLista() {
   const filtrosSelecionados = []; // Array para armazenar os filtros selecionados
+  const botao = document.getElementById('btn-pdf');
 
   const selects = document.querySelectorAll('.filtro-select');
   selects.forEach((select) => {
@@ -113,9 +114,37 @@ async function atualizarLista() {
     });
 
     const querySnapshot = await query.get();
-    querySnapshot.forEach((doc) => {
-      filtroFinal.push(doc.id);
-    });
+querySnapshot.forEach((doc) => {
+  filtroFinal.push(doc.id);
+  document.getElementById("iten").innerHTML = filtroFinal[0];
+
+  const selectElement = document.getElementById('lista'); // Obtém a referência do elemento <select> pelo id
+
+  selectElement.addEventListener('change', function() {
+    const selectedValue = this.value; // Obtém o valor selecionado
+    
+    document.getElementById("iten").innerHTML = selectedValue; // Exibe o valor selecionado no html
+
+    db.collection("mecanismos")
+      .doc(selectedValue)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const IDMecanismo = doc.data().IDMecanismo;
+
+            botao.setAttribute('href', 'https://www.polya.com.br/ead/mod/pdfannotator/view.php?id=' + IDMecanismo);
+          
+        } else {
+          console.log("Documento não encontrado");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao obter documento: ", error);
+      });
+  });
+
+});
+
   }
 
   const lista = document.getElementById("lista");
@@ -129,7 +158,7 @@ async function atualizarLista() {
 
   const numPDF = document.getElementById("lista");
   const attNumPDF = numPDF.getElementsByTagName("option").length;
-  document.getElementById("num-pdf").innerHTML = "Nº de Arquivos: " + attNumPDF;
+  document.getElementById("num-pdf").innerHTML = attNumPDF;
 }
 
 // Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado

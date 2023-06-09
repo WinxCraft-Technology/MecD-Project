@@ -319,6 +319,18 @@
   padding: 1rem;
 }
 
+.pdf-count {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 2px solid #000000;
+}
+
 .PDFs,
 .PDFsdois label {
   font-weight: bold;
@@ -338,6 +350,21 @@
   outline: none;
   background-color: var(--third-color);
 }
+
+.sectionMain{
+  display: flex;
+}
+
+.left-side {
+  flex: 1;
+  padding: 20px;
+}
+
+.right-side {
+  flex: 1;
+  padding: 20px;
+}
+
 
 .col1,
 .col2 {
@@ -360,7 +387,6 @@
 
 #lista-pdfs {
   background-color: var(--second-color);
-  height: 12rem;
 }
 
 #lista {
@@ -885,5 +911,4 @@ input[type="submit"] {
     order: 1;
   }
 }
-
 

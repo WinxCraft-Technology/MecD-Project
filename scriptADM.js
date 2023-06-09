@@ -405,6 +405,7 @@ function listarFiltros() {
 
 function adicionarMecanismo() {
   const nome = document.getElementById("input_nomeMecanismo_add").value;
+  const IDMecanismo = document.getElementById("input_IDMecanismo_add").value;
   const db = firebase.firestore();
 
   const selects = document.querySelectorAll('.filtro-select');
@@ -413,7 +414,8 @@ function adicionarMecanismo() {
     const id = select.id.replace("_", " ");
 
     const dados = {
-      [id]: categoriaSelecionada
+      [id]: categoriaSelecionada,
+      IDMecanismo: IDMecanismo
     }
 
     db.collection("mecanismos")
@@ -430,6 +432,7 @@ function adicionarMecanismo() {
       });
   });
 }
+
 
 // Variável para controlar se a função editarMecanismo está em uso ou não
 let editarMecanismoEmUso = false;
@@ -450,8 +453,8 @@ function editarMecanismo() {
   const option = document.createElement("option");
   option.value = "Selecione um mecanismo para editar";
   option.textContent = "Selecione um mecanismo para editar";
-  option.disabled = "true";
-  option.selected = "true";
+  option.disabled = true;
+  option.selected = true;
 
   select_mecanismo.appendChild(option);
 
@@ -469,6 +472,9 @@ function editarMecanismo() {
 
   // Marca a função editarMecanismo como em uso
   editarMecanismoEmUso = true;
+
+  // Limpa o campo do ID do mecanismo
+  document.getElementById("input_IDMecanismo_edit").value = "";
 }
 
 // Adiciona o evento de alteração apenas uma vez
@@ -480,9 +486,13 @@ function handleSelectChange(event) {
     return;
   }
 
-  var selectElement = document.getElementById("select_nomeMecanismo_edit");
-  var valorSelecionado = selectElement.value;
-  document.getElementById("input_nomeMecanismo_edit").value = valorSelecionado
+  const selectElement = document.getElementById("select_nomeMecanismo_edit");
+  const valorSelecionado = selectElement.value;
+  document.getElementById("input_nomeMecanismo_edit").value = valorSelecionado;
+
+  // Obtém o ID do mecanismo
+  const IDMecanismo = selectElement.options[selectElement.selectedIndex].getAttribute("data-idmecanismo");
+  document.getElementById("input_IDMecanismo_edit").value = IDMecanismo;
 
   const divResultado = document.getElementById("filtros_editar");
   // Limpa o conteúdo da div 'resultado'
@@ -548,10 +558,9 @@ function limparTela() {
   }
 }
 
-
-
 function enviarEditarmecanismo() {
   const nome = document.getElementById("input_nomeMecanismo_edit").value;
+  const IDMecanismo = document.getElementById("input_IDMecanismo_edit").value;
   const db = firebase.firestore();
 
   const select = document.getElementById("select_nomeMecanismo_edit");
@@ -573,7 +582,8 @@ function enviarEditarmecanismo() {
     const id = select.id.replace("_", " ");
 
     const dados = {
-      [id]: categoriaSelecionada
+      [id]: categoriaSelecionada,
+      "IDMecanismo": IDMecanismo  // Adiciona o campo IDMecanismo ao documento
     }
 
     db.collection("mecanismos")
@@ -590,6 +600,7 @@ function enviarEditarmecanismo() {
       });
   });
 }
+
 
 function deletarMecanismo() {
   const db = firebase.firestore();
@@ -608,8 +619,6 @@ function deletarMecanismo() {
       console.error('Erro ao apagar o documento:', error);
     });
 }
-
-
 
 
 

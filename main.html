@@ -42,68 +42,59 @@
 
     <main>
       <div class="iniciomain">
-        <section class="section">
-          <form class="PDFs">
-            <div class="col1">
-              <br />
-              <br />
-              <br />
-
-              <label for="">Opções:</label>
-              <label>Tipo de Industria</label>
-              <select
-                name="FiltroPrincipal"
-                id="FiltroPrincipal"
-                class="filtro-select"
-                onclick="atualizarLista()"
-              >
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
-              </select>
-              <label for="FiltroFilho">Unidade de Processo</label>
-              <select
-                name="Unidade-de-Processo"
-                id="FiltroFilho"
-                class="filtro-select"
-                onclick="atualizarLista()"
-              >
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="A1">A1</option>
-                <option value="A2">A2</option>
-                <option value="A3">A3</option>
-                <option value="B1">B1</option>
-                <option value="B2">B2</option>
-                <option value="B3">B3</option>
-              </select>
-              <label for="Loop-de-Corrosão">Loop de Corrosão</label>
-              <select
-                name="Loop-de-Corrosão"
-                id="FiltroNeto"
-                class="filtro-select"
-                onclick="atualizarLista()"
-              >
-                <option value="Sem Filtro">Sem Filtro</option>
-              </select>
-              <div id="resultado"></div>
-              <button
-                type="button"
-                class="resetbtn"
-                onclick="window.location.reload()"
-              >
-                Resetar Filtros
-              </button>
-            </div>
-
+        <section class="sectionMain">
+          <div class="left-side">
+            <form class="PDFs">
+              <div class="col1">
+                <br />
+                <br />
+                <br />
+  
+                <label for="">Opções:</label>
+                <label>Tipo de Industria</label>
+                <select name="FiltroPrincipal" id="FiltroPrincipal" class="filtro-select" onclick="atualizarLista()">
+                  <option value="Sem Filtro">Sem Filtro</option>
+                  <option value="Petroquimica">Petroquímica</option>
+                  <option value="Refinaria">Refinaria</option>
+                </select>
+                <label for="FiltroFilho">Unidade de Processo</label>
+                <select name="Unidade-de-Processo" id="FiltroFilho" class="filtro-select" onclick="atualizarLista()">
+                  <option value="Sem Filtro">Sem Filtro</option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="A3">A3</option>
+                  <option value="B1">B1</option>
+                  <option value="B2">B2</option>
+                  <option value="B3">B3</option>
+                </select>
+  
+                
+                <div id="resultado"></div>
+                <button type="button" class="resetbtn" onclick="window.location.reload()">
+                  Resetar Filtros
+                </button>
+              </div>
+            </form>
+          </div>
+        
+          <div class="right-side">
             <div id="lista-pdfs" class="col2">
-              <div><p id="num-pdf"></p></div>
-              <select id="lista"></select>
-            </div>
-          </form>
+              <div class="pdf-count">
+                <p id="num-pdf"></p>
+              </div>
+              <select id="lista" name="opcoes"></select>
+              </div>
+            <form action="">
+              <p id="iten"></p>
+              <a id="btn-pdf" href="#" class="botao">Ir para a Página</a>
 
-          
-
-          <embed src="" type="" id="alterar-pdf" />
+            </form>
+            
+            <embed src="" type="" id="alterar-pdf" />
+            
+          </div>
+        
+  
         </section>
       </div>
 
