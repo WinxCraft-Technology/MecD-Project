@@ -49,16 +49,26 @@
                 <br />
                 <br />
                 <br />
-  
+
                 <label for="">Opções:</label>
                 <label>Tipo de Industria</label>
-                <select name="FiltroPrincipal" id="FiltroPrincipal" class="filtro-select" onclick="atualizarLista()">
+                <select
+                  name="FiltroPrincipal"
+                  id="FiltroPrincipal"
+                  class="filtro-select"
+                  onclick="atualizarLista()"
+                >
                   <option value="Sem Filtro">Sem Filtro</option>
                   <option value="Petroquimica">Petroquímica</option>
                   <option value="Refinaria">Refinaria</option>
                 </select>
                 <label for="FiltroFilho">Unidade de Processo</label>
-                <select name="Unidade-de-Processo" id="FiltroFilho" class="filtro-select" onclick="atualizarLista()">
+                <select
+                  name="Unidade-de-Processo"
+                  id="FiltroFilho"
+                  class="filtro-select"
+                  onclick="atualizarLista()"
+                >
                   <option value="Sem Filtro">Sem Filtro</option>
                   <option value="A1">A1</option>
                   <option value="A2">A2</option>
@@ -67,34 +77,36 @@
                   <option value="B2">B2</option>
                   <option value="B3">B3</option>
                 </select>
-  
-                
+
                 <div id="resultado"></div>
-                <button type="button" class="resetbtn" onclick="window.location.reload()">
+                <button
+                  type="button"
+                  class="resetbtn"
+                  onclick="window.location.reload()"
+                >
                   Resetar Filtros
                 </button>
               </div>
             </form>
           </div>
-        
+
           <div class="right-side">
             <div id="lista-pdfs" class="col2">
-              <div class="pdf-count">
+              <div class="pdf-count" >
                 <p id="num-pdf"></p>
               </div>
               <select id="lista" name="opcoes"></select>
-              </div>
+            </div>
             <form action="">
               <p id="iten"></p>
-              <a id="btn-pdf" href="#" class="botao">Ir para a Página</a>
-
+              <br />
+              <a id="btn-pdf" href="#" class="btn">Ir para a Página</a>
+              <br>
+              <br>
             </form>
-            
+
             <embed src="" type="" id="alterar-pdf" />
-            
           </div>
-        
-  
         </section>
       </div>
 

@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18rem;
+  gap: 25rem;
   box-shadow: 0 4px 41px rgb(14 55 54/14%);
   padding: 1rem;
   transition: 0.2s;
@@ -42,7 +42,6 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: 0.6rem;
 }
 
 .logo-dois img {
@@ -327,7 +326,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 10rem;
   border: 2px solid #000000;
 }
 
@@ -341,10 +342,10 @@
 
 .PDFs select {
   width: 100%;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
+  padding: 0.6rem;
+  font-size: 1.8rem;
+  margin-right: 20rem;
+  margin-top: 0.8rem;
   border: 1px solid var(--main-color);
   border-radius: 0.35rem;
   outline: none;
@@ -363,6 +364,7 @@
 .right-side {
   flex: 1;
   padding: 20px;
+  align-items: center;
 }
 
 
@@ -406,7 +408,7 @@
 }
 
 #num-pdf {
-  font-size: 15px;
+  font-size: 2rem;
 }
 
 /* Estilo da área de ADM */
