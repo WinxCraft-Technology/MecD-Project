@@ -964,6 +964,9 @@ input[type="submit"] {
     font-size: 0.6em;
     width: 100%;
   }
+  .logo-dois{
+    display: none;
+  }
   .inicio-text h1 {
     font-size: 0.9rem;
   }
