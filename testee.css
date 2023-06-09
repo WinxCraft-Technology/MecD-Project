@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40%;
+  gap: 25rem;
   box-shadow: 0 4px 41px rgb(14 55 54/14%);
   padding: 1rem;
   transition: 0.2s;
@@ -45,8 +45,7 @@
 }
 
 .logo-dois img {
-  width: 100px;
-  height: 80px;
+  width: 90%;
 }
 
 .logo {
@@ -60,11 +59,7 @@
 }
 
 .btn-menu img {
-  position: fixed;
-  top: 30px;
-  right: 10px;
-  width: 3rem;
-  z-index: 999;
+  width: 2rem;
   vertical-align: middle;
 }
 
@@ -80,12 +75,11 @@
   width: 90%;
   max-width: 1200px;
   margin: auto;
-  display: flex;
-  align-items: center;
 }
 
 .container .btn-menu,
 .logo {
+  float: right;
   line-height: 100px;
 }
 
@@ -96,8 +90,14 @@
   margin-top: -0.9rem;
 }
 
+.container {
+  float: right;
+  line-height: 100px;
+  margin-left: auto;
+}
+
 .container a {
-  display: block;
+  display: inline-block;
   padding: 15px;
   line-height: normal;
   text-decoration: none;
@@ -114,6 +114,7 @@
 }
 
 #btn-menu {
+  display: none;
   cursor: pointer;
 }
 
@@ -125,8 +126,6 @@
 #btn-menu:checked ~ .container-menu .cont-menu {
   transform: translateX(0%);
 }
-
-/* Estilos gerais */
 
 .container-menu {
   position: absolute;
@@ -320,16 +319,16 @@
 }
 
 .pdf-count {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
-  margin-top: 30%;
-  margin-left: 40%;
+  margin-top: 2rem;
+  margin-left: 12rem;
   border: 2px solid #000000;
 }
 
@@ -354,8 +353,6 @@
 }
 
 .sectionMain {
-  justify-content: space-between;
-  gap: 4rem;
   display: flex;
 }
 
@@ -370,9 +367,10 @@
   padding: 20px;
   align-items: center;
 }
+
 .col1,
 .col2 {
-  flex-basis: 100%;
+  flex-basis: 50%;
 }
 
 .resetbtn {
@@ -395,10 +393,10 @@
 
 #lista {
   display: flex;
-  flex-wrap: wrap;
   margin-top: 2rem;
   padding: 2rem;
   font-size: 1.2rem;
+  width: 100%;
   background-color: var(--second-color);
   color: var(--third-color);
 }
@@ -502,8 +500,7 @@
 .removedois:hover {
   background-color: #ff000032;
 }
-.deletebutton,
-.remove {
+.deletebutton {
   display: inline-block;
   padding: 0.5rem;
   height: 3rem;
@@ -514,11 +511,23 @@
   border-radius: 5px;
 }
 
-.deletebutton:hover,
+.deletebutton:hover {
+  background-color: #ff000032;
+}
+.remove {
+  display: inline-block;
+  padding: 0.5rem;
+  height: 3rem;
+  background-color: red;
+  color: var(--third-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
 .remove:hover {
   background-color: #ff000032;
 }
-
 .close:hover {
   color: #ff000032;
 }
@@ -537,23 +546,14 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content,
-.modal-contentEdit {
+.modal-content {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  border-radius: 2%;
-}
-
-.modal-content {
   width: 400px;
   height: 200px;
-}
-
-.modal-contentEdit {
-  width: 600px;
-  height: 800px;
+  border-radius: 2%;
 }
 
 .close {
@@ -569,6 +569,28 @@
   color: red;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modalEdit {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contentEdit {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 600px;
+  height: 800px;
+  border-radius: 2%;
 }
 
 /* Estilo de elementos */
@@ -608,7 +630,6 @@ h2 {
 }
 
 section {
-  width: 100%;
   padding: 50px 5%;
   overflow-x: hidden;
 }
@@ -687,7 +708,6 @@ input[type="submit"] {
 .section {
   display: flex;
   flex-direction: column;
-  width: 100%;
   flex: 1;
 }
 
@@ -716,11 +736,9 @@ input[type="submit"] {
   justify-content: center;
   margin-top: 4rem;
 }
-
 .gallery-item {
   margin: 10px;
 }
-
 .gallery-item img {
   width: 200px;
   height: 150px;
@@ -804,9 +822,6 @@ input[type="submit"] {
     top: 0;
     right: 0;
   }
-  .pdf-count{
-    display: block;
-  }
   .container-menu {
     position: fixed;
     top: 0;
@@ -880,7 +895,6 @@ input[type="submit"] {
   .container .menu.active {
     right: 0;
   }
-
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -901,8 +915,8 @@ input[type="submit"] {
     position: static;
   }
 
-  .header {
-    gap: 20rem;
+  .btn-menu {
+    display: none;
   }
 
   .container-menu {
@@ -949,7 +963,6 @@ input[type="submit"] {
 
 @media (max-width: 767px) {
   .btn-adm,
-  .btn-menu,
   .btn-adm-envio,
   .btn-admm,
   .remove,
@@ -961,7 +974,6 @@ input[type="submit"] {
 }
 
 @media (max-width: 480px) {
-  .btn-menu,
   .btn-adm,
   .btn-adm-envio,
   .btn-admm,
