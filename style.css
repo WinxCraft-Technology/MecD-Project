@@ -115,6 +115,7 @@
 
 #btn-menu {
   cursor: pointer;
+  display: none;
 }
 
 #btn-menu:checked ~ .container-menu {
