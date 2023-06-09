@@ -166,7 +166,7 @@
                 id="input_nomeMecanismo_add"
                 placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento"
               />
-              <label for="input_IDMecanismo_add">ID do Mecanismo</label>
+              <label for="input_IDMecanismo_add">Link do Mecanismo</label>
               <input
                 type="text"
                 id="input_IDMecanismo_add"
@@ -177,7 +177,34 @@
                 Dano</label
               >
 
-              <div id="lista_filtros"></div>
+              <label>Tipo de Industria</label>
+              <select
+                name="FiltroPrincipal"
+                id="FiltroPrincipal"
+                class="filtro-select"
+                onclick="atualizarLista()"
+              >
+                <option value="Sem Filtro">Sem Filtro</option>
+                <option value="Petroquimica">Petroquímica</option>
+                <option value="Refinaria">Refinaria</option>
+              </select>
+              <label for="FiltroFilho">Unidade de Processo</label>
+              <select
+                name="Unidade-de-Processo"
+                id="FiltroFilho"
+                class="filtro-select"
+                onclick="atualizarLista()"
+              >
+                <option value="Sem Filtro">Sem Filtro</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="A3">A3</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="B3">B3</option>
+              </select>
+            <div id="lista_filtros"></div>
+
               <br />
               <button
                 class="btn-adm"
@@ -257,11 +284,36 @@
         placeholder="Insira aqui o Link do Fluxograma de Dano. Exemplo: www.google.com"
       />
       <label for="select_filtros"
-        >Selecione os filtros correspondentes a este Fluxograma de
-        Dano</label
-      >
+                >Selecione os filtros correspondentes a este Fluxograma</label>
 
-      <div id="lista_filtros"></div>
+                <label>Tipo de Industria</label>
+                <select
+                  name="FiltroPrincipal"
+                  id="FiltroPrincipal"
+                  class="filtro-select"
+                  onclick="atualizarLista()"
+                >
+                  <option value="Sem Filtro">Sem Filtro</option>
+                  <option value="Petroquimica">Petroquímica</option>
+                  <option value="Refinaria">Refinaria</option>
+                </select>
+                <label for="FiltroFilho">Unidade de Processo</label>
+                <select
+                  name="Unidade-de-Processo"
+                  id="FiltroFilho"
+                  class="filtro-select"
+                  onclick="atualizarLista()"
+                >
+                  <option value="Sem Filtro">Sem Filtro</option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="A3">A3</option>
+                  <option value="B1">B1</option>
+                  <option value="B2">B2</option>
+                  <option value="B3">B3</option>
+                </select>
+              <div id="lista_filtros"></div>
+
       <br />
       <button
         class="btn-adm"
@@ -291,8 +343,9 @@
         placeholder="Insira aqui o nome do Fluxograma de Dano. Exemplo: Corrosão Sob Isolamento"
       />
       <label for="input_IDFluxograma_edit"
-      >Insira um novo ID para o seu Fluxograma de Dano</label
+      >Insira um novo Link para o seu Fluxograma de Dano</label
     >
+    
     <input
       type="text"
       id="input_IDFluxograma_edit"
@@ -316,8 +369,6 @@
 </section>
 
       </div>
-
-      
 
       <input type="checkbox" id="btn-menu" />
       <div class="container-menu">
