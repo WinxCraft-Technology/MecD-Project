@@ -331,7 +331,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
-  margin-top: 30%;
+  margin-top: 10%;
   margin-left: 40%;
   border: 2px solid #000000;
 }
@@ -610,6 +610,12 @@ h2 {
   color: white;
   border-color: var(--main-color);
   font-size: 1.4rem;
+}
+
+h3 {
+  color: white;
+  border-color: var(--main-color);
+  margin-top: 15%;
 }
 
 section {
@@ -904,6 +910,7 @@ input[type="submit"] {
   .header {
     gap: 20rem;
   }
+  
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
