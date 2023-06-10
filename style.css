@@ -42,11 +42,13 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  flex: 1;
 }
 
 .logo-dois img {
   width: 100px;
   height: 80px;
+  margin: 0 auto;
 }
 
 .logo {
