@@ -122,8 +122,8 @@ body {
 }
 
 a {
-  color: #eee;
-  color: var(--anchorColor);
+  color: var(--bodyBackgroundColor);
+  color: var(--main-color);
   outline: 0;
   text-decoration: none;
 }
@@ -273,6 +273,7 @@ p {
 .logo img {
   width: 4rem;
   vertical-align: middle;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .logo h1 {
@@ -283,6 +284,6 @@ p {
   margin: auto;
   color: var(--third-color);
   border-color: var(--main-color);
-  -webkit-text-stroke: 1px var(--second-color);
+  -webkit-text-stroke: 2px var(--second-color);
   text-shadow: 0 0 4px #fff;
 }
