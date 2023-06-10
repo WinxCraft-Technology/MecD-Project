@@ -276,68 +276,151 @@ function addOptionEdit() {
 }
 
 // Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
-function atualizarFiltrosFilho() {
-  const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
-  const filtroFilho2 = document.getElementById("filtroFilho2");
+function atualizarFiltrosFilho1() {
+  const filtroPrincipal1 = document.getElementById("FiltroPrincipal1").value;
+  const filtroFilho1 = document.getElementById("FiltroFilho1");
+
+  if (filtroFilho1 === null) {
+    console.error("Elemento 'filtroFilho1' não encontrado no documento HTML.");
+    return;
+  }
+
+  filtroFilho1.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
+
+  const db = firebase.firestore();
+  db.collection("FiltroFilho")
+    .doc(filtroPrincipal1)
+    .get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const data = docSnapshot.data();
+
+        const option = document.createElement("option");
+        option.value = "Sem Filtro";
+        option.textContent = "Sem Filtro";
+        filtroFilho1.appendChild(option);
+        Object.keys(data).forEach((key) => {
+          const option = document.createElement("option");
+          option.value = key;
+          option.textContent = data[key];
+          filtroFilho1.appendChild(option);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao obter dados do Firestore:", error);
+    });
+}
+
+function atualizarFiltrosFilho2() {
+  const filtroPrincipal2 = document.getElementById("FiltroPrincipal2").value;
+  const filtroFilho2 = document.getElementById("FiltroFilho2");
+
+  if (filtroFilho2 === null) {
+    console.error("Elemento 'filtroFilho2' não encontrado no documento HTML.");
+    return;
+  }
 
   filtroFilho2.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
 
-  if (filtroPrincipal === "Petroquimica") {
-    const opcoes = ["A1", "A2", "A3"];
-    opcoes.forEach((opcao) => {
-      const option = document.createElement("option");
-      option.value = opcao;
-      option.textContent = opcao;
-      filtroFilho2.appendChild(option);
+  const db = firebase.firestore();
+  db.collection("FiltroFilho")
+    .doc(filtroPrincipal2)
+    .get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const data = docSnapshot.data();
+
+        const option = document.createElement("option");
+        option.value = "Sem Filtro";
+        option.textContent = "Sem Filtro";
+        filtroFilho2.appendChild(option);
+        Object.keys(data).forEach((key) => {
+          const option = document.createElement("option");
+          option.value = key;
+          option.textContent = data[key];
+          filtroFilho2.appendChild(option);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao obter dados do Firestore:", error);
     });
-  } else if (filtroPrincipal === "Refinaria") {
-    const opcoes = ["B1", "B2", "B3"];
-    opcoes.forEach((opcao) => {
-      const option = document.createElement("option");
-      option.value = opcao;
-      option.textContent = opcao;
-      filtroFilho2.appendChild(option);
-    });
-  }
 }
 
-// Adicionar evento de alteração ao seletor do filtro principal
-const filtroPrincipal2 = document.getElementById("FiltroPrincipal2");
-filtroPrincipal.addEventListener("change", atualizarFiltrosFilho);
+function atualizarFiltrosFilho3() {
+  const filtroPrincipal3 = document.getElementById("FiltroPrincipal3").value;
+  const filtroFilho3 = document.getElementById("FiltroFilho3");
 
-
-
-
-
-// Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
-function atualizarFiltrosFilho() {
-  const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
-  const filtroFilho = document.getElementById("filtroFilho");
-
-  filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
-
-  if (filtroPrincipal === "Petroquimica") {
-    const opcoes = ["A1", "A2", "A3"];
-    opcoes.forEach((opcao) => {
-      const option = document.createElement("option");
-      option.value = opcao;
-      option.textContent = opcao;
-      filtroFilho.appendChild(option);
-    });
-  } else if (filtroPrincipal === "Refinaria") {
-    const opcoes = ["B1", "B2", "B3"];
-    opcoes.forEach((opcao) => {
-      const option = document.createElement("option");
-      option.value = opcao;
-      option.textContent = opcao;
-      filtroFilho.appendChild(option);
-    });
+  if (filtroFilho3 === null) {
+    console.error("Elemento 'filtroFilho3' não encontrado no documento HTML.");
+    return;
   }
+
+  filtroFilho3.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
+
+  const db = firebase.firestore();
+  db.collection("FiltroFilho")
+    .doc(filtroPrincipal3)
+    .get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const data = docSnapshot.data();
+
+        const option = document.createElement("option");
+        option.value = "Sem Filtro";
+        option.textContent = "Sem Filtro";
+        filtroFilho3.appendChild(option);
+        Object.keys(data).forEach((key) => {
+          const option = document.createElement("option");
+          option.value = key;
+          option.textContent = data[key];
+          filtroFilho3.appendChild(option);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao obter dados do Firestore:", error);
+    });
 }
 
-// Adicionar evento de alteração ao seletor do filtro principal
-const filtroPrincipal = document.getElementById("FiltroPrincipal");
-filtroPrincipal.addEventListener("change", atualizarFiltrosFilho);
+function atualizarFiltrosFilho4() {
+  const filtroPrincipal4 = document.getElementById("FiltroPrincipal4").value;
+  const filtroFilho4 = document.getElementById("FiltroFilho4");
+
+  if (filtroFilho4 === null) {
+    console.error("Elemento 'filtroFilho4' não encontrado no documento HTML.");
+    return;
+  }
+
+  filtroFilho4.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
+
+  const db = firebase.firestore();
+  db.collection("FiltroFilho")
+    .doc(filtroPrincipal4)
+    .get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const data = docSnapshot.data();
+
+        const option = document.createElement("option");
+        option.value = "Sem Filtro";
+        option.textContent = "Sem Filtro";
+        filtroFilho4.appendChild(option);
+        Object.keys(data).forEach((key) => {
+          const option = document.createElement("option");
+          option.value = key;
+          option.textContent = data[key];
+          filtroFilho4.appendChild(option);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao obter dados do Firestore:", error);
+    });
+}
+
+
 
 function editarFiltro() {
   const selectElement = document.getElementById('nameEdit');
@@ -470,29 +553,29 @@ function listarFiltrosFluxograma() {
   document.getElementById("editarFluxograma").style.display = "none";
   document.getElementById("addFluxograma").style.display = "block";
   const db = firebase.firestore();
-  
+
   // Obtém a referência para a div 'resultado'
   const divResultado = document.getElementById("lista_filtros");
-  
+
   // Limpa o conteúdo da div 'resultado'
   divResultado.innerHTML = "";
-  
+
   // Obtém a lista de documentos
   db.collection("filtros")
-  .get()
-  .then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-  // Cria a label com o nome do documento
-  const label = document.createElement("label");
-  label.textContent = doc.id;
-    divResultado.appendChild(label);
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Cria a label com o nome do documento
+        const label = document.createElement("label");
+        label.textContent = doc.id;
+        divResultado.appendChild(label);
         // Cria o select para as coleções
         const select = document.createElement("select");
         var id = doc.id.replace(" ", "_");
         select.id = id
         select.className = "filtro-select"
         divResultado.appendChild(select);
-    
+
         // Obtém as coleções do documento
         db.collection("filtros")
           .doc(doc.id)
@@ -523,7 +606,7 @@ function listarFiltrosFluxograma() {
     .catch((error) => {
       console.error("Error getting documents:", error);
     });
-  }    
+}
 
 function adicionarMecanismo() {
   const nome = document.getElementById("input_nomeMecanismo_add").value;
@@ -533,7 +616,8 @@ function adicionarMecanismo() {
   const selects = document.querySelectorAll('.filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const id = select.id.replace("_", " ");
+    const replace = select.id.replace("_"," ")
+    const id = replace.replace(/\d/g, "");
 
     const dados = {
       [id]: categoriaSelecionada,
@@ -701,11 +785,13 @@ function enviarEditarmecanismo() {
   const selects = document.querySelectorAll('.filtro-selectEdit');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const id = select.id.replace("_", " ");
+    const replace = select.id.replace("_"," ")
+    const id = replace.replace(/\d/g, "");
+
 
     const dados = {
       [id]: categoriaSelecionada,
-      "IDMecanismo": IDMecanismo  // Adiciona o campo IDMecanismo ao documento
+      "IDMecanismo": IDMecanismo // Adiciona o campo IDMecanismo ao documento
     }
 
     db.collection("mecanismos")
@@ -748,10 +834,11 @@ function adicionarFluxograma() {
   const IDFluxograma = document.getElementById("input_IDFluxograma_add").value;
   const db = firebase.firestore();
 
-  const selects = document.querySelectorAll('.filtro-select');
+  const selects = document.querySelectorAll('.add-filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const id = select.id.replace("_", " ");
+    const replace = select.id.replace("_"," ")
+    const id = replace.replace(/\d/g, "");
 
     const dados = {
       [id]: categoriaSelecionada,
@@ -816,77 +903,14 @@ function editarFluxograma() {
   document.getElementById("input_IDFluxograma_edit").value = "";
 }
 
-// Adiciona o evento de alteração apenas uma vez
-const select_fluxograma = document.getElementById("select_nomeFluxograma_edit");
-select_fluxograma.addEventListener("change", handleSelectChange);
 
-function handleSelectChange(event) {
-  if (!editarFluxogramaEmUso) {
-    return;
-  }
-
+document.getElementById("select_nomeFluxograma_edit").addEventListener("change", function () {
+  console.log("A")
   const selectElement = document.getElementById("select_nomeFluxograma_edit");
   const valorSelecionado = selectElement.value;
   document.getElementById("input_nomeFluxograma_edit").value = valorSelecionado;
+})
 
-  // Obtém o ID do fluxograma
-  const IDFluxograma = selectElement.options[selectElement.selectedIndex].getAttribute("data-idfluxograma");
-  document.getElementById("input_IDFluxograma_edit").value = IDFluxograma;
-
-  const divResultado = document.getElementById("filtros_editar");
-  // Limpa o conteúdo da div 'resultado'
-  divResultado.innerHTML = "";
-
-  const db = firebase.firestore();
-
-  // Obtém a lista de documentos
-  db.collection("filtros")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // Cria a label com o nome do documento
-        const label = document.createElement("label");
-        label.textContent = doc.id;
-        divResultado.appendChild(label);
-
-        // Cria o select para as coleções
-        const select = document.createElement("select");
-        var id = doc.id.replace(" ", "_");
-        select.id = id;
-        select.className = "filtro-selectEdit";
-        divResultado.appendChild(select);
-
-        // Obtém as coleções do documento
-        db.collection("filtros")
-          .doc(doc.id)
-          .get()
-          .then((docSnapshot) => {
-            if (docSnapshot.exists) {
-              const data = docSnapshot.data();
-              // Itera sobre as coleções
-              const optionDefault = document.createElement("option");
-              optionDefault.value = "Sem Filtro";
-              optionDefault.textContent = "Sem Filtro";
-              select.appendChild(optionDefault);
-              Object.keys(data).forEach((key) => {
-                if ([key] != "filtropai" && [key] != "dataupload") {
-                  const option = document.createElement("option");
-                  option.value = data[key];
-                  option.textContent = data[key];
-                  select.appendChild(option);
-                }
-              });
-            }
-          })
-          .catch((error) => {
-            console.error("Error getting document:", error);
-          });
-      });
-    })
-    .catch((error) => {
-      console.error("Error getting documents:", error);
-    });
-}
 
 // Função para limpar a tela quando a função editarFluxograma não está mais em uso
 function limparTela() {
@@ -915,14 +939,15 @@ function enviarEditarFluxograma() {
       console.error('Erro ao apagar o documento:', error);
     });
 
-  const selects = document.querySelectorAll('.filtro-selectEdit');
+  const selects = document.querySelectorAll('.edit-filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const id = select.id.replace("_", " ");
+    const replace = select.id.replace("_"," ")
+    const id = replace.replace(/\d/g, "");
 
     const dados = {
       [id]: categoriaSelecionada,
-      "IDFluxograma": IDFluxograma  // Adiciona o campo IDFluxograma ao documento
+      "IDFluxograma": IDFluxograma // Adiciona o campo IDFluxograma ao documento
     }
 
     db.collection("fluxograma")

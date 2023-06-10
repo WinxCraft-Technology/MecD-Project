@@ -13,7 +13,8 @@ function iniciarBanco() {
 
   firebase.initializeApp(firebaseConfig);
 
-  exibirDocumentos()
+  exibirDocumentos();
+  atualizarLista();
 
 }
 
@@ -64,7 +65,7 @@ function exibirDocumentos() {
               optionDefault.textContent = "Sem Filtro";
               select.appendChild(optionDefault);
               Object.keys(data).forEach((key) => {
-                if([key]!="filtropai"  [key]!="dataupload"){
+                if ([key] != "filtropai" [key] != "dataupload") {
                   const option = document.createElement("option");
                   option.value = data[key];
                   option.textContent = data[key];
@@ -114,42 +115,45 @@ async function atualizarLista() {
     });
 
     const querySnapshot = await query.get();
-querySnapshot.forEach((doc) => {
-  filtroFinal.push(doc.id);
-  document.getElementById("iten").innerHTML = filtroFinal[0];
+    querySnapshot.forEach((doc) => {
+      filtroFinal.push(doc.id);
+      document.getElementById("iten").innerHTML = filtroFinal[0];
 
-  const selectElement = document.getElementById('lista'); // Obtém a referência do elemento <select> pelo id
+      const selectElement = document.getElementById('lista'); // Obtém a referência do elemento <select> pelo id
 
-  selectElement.addEventListener('change', function() {
-    const selectedValue = this.value; // Obtém o valor selecionado
-    
-    document.getElementById("iten").innerHTML = selectedValue; // Exibe o valor selecionado no html
+      selectElement.addEventListener('change', function () {
+        const selectedValue = this.value; // Obtém o valor selecionado
 
-    db.collection("mecanismos")
-      .doc(selectedValue)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          const IDMecanismo = doc.data().IDMecanismo;
+        document.getElementById("iten").innerHTML = selectedValue; // Exibe o valor selecionado no html
 
-            botao.setAttribute('href', IDMecanismo);
-          
-        } else {
-          console.log("Documento não encontrado");
-        }
-      })
-      .catch((error) => {
-        console.error("Erro ao obter documento: ", error);
+        db.collection("mecanismos")
+          .doc(selectedValue)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              const IDMecanismo = doc.data().IDMecanismo;
+
+              botao.setAttribute('href', IDMecanismo);
+
+            } else {
+              console.log("Documento não encontrado");
+            }
+          })
+          .catch((error) => {
+            console.error("Erro ao obter documento: ", error);
+          });
       });
-  });
 
-});
+    });
 
   }
 
   const lista = document.getElementById("lista");
   lista.innerHTML = ""; // Limpar a lista antes de atualizá-la
 
+  const option = document.createElement("option");
+  option.innerText = "Escolha um Filtro";
+  lista.appendChild(option);
   filtroFinal.forEach((valor) => {
     const option = document.createElement("option");
     option.innerText = valor;
@@ -158,39 +162,43 @@ querySnapshot.forEach((doc) => {
 
   const numPDF = document.getElementById("lista");
   const attNumPDF = numPDF.getElementsByTagName("option").length;
-  document.getElementById("num-pdf").innerHTML = attNumPDF;
+  document.getElementById("num-pdf").innerHTML = attNumPDF - 1;
 }
 
 // Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
 function atualizarFiltrosFilho() {
   const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
   const filtroFilho = document.getElementById("FiltroFilho");
-  
-  filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
-  
-  const db = firebase.firestore();
-  
-  db.collection("filtros")
-  .doc(filtroPrincipal)
-  .get()
-  .then((docSnapshot) => {
-  if (docSnapshot.exists) {
-  const data = docSnapshot.data();
-  Object.keys(data).forEach((key) => {
-  if (key !== "filtropai" && key !== "dataupload") {
-  const option = document.createElement("option");
-  option.value = data[key];
-  option.textContent = data[key];
-  filtroFilho.appendChild(option);
-  }
-  });
-  }
-  })
-  .catch((error) => {
-  console.error("Error getting document:", error);
-  });
+
+  if (filtroFilho === null) {
+    console.error("Elemento 'filtroFilho' não encontrado no documento HTML.");
+    return;
   }
 
-// Adicionar evento de alteração ao seletor do filtro principal
-const filtroPrincipal = document.getElementById("FiltroPrincipal");
-filtroPrincipal.addEventListener("change", atualizarFiltrosFilho);
+  filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
+
+  const db = firebase.firestore();
+  db.collection("FiltroFilho")
+    .doc(filtroPrincipal)
+    .get()
+    .then((docSnapshot) => {
+      const option = document.createElement("option");
+      option.value = "Sem Filtro";
+      option.textContent = "Sem Filtro";
+      filtroFilho.appendChild(option);
+      if (docSnapshot.exists) {
+        const data = docSnapshot.data();
+        Object.keys(data).forEach((key) => {
+          const option = document.createElement("option");
+          option.value = key;
+          option.textContent = data[key];
+          filtroFilho.appendChild(option);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao obter dados do Firestore:", error);
+    });
+}
+
+document.getElementById("FiltroPrincipal").addEventListener("change", atualizarFiltrosFilho)

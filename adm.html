@@ -120,20 +120,14 @@
               Dano</label>
 
             <label>Tipo de Industria</label>
-            <select name="FiltroPrincipal" id="FiltroPrincipal" class="filtro-select" onclick="atualizarLista()">
+            <select name="FiltroPrincipal1" id="FiltroPrincipal1" class="filtro-select" onclick="atualizarFiltrosFilho1()">
               <option value="Sem Filtro">Sem Filtro</option>
               <option value="Petroquimica">Petroquímica</option>
               <option value="Refinaria">Refinaria</option>
             </select>
             <label for="FiltroFilho">Unidade de Processo</label>
-            <select name="Unidade-de-Processo" id="FiltroFilho" class="filtro-select" onclick="atualizarLista()">
+            <select name="Unidade-de-Processo" id="FiltroFilho1" class="filtro-select">
               <option value="Sem Filtro">Sem Filtro</option>
-              <option value="A1">A1</option>
-              <option value="A2">A2</option>
-              <option value="A3">A3</option>
-              <option value="B1">B1</option>
-              <option value="B2">B2</option>
-              <option value="B3">B3</option>
             </select>
             <div id="lista_filtros"></div>
 
@@ -145,14 +139,24 @@
 
           <div id="editarMecanismo" style="display: none">
             <label for="select_nomeMecanismo_edit">Escolha um Mecanismo de Dano</label>
-            <select class="select" name="select_nomeMecanismo_edit" IDMecanismo="select_IDmecanimso_edit"
-              id="select_nomeMecanismo_edit"></select>
+            <select class="select" name="select_nomeMecanismo_edit" id="select_nomeMecanismo_edit"></select>
             <label for="input_nomeMecanismo_edit">Insira um novo nome para o seu Mecanismo de Dano</label>
             <input type="text" id="input_nomeMecanismo_edit"
               placeholder="Insira aqui o nome do Mecanismo de Dano. Exemplo: Corrosão Sob Isolamento" />
             <label for="input_IDMecanismo_edit">Insira um novo ID para o seu Mecanismo de Dano</label>
             <input type="text" id="input_IDMecanismo_edit"
               placeholder="Insira aqui o ID do Mecanismo de Dano. Exemplo: 1914" />
+
+            <label>Tipo de Industria</label>
+            <select name="FiltroPrincipal2" id="FiltroPrincipal2" class="filtro-selectEdit" onclick="atualizarFiltrosFilho2()">
+              <option value="Sem Filtro">Sem Filtro</option>
+              <option value="Petroquimica">Petroquímica</option>
+              <option value="Refinaria">Refinaria</option>
+            </select>
+            <label for="FiltroFilho2">Unidade de Processo</label>
+            <select name="Unidade-de-Processo" id="FiltroFilho2" class="filtro-selectEdit">
+              <option value="Sem Filtro">Sem Filtro</option>
+            </select>
 
             <div id="filtros_editar"></div>
 
@@ -168,7 +172,7 @@
 
 
       <!--Gerenciamento de Fluxogramas-->
-      <section class="sectionadm">
+      <section class="sectionFluxograma">
         <h2>Gerenciamento de Fluxogramas</h2>
         <div class="envio">
           <h3>Adicionar e Editar Fluxogramas</h3>
@@ -185,25 +189,18 @@
             <label for="input_IDFluxograma_add">Link do Fluxograma</label>
             <input type="text" id="input_IDFluxograma_add"
               placeholder="Insira aqui o Link do Fluxograma de Dano. Exemplo: www.google.com" />
-            <label for="select_filtros">Selecione os filtros correspondentes a este Fluxograma</label>
+            <label for="select_filtros">Selecione os filtros correspondentes a este Fluxograma de Dano</label>
 
             <label>Tipo de Industria</label>
-            <select name="Tipo de Industria" id="FiltroPrincipal2" class="filtro-select" onclick="atualizarLista()">
+            <select name="FiltroPrincipal" id="FiltroPrincipal3" class="add-filtro-select" onclick="atualizarFiltrosFilho3()">
               <option value="Sem Filtro">Sem Filtro</option>
               <option value="Petroquimica">Petroquímica</option>
               <option value="Refinaria">Refinaria</option>
             </select>
             <label for="FiltroFilho">Unidade de Processo</label>
-            <select name="Unidade-de-Processo" id="FiltroFilho2" class="filtro-select" onclick="atualizarLista()">
+            <select name="Unidade-de-Processo" id="FiltroFilho3" class="add-filtro-select">
               <option value="Sem Filtro">Sem Filtro</option>
-              <option value="A1">A1</option>
-              <option value="A2">A2</option>
-              <option value="A3">A3</option>
-              <option value="B1">B1</option>
-              <option value="B2">B2</option>
-              <option value="B3">B3</option>
             </select>
-            <div id="lista_filtros"></div>
 
             <br />
             <button class="btn-adm" type="button" onclick="adicionarFluxograma()">
@@ -213,17 +210,24 @@
 
           <div id="editarFluxograma" style="display: none">
             <label for="select_nomeFluxograma_edit">Escolha um Fluxograma de Dano</label>
-            <select class="select" name="select_nomeFluxograma_edit" IDFluxograma="select_IDfluxograma_edit"
-              id="select_nomeFluxograma_edit"></select>
+            <select class="select" name="select_nomeFluxograma_edit" id="select_nomeFluxograma_edit"></select>
             <label for="input_nomeFluxograma_edit">Insira um novo nome para o seu Fluxograma de Dano</label>
             <input type="text" id="input_nomeFluxograma_edit"
               placeholder="Insira aqui o nome do Fluxograma de Dano. Exemplo: Corrosão Sob Isolamento" />
-            <label for="input_IDFluxograma_edit">Insira um novo Link para o seu Fluxograma de Dano</label>
-
+            <label for="input_IDFluxograma_edit">Insira um novo ID para o seu Fluxograma de Dano</label>
             <input type="text" id="input_IDFluxograma_edit"
               placeholder="Insira aqui o ID do Fluxograma de Dano. Exemplo: 1914" />
 
-            <div id="filtros_editar"></div>
+            <label>Tipo de Industria</label>
+            <select name="FiltroPrincipal" id="FiltroPrincipal4" class="edit-filtro-select" onclick="atualizarFiltrosFilho4()">
+              <option value="Sem Filtro">Sem Filtro</option>
+              <option value="Petroquimica">Petroquímica</option>
+              <option value="Refinaria">Refinaria</option>
+            </select>
+            <label for="FiltroFilho">Unidade de Processo</label>
+            <select name="Unidade-de-Processo" id="FiltroFilho4" class="edit-filtro-select">
+              <option value="Sem Filtro">Sem Filtro</option>
+            </select>
 
             <button class="edit" type="button" onclick="enviarEditarFluxograma()">
               Atualizar Fluxograma
@@ -234,6 +238,8 @@
           </div>
         </div>
       </section>
+
+
 
     </div>
 

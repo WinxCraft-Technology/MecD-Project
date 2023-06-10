@@ -13,6 +13,44 @@ function iniciarBanco() {
 
     firebase.initializeApp(firebaseConfig);
 
+    atualizarLista();
+
+}
+
+// Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
+function atualizarFiltrosFilho() {
+    const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
+    const filtroFilho = document.getElementById("FiltroFilho");
+
+    if (filtroFilho === null) {
+        console.error("Elemento 'filtroFilho' não encontrado no documento HTML.");
+        return;
+    }
+
+    filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
+
+    const db = firebase.firestore();
+    db.collection("FiltroFilho")
+        .doc(filtroPrincipal)
+        .get()
+        .then((docSnapshot) => {
+            const option = document.createElement("option");
+            option.value = "Sem Filtro";
+            option.textContent = "Sem Filtro";
+            filtroFilho.appendChild(option);
+            if (docSnapshot.exists) {
+                const data = docSnapshot.data();
+                Object.keys(data).forEach((key) => {
+                    const option = document.createElement("option");
+                    option.value = key;
+                    option.textContent = data[key];
+                    filtroFilho.appendChild(option);
+                });
+            }
+        })
+        .catch((error) => {
+            console.error("Erro ao obter dados do Firestore:", error);
+        });
 }
 
 
@@ -93,35 +131,6 @@ async function atualizarLista() {
 
     const numPDF = document.getElementById("lista");
     const attNumPDF = numPDF.getElementsByTagName("option").length;
-    document.getElementById("num-pdf").innerHTML = attNumPDF-1;
+    document.getElementById("num-pdf").innerHTML = attNumPDF - 1;
 }
-
-// Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
-function atualizarFiltrosFilho() {
-    const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
-    const filtroFilho = document.getElementById("FiltroFilho");
-
-    filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
-
-    if (filtroPrincipal === "Petroquimica") {
-        const opcoes = ["A1", "A2", "A3"];
-        opcoes.forEach((opcao) => {
-            const option = document.createElement("option");
-            option.value = opcao;
-            option.textContent = opcao;
-            filtroFilho.appendChild(option);
-        });
-    } else if (filtroPrincipal === "Refinaria") {
-        const opcoes = ["B1", "B2", "B3"];
-        opcoes.forEach((opcao) => {
-            const option = document.createElement("option");
-            option.value = opcao;
-            option.textContent = opcao;
-            filtroFilho.appendChild(option);
-        });
-    }
-}
-
-// Adicionar evento de alteração ao seletor do filtro principal
-const filtroPrincipal = document.getElementById("FiltroPrincipal");
-filtroPrincipal.addEventListener("change", atualizarFiltrosFilho);
+document.getElementById("FiltroPrincipal").addEventListener("change", atualizarFiltrosFilho)
