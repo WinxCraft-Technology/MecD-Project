@@ -7,11 +7,11 @@
 /* helpers/align.css */
 
 .align {
-  display: grid;
+  display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
-  justify-items: center;
+  align-items: flex-start;
+  justify-items: flex-start;
   place-items: center;
 }
 
@@ -20,6 +20,20 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 20rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  align-items: flex-start;
+  justify-items: flex-start;
+  margin-left: 100px;
+}
+
+.logo {
+  margin-left: 0;
+}
+
+.form__field {
+  margin-left: 0;
 }
 
 .capa {
