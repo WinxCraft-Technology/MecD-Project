@@ -22,6 +22,20 @@
   max-width: 20rem;
 }
 
+.capa {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: -1;
+  top: 0;
+  left: 0;
+  background: url(./assets/shutterstock_123111499.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+}
+
 /* helpers/hidden.css */
 
 .hidden {
@@ -58,6 +72,10 @@
 
 :root {
   --htmlFontSize: 100%;
+
+  --main-color: #1c1c1c;
+  --second-color: #373a3e;
+  --third-color: #fff;
 
   --bodyBackgroundColor: #373a3e;
   --bodyColor: var(--baseColor);
@@ -263,4 +281,8 @@ p {
   margin-left: 0.5rem;
   display: flex;
   margin: auto;
+  color: var(--third-color);
+  border-color: var(--main-color);
+  -webkit-text-stroke: 1px var(--second-color);
+  text-shadow: 0 0 4px #fff;
 }
