@@ -25,12 +25,12 @@ function login() {
     .then(function (result) {
       // O usuário fez o login com sucesso
       var user = result.user;
-      console.log("Usuário logado:", user);
+      window.location.href = "adm.html";
     })
     .catch(function (error) {
       // Ocorreu um erro durante o login
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log("Erro de login:", errorMessage);
+      window.alert("E-mail e/ou senha incorreta");
     });
 }
