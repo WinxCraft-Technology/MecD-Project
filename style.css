@@ -115,6 +115,7 @@
 
 #btn-menu {
   cursor: pointer;
+  display: none;
 }
 
 #btn-menu:checked ~ .container-menu {
@@ -761,9 +762,6 @@ input[type="submit"] {
   .inicio-text h2 {
     font-size: 1.5rem;
   }
-  .container .menu {
-    display: none;
-  }
   .container .btn-menu,
   .logo {
     display: block;
@@ -904,10 +902,6 @@ input[type="submit"] {
   .header {
     gap: 20rem;
   }
-
-  .container-menu {
-    display: none;
-  }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
@@ -991,5 +985,57 @@ input[type="submit"] {
   .logo img {
     width: 2rem;
     vertical-align: middle;
+  }
+  .btn-menu img{
+    width: 2rem;
+  }
+  .iniciomain {
+    display: flex;
+    flex-direction: column;
+  }
+  .PDFs {
+    flex-direction: column;
+  }
+  .imagem {
+    width: 100%;
+    height: auto;
+  }
+  .left-side,
+  .right-side {
+    width: 100%;
+  }
+  .col1,
+  .col2 {
+    margin-right: 0;
+  }
+  .sectionMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-side {
+    order: 1;
+  }
+
+  .right-side {
+    order: 2;
+  }
+  .PDFs select {
+    font-size: 1rem;
+    margin-right: 14rem;
+    margin-left: -4rem;
+  }
+  .PDFs label {
+    font-size: 1rem;
+    margin-left: -4rem;
+    
+  }
+  .resetbtn {
+    margin-left: -4rem;
+  }
+  .pdf-count {
+    margin-left: 2.5rem;
   }
 }
