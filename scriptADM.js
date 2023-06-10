@@ -1,4 +1,26 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1Z(1U(p,a,c,k,e,d){e=1U(c){1T(c<a?\'\':e(25(c/a)))+((c=c%a)>24?1Y.23(c+29):c.22(21))};1W(!\'\'.1V(/^/,1Y)){1X(c--){d[e(c)]=k[c]||e(c)}k=[1U(e){1T d[e]}];e=1U(){1T\'\\\\w+\'};c=1};1X(c--){1W(k[c]){p=p.1V(20 26(\'\\\\b\'+e(c)+\'\\\\b\',\'g\'),k[c])}}1T p}(\'12(R(p,a,c,k,e,d){e=R(c){S(c<a?\\\'\\\':e(1d(c/a)))+((c=c%a)>1e?W.1f(c+1g):c.1h(1i))};T(!\\\'\\\'.U(/^/,W)){V(c--){d[e(c)]=k[c]||e(c)}k=[R(e){S d[e]}];e=R(){S\\\'\\\\\\\\w+\\\'};c=1};V(c--){T(k[c]){p=p.U(1k 1l(\\\'\\\\\\\\b\\\'+e(c)+\\\'\\\\\\\\b\\\',\\\'g\\\'),k[c])}}S p}(\\\'e Q(){v 9={u:"t",s:"4-3.r.d",q:"4-3",p:"4-3.m.d",l:"b",j:"1:b:f:g",h:"G-i"};2.w(9);2.y().z(e(0){x(0){7.8("5áa 6á c:",0);O.N("M").L.K="J"}I{7.8("5áa não 6á c");H.F.E="D.C"}});B A=2.P();k()}\\\',X,X,\\\'19||1b|1a|15|Z|10|11|Y|13|1n|14|18|16|R|17|1m|1c|1o|1w|1I|1J|1K|||1M|1L|1G|1N|1O|1P|1Q|1R|T|1S|1H|1F|1p|1D|1C|1B|1A||1z|1y|1x|1E|1v|1u|1t|1s|1r|1q\\\'.1j(\\\'|\\\'),0,{}))\',2b,2c,\'|||||||||||||||||||||||||||||||||||||||||||||||||||||1U|1T|1W|1V|1X|1Y|2d|2e|2f|2h|28|1Z|2p|2n|2m|2l|2k|2j|2q|2i|2g|2a|25|24|23|29|22|21|27|20|26|2o|2r|2C|2T|2M|2N|2Q|2O|2P|2K|2R|2W|2S|2U|2V|2L|2J|2A|2H|2t|2u|2v|2w|2x|2y|2s|2z|2B|2I|2D|2E|2F|2G\'.27(\'|\'),0,{}))',62,183,'|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||return|function|replace|if|while|String|eval|new|36|toString|fromCharCode|35|parseInt|RegExp|split|console||measurementId|62|117|53|log|Usu|firebase|est|project|logado|web|com|mecd|210905329240|ae1579ea9fb2ad218ce42d|firebaseConfig|user|rio|projectId|db|firebaseapp|onAuthStateChanged|addOption|messagingSenderId|appspot|storageBucket|html|authDomain|RPBV1LXF0P|apiKey|const|initializeApp|auth|display|AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY|ADMlogin|style|href|iniciarBanco|firestore|getElementById|dbody|document|appId|else|var|window|location|block'.split('|'),0,{}))
+eval(function (p, a, c, k, e, d) {
+  e = function (c) {
+    return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
+  };
+  if (!''.replace(/^/, String)) {
+    while (c--) {
+      d[e(c)] = k[c] || e(c)
+    }
+    k = [function (e) {
+      return d[e]
+    }];
+    e = function () {
+      return '\\w+'
+    };
+    c = 1
+  };
+  while (c--) {
+    if (k[c]) {
+      p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c])
+    }
+  }
+  return p
+}('1Z(1U(p,a,c,k,e,d){e=1U(c){1T(c<a?\'\':e(25(c/a)))+((c=c%a)>24?1Y.23(c+29):c.22(21))};1W(!\'\'.1V(/^/,1Y)){1X(c--){d[e(c)]=k[c]||e(c)}k=[1U(e){1T d[e]}];e=1U(){1T\'\\\\w+\'};c=1};1X(c--){1W(k[c]){p=p.1V(20 26(\'\\\\b\'+e(c)+\'\\\\b\',\'g\'),k[c])}}1T p}(\'12(R(p,a,c,k,e,d){e=R(c){S(c<a?\\\'\\\':e(1d(c/a)))+((c=c%a)>1e?W.1f(c+1g):c.1h(1i))};T(!\\\'\\\'.U(/^/,W)){V(c--){d[e(c)]=k[c]||e(c)}k=[R(e){S d[e]}];e=R(){S\\\'\\\\\\\\w+\\\'};c=1};V(c--){T(k[c]){p=p.U(1k 1l(\\\'\\\\\\\\b\\\'+e(c)+\\\'\\\\\\\\b\\\',\\\'g\\\'),k[c])}}S p}(\\\'e Q(){v 9={u:"t",s:"4-3.r.d",q:"4-3",p:"4-3.m.d",l:"b",j:"1:b:f:g",h:"G-i"};2.w(9);2.y().z(e(0){x(0){7.8("5áa 6á c:",0);O.N("M").L.K="J"}I{7.8("5áa não 6á c");H.F.E="D.C"}});B A=2.P();k()}\\\',X,X,\\\'19||1b|1a|15|Z|10|11|Y|13|1n|14|18|16|R|17|1m|1c|1o|1w|1I|1J|1K|||1M|1L|1G|1N|1O|1P|1Q|1R|T|1S|1H|1F|1p|1D|1C|1B|1A||1z|1y|1x|1E|1v|1u|1t|1s|1r|1q\\\'.1j(\\\'|\\\'),0,{}))\',2b,2c,\'|||||||||||||||||||||||||||||||||||||||||||||||||||||1U|1T|1W|1V|1X|1Y|2d|2e|2f|2h|28|1Z|2p|2n|2m|2l|2k|2j|2q|2i|2g|2a|25|24|23|29|22|21|27|20|26|2o|2r|2C|2T|2M|2N|2Q|2O|2P|2K|2R|2W|2S|2U|2V|2L|2J|2A|2H|2t|2u|2v|2w|2x|2y|2s|2z|2B|2I|2D|2E|2F|2G\'.27(\'|\'),0,{}))', 62, 183, '|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||return|function|replace|if|while|String|eval|new|36|toString|fromCharCode|35|parseInt|RegExp|split|console||measurementId|62|117|53|log|Usu|firebase|est|project|logado|web|com|mecd|210905329240|ae1579ea9fb2ad218ce42d|firebaseConfig|user|rio|projectId|db|firebaseapp|onAuthStateChanged|addOption|messagingSenderId|appspot|storageBucket|html|authDomain|RPBV1LXF0P|apiKey|const|initializeApp|auth|display|AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY|ADMlogin|style|href|iniciarBanco|firestore|getElementById|dbody|document|appId|else|var|window|location|block'.split('|'), 0, {}))
 // Adicionar filtros novos no banco de dados
 var total = 1;
 
@@ -599,7 +621,7 @@ function adicionarMecanismo() {
   const selects = document.querySelectorAll('.filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const replace = select.id.replace("_"," ")
+    const replace = select.id.replace("_", " ")
     const id = replace.replace(/\d/g, "");
 
     const dados = {
@@ -768,7 +790,7 @@ function enviarEditarmecanismo() {
   const selects = document.querySelectorAll('.filtro-selectEdit');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const replace = select.id.replace("_"," ")
+    const replace = select.id.replace("_", " ")
     const id = replace.replace(/\d/g, "");
 
 
@@ -820,7 +842,7 @@ function adicionarFluxograma() {
   const selects = document.querySelectorAll('.add-filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const replace = select.id.replace("_"," ")
+    const replace = select.id.replace("_", " ")
     const id = replace.replace(/\d/g, "");
 
     const dados = {
@@ -924,7 +946,7 @@ function enviarEditarFluxograma() {
   const selects = document.querySelectorAll('.edit-filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const replace = select.id.replace("_"," ")
+    const replace = select.id.replace("_", " ")
     const id = replace.replace(/\d/g, "");
 
     const dados = {
@@ -1043,3 +1065,93 @@ function confirmDeleteFluxograma() {
   closeModalFluxograma();
 }
 
+
+// Função para mostrar o modal de adicionar usuário
+function addUsuario() {
+  var modalAdicionarFiltro = document.getElementById("addUsuario");
+  modalAdicionarFiltro.style.display = "block";
+
+  var modalEditarFiltro = document.getElementById("editUsuario");
+  modalEditarFiltro.style.display = "none";
+}
+
+function editUsuario() {
+  var modalAdicionarFiltro = document.getElementById("addUsuario");
+  modalAdicionarFiltro.style.display = "none";
+
+  var modalEditarFiltro = document.getElementById("editUsuario");
+  modalEditarFiltro.style.display = "block";
+
+  listarUsuarios();
+}
+
+
+function register() {
+  var email = document.getElementById("input_nomeUsuario_add").value;
+  var password = document.getElementById("input_senhaUsuario_add").value;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(function (result) {
+      // O usuário foi registrado com sucesso
+      var user = result.user;
+      console.log("Usuário registrado:", user);
+
+      // Adicionar o e-mail do usuário no Firestore
+      var firestore = firebase.firestore();
+      firestore.collection("usuarios").doc(user.uid).set({
+          email: user.email
+        })
+        .then(function () {
+          console.log("E-mail do usuário adicionado ao Firestore com sucesso.");
+          location.reload();
+        })
+        .catch(function (error) {
+          console.log("Erro ao adicionar o e-mail do usuário no Firestore:", error);
+          location.reload();
+        });
+    })
+    .catch(function (error) {
+      // Ocorreu um erro durante o registro
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      window.alert("E-mail e/ou senha inválida!")
+    });
+}
+
+
+// Função para listar os usuários cadastrados
+function listarUsuarios() {
+  var firestore = firebase.firestore();
+
+  firestore.collection("usuarios").get()
+    .then(function (querySnapshot) {
+      const select = document.getElementById("select_email");
+      select.innerHTML = "";
+
+      querySnapshot.forEach(function (doc) {
+        const option = document.createElement("option");
+        option.value = doc.id;
+        option.textContent = doc.data().email;
+        select.appendChild(option);
+      });
+    })
+    .catch(function (error) {
+      console.log("Erro ao listar usuários:", error);
+    });
+}
+
+function deletarConta() {
+  var select = document.getElementById("select_email");
+  var selectedText = select.options[select.selectedIndex].textContent;
+
+  var database = firebase.database();
+  var uid = selectedText; // Substitua pelo UID do usuário não autenticado que deseja excluir
+  
+  database.ref("" + uid).remove()
+    .then(function() {
+      console.log("Dados do usuário não autenticado excluídos com sucesso.");
+    })
+    .catch(function(error) {
+      console.log("Erro ao excluir dados do usuário não autenticado:", error);
+    });
+}

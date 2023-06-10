@@ -271,6 +271,47 @@
         </div>
 
 
+        <!--Gerenciamento de Usuários-->
+        <section class="sectionUsuario">
+          <h2>Gerenciamento de Usuários</h2>
+          <div class="envio">
+            <h3>Adicionar e Editar Usuários</h3>
+            <button class="btn-adm" onclick="addUsuario()">
+              Adicionar Usuário
+            </button>
+            <button class="edit" onclick="editUsuario()">
+              Editar Usuário
+            </button>
+            <br />
+
+            <div id="addUsuario" style="display: none">
+              <label for="input_nomeUsuario_add">E-mail do usuário</label>
+              <input type="text" id="input_nomeUsuario_add" placeholder="Insira aqui o nome do Usuário" />
+              <label for="input_IDUsuario_add">Senha do usuário:</label>
+              <input type="text" id="input_senhaUsuario_add" placeholder="Insira aqui a senha do Usuário" />
+
+              <br>
+
+              <button class="btn-adm" type="button" onclick="register()">
+                Adicionar Usuário
+              </button>
+            </div>
+
+            <div id="editUsuario" style="display: none">
+              <label for="input_nomeUsuario_edit">E-mail do usuário</label>
+              <select name="select_email" id="select_email"></select>
+
+              <br>
+              
+              <button class="remove" type="button" onclick="deletarConta()">
+                Excluir Usuário
+              </button>
+            </div>
+          </div>
+        </section>
+
+
+
 
       </div>
 
@@ -302,6 +343,7 @@
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>

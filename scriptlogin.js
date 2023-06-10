@@ -20,3 +20,15 @@ function login() {
       window.alert("E-mail e/ou senha incorreta");
     });
 }
+
+function resetPassword() {
+  var email = document.getElementById("login__username").value;
+
+  firebase.auth().sendPasswordResetEmail(email)
+    .then(function() {
+      console.log("E-mail de recuperação de senha enviado");
+    })
+    .catch(function(error) {
+      console.log("Erro ao enviar e-mail de recuperação de senha:", error);
+    });
+}
