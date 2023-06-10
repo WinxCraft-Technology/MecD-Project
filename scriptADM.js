@@ -20,6 +20,7 @@ function iniciarBanco() {
       // O usuário não está logado
       console.log("Usuário não está logado");
       // Faça o que for necessário para usuários não logados
+      window.location.href = "ADMlogin.html";
     }
   });
 
