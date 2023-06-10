@@ -624,6 +624,10 @@ h3 {
   border-color: var(--main-color);
 }
 
+.white {
+  color: white;
+}
+
 section {
   width: 100%;
   padding: 50px 5%;
