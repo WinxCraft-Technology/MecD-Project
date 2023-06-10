@@ -191,7 +191,7 @@
   z-index: -1;
   top: 0;
   left: 0;
-  background: url(https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=730&q=80);
+  background: url(./assets/shutterstock_39522139.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: fixed;
@@ -331,7 +331,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
-  margin-top: 30%;
+  margin-top: 10%;
   margin-left: 40%;
   border: 2px solid #000000;
 }
@@ -610,6 +610,12 @@ h2 {
   color: white;
   border-color: var(--main-color);
   font-size: 1.4rem;
+}
+
+h3 {
+  color: white;
+  border-color: var(--main-color);
+  margin-top: 15%;
 }
 
 section {
@@ -904,6 +910,7 @@ input[type="submit"] {
   .header {
     gap: 20rem;
   }
+  
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
