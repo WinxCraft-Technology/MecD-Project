@@ -90,7 +90,6 @@
         <!--Modal para confirmar exclusão de filtro-->
         <div id="myModal" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
             <p>Deseja realmente excluir?</p>
             <button class="btn-adm" type="submit" onclick="confirmDelete()">
               Sim
@@ -166,12 +165,23 @@
               <button class="edit" type="button" onclick="enviarEditarmecanismo()">
                 Atualizar Mecanismo
               </button>
-              <button class="remove" type="button" onclick="deletarMecanismo()">
+              <button class="remove" type="button" onclick="openModalMecanismo()">
                 Deletar Mecanismo
               </button>
             </div>
           </div>
         </section>
+
+        <!--ModalMecanismo para confirmar exclusão de filtroMecanismo-->
+        <div id="myModalMecanismo" class="modalMecanismo">
+          <div class="modal-contentMecanismo">
+            <p>Deseja realmente excluir?</p>
+            <button class="btn-adm" type="submit" onclick="confirmDeleteMecanismo()">
+              Sim
+            </button>
+            <button class="remove" onclick="closeModalMecanismo()">Não</button>
+          </div>
+        </div>
 
 
         <!--Gerenciamento de Fluxogramas-->
@@ -237,12 +247,23 @@
               <button class="edit" type="button" onclick="enviarEditarFluxograma()">
                 Atualizar Fluxograma
               </button>
-              <button class="remove" type="button" onclick="deletarFluxograma()">
+              <button class="remove" type="button" onclick="openModalFluxograma()">
                 Deletar Fluxograma
               </button>
             </div>
           </div>
         </section>
+
+        <!--ModalFluxograma para confirmar exclusão de filtroFluxograma-->
+        <div id="myModalFluxograma" class="modalFluxograma">
+          <div class="modal-contentFluxograma">
+            <p>Deseja realmente excluir?</p>
+            <button class="btn-adm" type="submit" onclick="confirmDeleteFluxograma()">
+              Sim
+            </button>
+            <button class="remove" onclick="closeModalFluxograma()">Não</button>
+          </div>
+        </div>
 
 
 

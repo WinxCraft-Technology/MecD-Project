@@ -526,7 +526,9 @@
 
 /* Modais??? */
 
-.modal {
+.modal,
+.modalMecanismo,
+.modalFluxograma {
   display: none;
   position: fixed;
   z-index: 1;
@@ -539,23 +541,18 @@
 }
 
 .modal-content,
-.modal-contentEdit {
+.modal-contentEdit,
+.modal-contentMecanismo,
+.modal-contentFluxograma {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 2%;
+  width: 300px;
+  height: 100px;
 }
 
-.modal-content {
-  width: 400px;
-  height: 200px;
-}
-
-.modal-contentEdit {
-  width: 600px;
-  height: 800px;
-}
 
 .close {
   color: #aaa;

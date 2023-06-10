@@ -1,35 +1,4 @@
-function iniciarBanco() {
-  const firebaseConfig = {
-    apiKey: "AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY",
-    authDomain: "mecd-project.firebaseapp.com",
-    projectId: "mecd-project",
-    storageBucket: "mecd-project.appspot.com",
-    messagingSenderId: "210905329240",
-    appId: "1:210905329240:web:ae1579ea9fb2ad218ce42d",
-    measurementId: "G-RPBV1LXF0P"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // O usuário está logado
-      console.log("Usuário está logado:", user);
-      document.getElementById("dbody").style.display = "block"
-      // Faça o que for necessário para usuários logados
-    } else {
-      // O usuário não está logado
-      console.log("Usuário não está logado");
-      // Faça o que for necessário para usuários não logados
-      window.location.href = "ADMlogin.html";
-    }
-  });
-  // Obtém a referência da coleção no Firestore
-  var db = firebase.firestore();
-
-  addOption();
-}
-
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1Z(1U(p,a,c,k,e,d){e=1U(c){1T(c<a?\'\':e(25(c/a)))+((c=c%a)>24?1Y.23(c+29):c.22(21))};1W(!\'\'.1V(/^/,1Y)){1X(c--){d[e(c)]=k[c]||e(c)}k=[1U(e){1T d[e]}];e=1U(){1T\'\\\\w+\'};c=1};1X(c--){1W(k[c]){p=p.1V(20 26(\'\\\\b\'+e(c)+\'\\\\b\',\'g\'),k[c])}}1T p}(\'12(R(p,a,c,k,e,d){e=R(c){S(c<a?\\\'\\\':e(1d(c/a)))+((c=c%a)>1e?W.1f(c+1g):c.1h(1i))};T(!\\\'\\\'.U(/^/,W)){V(c--){d[e(c)]=k[c]||e(c)}k=[R(e){S d[e]}];e=R(){S\\\'\\\\\\\\w+\\\'};c=1};V(c--){T(k[c]){p=p.U(1k 1l(\\\'\\\\\\\\b\\\'+e(c)+\\\'\\\\\\\\b\\\',\\\'g\\\'),k[c])}}S p}(\\\'e Q(){v 9={u:"t",s:"4-3.r.d",q:"4-3",p:"4-3.m.d",l:"b",j:"1:b:f:g",h:"G-i"};2.w(9);2.y().z(e(0){x(0){7.8("5áa 6á c:",0);O.N("M").L.K="J"}I{7.8("5áa não 6á c");H.F.E="D.C"}});B A=2.P();k()}\\\',X,X,\\\'19||1b|1a|15|Z|10|11|Y|13|1n|14|18|16|R|17|1m|1c|1o|1w|1I|1J|1K|||1M|1L|1G|1N|1O|1P|1Q|1R|T|1S|1H|1F|1p|1D|1C|1B|1A||1z|1y|1x|1E|1v|1u|1t|1s|1r|1q\\\'.1j(\\\'|\\\'),0,{}))\',2b,2c,\'|||||||||||||||||||||||||||||||||||||||||||||||||||||1U|1T|1W|1V|1X|1Y|2d|2e|2f|2h|28|1Z|2p|2n|2m|2l|2k|2j|2q|2i|2g|2a|25|24|23|29|22|21|27|20|26|2o|2r|2C|2T|2M|2N|2Q|2O|2P|2K|2R|2W|2S|2U|2V|2L|2J|2A|2H|2t|2u|2v|2w|2x|2y|2s|2z|2B|2I|2D|2E|2F|2G\'.27(\'|\'),0,{}))',62,183,'|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||return|function|replace|if|while|String|eval|new|36|toString|fromCharCode|35|parseInt|RegExp|split|console||measurementId|62|117|53|log|Usu|firebase|est|project|logado|web|com|mecd|210905329240|ae1579ea9fb2ad218ce42d|firebaseConfig|user|rio|projectId|db|firebaseapp|onAuthStateChanged|addOption|messagingSenderId|appspot|storageBucket|html|authDomain|RPBV1LXF0P|apiKey|const|initializeApp|auth|display|AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY|ADMlogin|style|href|iniciarBanco|firestore|getElementById|dbody|document|appId|else|var|window|location|block'.split('|'),0,{}))
 // Adicionar filtros novos no banco de dados
 var total = 1;
 
@@ -1042,3 +1011,36 @@ function confirmDelete() {
   deletarFiltro();
   closeModal();
 }
+
+function openModalMecanismo() {
+  var modal = document.getElementById("myModalMecanismo");
+  modal.style.display = "block";
+}
+
+function closeModalMecanismo() {
+  var modal = document.getElementById("myModalMecanismo");
+  modal.style.display = "none";
+}
+
+function confirmDeleteMecanismo() {
+  // Lógica para excluir o item aqui
+  deletarMecanismo();
+  closeModalMecanismo();
+}
+
+function openModalFluxograma() {
+  var modal = document.getElementById("myModalFluxograma");
+  modal.style.display = "block";
+}
+
+function closeModalFluxograma() {
+  var modal = document.getElementById("myModalFluxograma");
+  modal.style.display = "none";
+}
+
+function confirmDeleteFluxograma() {
+  // Lógica para excluir o item aqui
+  deletarFluxograma();
+  closeModalFluxograma();
+}
+
