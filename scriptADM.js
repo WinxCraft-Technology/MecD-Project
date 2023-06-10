@@ -15,6 +15,7 @@ function iniciarBanco() {
     if (user) {
       // O usuário está logado
       console.log("Usuário está logado:", user);
+      document.getElementById("body").style.display = "block"
       // Faça o que for necessário para usuários logados
     } else {
       // O usuário não está logado
@@ -23,10 +24,6 @@ function iniciarBanco() {
       window.location.href = "ADMlogin.html";
     }
   });
-
-
-
-
   // Obtém a referência da coleção no Firestore
   var db = firebase.firestore();
 
