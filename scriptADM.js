@@ -10,6 +10,22 @@ function iniciarBanco() {
   };
 
   firebase.initializeApp(firebaseConfig);
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // O usuário está logado
+      console.log("Usuário está logado:", user);
+      // Faça o que for necessário para usuários logados
+    } else {
+      // O usuário não está logado
+      console.log("Usuário não está logado");
+      // Faça o que for necessário para usuários não logados
+    }
+  });
+
+
+
+
   // Obtém a referência da coleção no Firestore
   var db = firebase.firestore();
 
