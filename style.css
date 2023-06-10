@@ -620,9 +620,8 @@ h2 {
 }
 
 h3 {
-  color: white;
+  color: black;
   border-color: var(--main-color);
-  margin-top: 15%;
 }
 
 section {
