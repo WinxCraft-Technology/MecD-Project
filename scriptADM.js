@@ -15,7 +15,7 @@ function iniciarBanco() {
     if (user) {
       // O usuário está logado
       console.log("Usuário está logado:", user);
-      document.getElementById("body").style.display = "block"
+      document.getElementById("dbody").style.display = "block"
       // Faça o que for necessário para usuários logados
     } else {
       // O usuário não está logado
