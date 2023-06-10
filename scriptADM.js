@@ -888,7 +888,6 @@ function editarFluxograma() {
 
 
 document.getElementById("select_nomeFluxograma_edit").addEventListener("change", function () {
-  console.log("A")
   const selectElement = document.getElementById("select_nomeFluxograma_edit");
   const valorSelecionado = selectElement.value;
   document.getElementById("input_nomeFluxograma_edit").value = valorSelecionado;
