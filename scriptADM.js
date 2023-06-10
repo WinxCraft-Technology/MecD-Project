@@ -1070,19 +1070,6 @@ function confirmDeleteFluxograma() {
 function addUsuario() {
   var modalAdicionarFiltro = document.getElementById("addUsuario");
   modalAdicionarFiltro.style.display = "block";
-
-  var modalEditarFiltro = document.getElementById("editUsuario");
-  modalEditarFiltro.style.display = "none";
-}
-
-function editUsuario() {
-  var modalAdicionarFiltro = document.getElementById("addUsuario");
-  modalAdicionarFiltro.style.display = "none";
-
-  var modalEditarFiltro = document.getElementById("editUsuario");
-  modalEditarFiltro.style.display = "block";
-
-  listarUsuarios();
 }
 
 
@@ -1115,43 +1102,5 @@ function register() {
       var errorCode = error.code;
       var errorMessage = error.message;
       window.alert("E-mail e/ou senha inválida!")
-    });
-}
-
-
-// Função para listar os usuários cadastrados
-function listarUsuarios() {
-  var firestore = firebase.firestore();
-
-  firestore.collection("usuarios").get()
-    .then(function (querySnapshot) {
-      const select = document.getElementById("select_email");
-      select.innerHTML = "";
-
-      querySnapshot.forEach(function (doc) {
-        const option = document.createElement("option");
-        option.value = doc.id;
-        option.textContent = doc.data().email;
-        select.appendChild(option);
-      });
-    })
-    .catch(function (error) {
-      console.log("Erro ao listar usuários:", error);
-    });
-}
-
-function deletarConta() {
-  var select = document.getElementById("select_email");
-  var selectedText = select.options[select.selectedIndex].textContent;
-
-  var database = firebase.database();
-  var uid = selectedText; // Substitua pelo UID do usuário não autenticado que deseja excluir
-  
-  database.ref("" + uid).remove()
-    .then(function() {
-      console.log("Dados do usuário não autenticado excluídos com sucesso.");
-    })
-    .catch(function(error) {
-      console.log("Erro ao excluir dados do usuário não autenticado:", error);
     });
 }
