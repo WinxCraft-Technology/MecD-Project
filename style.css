@@ -187,7 +187,7 @@
   position: fixed;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.9);
   z-index: -1;
   top: 0;
   left: 0;
@@ -209,26 +209,34 @@
 
 .inicio-text {
   flex: 1 1 17rem;
+  border-radius: 1%;
+  text-shadow: 0 0 4px #fff;
   backdrop-filter: blur(3px);
 }
 
 .inicio-text span {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--third-color);
+  border-color: var(--main-color);
+  -webkit-text-stroke: 2px var(--main-color);
 }
 
 .inicio-text h1 {
   font-size: 4.2rem;
   color: var(--third-color);
+  border-color: var(--main-color);
+  -webkit-text-stroke: 2px var(--main-color);
   font-weight: bolder;
 }
 
 .inicio-text h2 {
-  font-size: 2.8rem;
-  font-weight: 600;
+  font-size: 4rem;
+  font-weight: 800;
   color: var(--third-color);
+  border-color: var(--main-color);
+  -webkit-text-stroke: 2px var(--main-color);
   text-transform: uppercase;
   margin: 0.5rem 0 1.4rem;
 }
@@ -424,7 +432,7 @@
 
 .envio {
   background-color: var(--third-color);
-  padding: 20px;
+  padding: 5px;
   border-radius: 10px;
 }
 
@@ -518,7 +526,7 @@
   border-radius: 5px;
 }
 
-.deletebutton{
+.deletebutton {
   margin-left: 5px;
 }
 
@@ -559,7 +567,6 @@
   width: 300px;
   height: 100px;
 }
-
 
 .close {
   color: #aaa;
@@ -690,7 +697,6 @@ select option {
 .edit,
 .close,
 input[type="submit"] {
-
 }
 
 .section {
@@ -810,7 +816,7 @@ input[type="submit"] {
     top: 0;
     right: 0;
   }
-  .pdf-count{
+  .pdf-count {
     display: block;
   }
   .container-menu {
@@ -886,7 +892,6 @@ input[type="submit"] {
   .container .menu.active {
     right: 0;
   }
-
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -910,7 +915,6 @@ input[type="submit"] {
   .header {
     gap: 20rem;
   }
-  
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
@@ -974,7 +978,7 @@ input[type="submit"] {
     font-size: 0.6em;
     width: 100%;
   }
-  .logo-dois{
+  .logo-dois {
     display: none;
   }
   .inicio-text h1 {
@@ -990,12 +994,12 @@ input[type="submit"] {
     display: flex;
     align-items: center;
   }
-  
+
   .logo img {
     width: 2rem;
     vertical-align: middle;
   }
-  .btn-menu img{
+  .btn-menu img {
     width: 2rem;
   }
   .iniciomain {
@@ -1039,12 +1043,23 @@ input[type="submit"] {
   .PDFs label {
     font-size: 1rem;
     margin-left: -4rem;
-    
   }
   .resetbtn {
     margin-left: -4rem;
   }
   .pdf-count {
     margin-left: 2.5rem;
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px #fff;
+  }
+  50% {
+    text-shadow: 0 0 20px #fff;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff;
   }
 }
