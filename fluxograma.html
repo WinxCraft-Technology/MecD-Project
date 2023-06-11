@@ -1,114 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fluxogramas - MecD</title>
+    <!-- Link do estilo -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Link das caixas -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <!-- Icone da página -->
+    <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fluxogramas - MecD</title>
-  <!-- Link do estilo -->
-  <link rel="stylesheet" href="style.css" />
-  <!-- Link das caixas -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
-  <!-- Icone da página -->
-  <link rel="icon" type="image/png" href="/assets/gear-icon-png-2246.png" />
-</head>
-
-<body onload="iniciarBanco()">
-  <header class="header">
-    <div class="logo">
-      <a href="index.html" class="logo"
-        ><img src="assets/gear-icon-png-2246.png" alt="" />
-        <h1>MecD</h1></a
-      >
-    </div>
-
-    <div class="logo-dois">
-      <a href="https://polya.com.br" target="_blank">
-        <img src="./assets/Logo_800_600.png" alt="" />
-      </a>
-    </div>
-
-    <div class="container">
-      <div class="btn-menu">
-        <label for="btn-menu">
-          <img src="assets/hamburger-menu-icon-png-9.jpg" alt="Menu" />
-        </label>
+  <body onload="iniciarBanco()">
+    <header class="header">
+      <div class="logo">
+        <a href="index.html" class="logo"
+          ><img src="assets/gear-icon-png-2246.png" alt="" />
+          <h1>MecD_Caldeiras</h1></a
+        >
       </div>
-    </div>
-  </header>
-  <main>
-    <div class="iniciomain">
-      <section class="sectionMain">
-        <div class="left-side">
-          <form class="PDFs">
-            <div class="col1">
-              <br />
-              <br />
-              <br />
 
-              <label for="">Opções:</label>
-              <label>Tipo de Industria</label>
-              <select name="FiltroPrincipal" id="FiltroPrincipal" class="filtro-select" onchange="atualizarLista()">
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
-              </select>
-              <label for="FiltroFilho">Unidade de Processo</label>
-              <select name="Unidade-de-Processo" id="FiltroFilho" class="filtro-select" onchange="atualizarLista()">
-                <option value="Sem Filtro">Sem Filtro</option>
+      <div class="logo-dois">
+        <a href="https://polya.com.br" target="_blank">
+          <img src="./assets/Logo_800_600.png" alt="" />
+        </a>
+      </div>
 
-              </select>
-
-              <div id="resultado"></div>
-              <button type="button" class="resetbtn" onclick="window.location.reload()">
-                Resetar Filtros
-              </button>
-            </div>
-          </form>
+      <div class="container">
+        <div class="btn-menu">
+          <label for="btn-menu">
+            <img src="assets/hamburger-menu-icon-png-9.jpg" alt="Menu" />
+          </label>
         </div>
+      </div>
+    </header>
+    <main>
+      <div class="iniciomain">
+        <section class="sectionMain">
+          <div class="left-side">
+            <form class="PDFs">
+              <div class="col1">
+                <br />
+                <br />
+                <br />
 
-        <div class="right-side">
-          <div id="lista-pdfs" class="col2">
-            <h3 class="white">Quantidade de Fluxogramas Selecionados</h3>
-            <div class="pdf-count">
-              <p id="num-pdf"></p>
-            </div>
-            <h3 class="white">Relação dos Fluxogramas Selecionados</h3>
-            <select id="lista" name="opcoes"></select>
+                <label for="">Opções:</label>
+                <label>Modelo de Caldeira</label>
+                <select
+                  name="FiltroPrincipal"
+                  id="FiltroPrincipal"
+                  class="filtro-select"
+                  onchange="atualizarLista()"
+                >
+                  <option value="Sem Filtro">Sem Filtro</option>
+                  <option value="Petroquimica">Petroquímica</option>
+                  <option value="Refinaria">Refinaria</option>
+                </select>
+                <label for="FiltroFilho">Região de Caldeira</label>
+                <select
+                  name="Unidade-de-Processo"
+                  id="FiltroFilho"
+                  class="filtro-select"
+                  onchange="atualizarLista()"
+                >
+                  <option value="Sem Filtro">Sem Filtro</option>
+                </select>
+
+                <div id="resultado"></div>
+                <button
+                  type="button"
+                  class="resetbtn"
+                  onclick="window.location.reload()"
+                >
+                  Resetar Filtros
+                </button>
+              </div>
+            </form>
           </div>
-          <form action="">
-            <br />
-            <a id="btn-pdf" href="#" class="btn" target="_blank">Ir para a Página</a>
-            <br />
-            <br />
-          </form>
-        </div>
-      </section>
-    </div>
 
-    <input type="checkbox" id="btn-menu" />
-    <div class="container-menu">
-      <div class="cont-menu">
-        <nav>
-          <a href="index.html">Inicio</a>
-          <a href="ADMlogin.html">Área do administrador</a>
-          <a href="main.html">Área MecD</a>
-          <a href="fluxograma.html">Fluxogramas</a>
-          <a href="https://polya.com.br">Polya</a>
-        </nav>
-        <label for="btn-menu">✖️</label>
+          <div class="right-side">
+            <div id="lista-pdfs" class="col2">
+              <h3 class="white">Quantidade de Desenhos Selecionados</h3>
+              <div class="pdf-count">
+                <p id="num-pdf"></p>
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="right-side-down">
+                <h3 class="white">Relação dos arquivos de Desenhos Selecionados</h3>
+                <select id="lista" name="opcoes"></select>
+              </div>
+            </div>
+            <form action="">
+              <br />
+              <a id="btn-pdf" href="#" class="btn" target="_blank"
+                >Abrir Arquivo</a
+              >
+              <br />
+              <br />
+            </form>
+          </div>
+        </section>
       </div>
-    </div>
 
-    <section class="footer" id="footer">
-      <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
-    </section>
-  </main>
-  <script src="scriptFluxograma.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-</body>
+      <input type="checkbox" id="btn-menu" />
+      <div class="container-menu">
+        <div class="cont-menu">
+          <nav>
+            <a href="index.html">Inicio</a>
+            <a href="ADMlogin.html">Área do administrador</a>
+            <a href="main.html">Área MecD</a>
+            <a href="fluxograma.html">Fluxogramas</a>
+            <a href="https://polya.com.br">Polya</a>
+          </nav>
+          <label for="btn-menu">✖️</label>
+        </div>
+      </div>
 
+      <section class="footer" id="footer">
+        <p class="copy">&#169; WinxCraft All Right Reserverd.</p>
+      </section>
+    </main>
+    <script src="scriptFluxograma.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  </body>
 </html>
