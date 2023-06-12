@@ -102,7 +102,7 @@ async function atualizarLista() {
     lista.innerHTML = ""; // Limpar a lista antes de atualizá-la
 
     const option = document.createElement("option");
-    option.innerText = "Selecione um Fluxograma";
+    option.innerText = "Selecione um Desenho";
     lista.appendChild(option);
     filtroFinal.forEach((valor) => {
         const option = document.createElement("option");
