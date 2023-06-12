@@ -192,28 +192,28 @@
           <div class="envio">
             <h3>Adicionar e Editar Desenhos</h3>
             <button class="btn-adm" onclick="listarFiltrosFluxograma()">
-              Adicionar Fluxograma
+              Adicionar Desenho
             </button>
             <button class="edit" onclick="editarFluxograma()">
-              Editar Fluxograma
+              Editar Desenho
             </button>
             <div id="addFluxograma" style="display: none">
-              <label for="input_nomeFluxograma_add">Nome do Fluxograma</label>
+              <label for="input_nomeFluxograma_add">Nome do Desenho</label>
               <input type="text" id="input_nomeFluxograma_add"
                 placeholder="Insira aqui o nome do Fluxograma de Dano. Exemplo: Corrosão Sob Isolamento" />
-              <label for="input_IDFluxograma_add">Link do Fluxograma</label>
+              <label for="input_IDFluxograma_add">Link do Desenho</label>
               <input type="text" id="input_IDFluxograma_add"
                 placeholder="Insira aqui o Link do Fluxograma de Dano. Exemplo: www.google.com" />
-              <label for="select_filtros">Selecione os filtros correspondentes a este Fluxograma de Dano</label>
+              <label for="select_filtros">Selecione os filtros correspondentes a este Desenho</label>
 
-              <label>Tipo de Industria</label>
+              <label>Modelo da Caldeira</label>
               <select name="FiltroPrincipal" id="FiltroPrincipal3" class="add-filtro-select"
                 onclick="atualizarFiltrosFilho3()">
                 <option value="Sem Filtro">Sem Filtro</option>
                 <option value="Petroquimica">Petroquímica</option>
                 <option value="Refinaria">Refinaria</option>
               </select>
-              <label for="FiltroFilho">Unidade de Processo</label>
+              <label for="FiltroFilho">Região da Caldeira</label>
               <select name="Unidade-de-Processo" id="FiltroFilho3" class="add-filtro-select">
                 <option value="Sem Filtro">Sem Filtro</option>
               </select>
@@ -250,10 +250,10 @@
               <br /><br />
 
               <button class="edit" type="button" onclick="enviarEditarFluxograma()">
-                Atualizar Fluxograma
+                Atualizar Desenho
               </button>
               <button class="remove" type="button" onclick="openModalFluxograma()">
-                Deletar Fluxograma
+                Deletar Desenho
               </button>
             </div>
           </div>
