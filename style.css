@@ -694,18 +694,6 @@ select option {
   color: var(--main-color);
 }
 
-.btn,
-.add,
-.btn-adm,
-.btn-adm-envio,
-.removedois,
-.deletebutton,
-.remove,
-.edit,
-.close,
-input[type="submit"] {
-}
-
 .section {
   display: flex;
   flex-direction: column;
