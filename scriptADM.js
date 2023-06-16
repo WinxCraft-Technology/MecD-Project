@@ -34,7 +34,8 @@ function adicionarFiltro() {
     const valor = document.getElementById(opcao).value;
 
     const filtro = {
-      [opcao]: valor
+      [opcao]: valor,
+      carimbo: firebase.firestore.FieldValue.serverTimestamp() // Adiciona o carimbo ao documento
     };
 
     db.collection("filtros")
@@ -51,9 +52,6 @@ function adicionarFiltro() {
       });
   }
 }
-
-
-
 
 // Criar uma nova opção ao criar um filtro
 var numOpcao = 2;
@@ -287,48 +285,59 @@ function addOptionEdit() {
 
 function editarFiltro() {
   const selectElement = document.getElementById('nameEdit');
-
-  // Obtenha o valor selecionado
   const valorSelecionado = selectElement.options[selectElement.selectedIndex].value;
-
   const db = firebase.firestore();
-
-  // Defina o caminho do documento que deseja apagar
   const documentoRef = db.collection('filtros').doc(valorSelecionado);
 
-  // Apague as informações do documento
-  documentoRef
-    .delete()
-    .then(() => {
-      console.log('Documento apagado com sucesso.');
+  documentoRef.get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const dadosAtuais = docSnapshot.data();
+        const camposParaApagar = Object.keys(dadosAtuais);
+
+        const batch = db.batch();
+
+        camposParaApagar.forEach((campo) => {
+          batch.delete(documentoRef.collection("subcollection").doc(campo)); // Substitua "subcollection" pelo nome da sua subcoleção, se houver
+        });
+
+        batch.commit()
+          .then(() => {
+            console.log("Campos apagados com sucesso.");
+
+            const camposParaAtualizar = {};
+
+            for (let i = 1; i <= totalOpcoesEdit; i++) {
+              const opcao = "opc" + i + "E";
+              const campo = "opc" + i;
+              const valor = document.getElementById(opcao).value;
+
+              camposParaAtualizar[campo] = valor;
+            }
+
+            documentoRef.set(camposParaAtualizar, {
+                merge: true
+              })
+              .then(() => {
+                console.log('Dados atualizados com sucesso.');
+                location.reload();
+              })
+              .catch((error) => {
+                console.error('Erro ao atualizar os dados:', error);
+              });
+          })
+          .catch((error) => {
+            console.error("Erro ao apagar campos:", error);
+          });
+      } else {
+        console.error("O documento não existe.");
+      }
     })
     .catch((error) => {
-      console.error('Erro ao apagar o documento:', error);
+      console.error('Erro ao obter o documento:', error);
     });
-
-  for (let i = 1; i <= totalOpcoesEdit; i++) {
-    const opcao = "opc" + i + "E";
-    const campo = "opc" + i;
-    const valor = document.getElementById(opcao).value;
-
-    const filtro = {
-      [campo]: valor
-    };
-
-    // Insira os novos dados no documento
-    documentoRef
-      .set(filtro, {
-        merge: true
-      })
-      .then(() => {
-        console.log('Novos dados inseridos com sucesso.');
-        location.reload();
-      })
-      .catch((error) => {
-        console.error('Erro ao inserir os novos dados:', error);
-      });
-  }
 }
+
 
 
 function deletarFiltro() {
@@ -465,13 +474,14 @@ document.getElementById("selecionarFiltroPaiEdit").addEventListener("change", fu
     .then(function (doc) {
       if (doc.exists) {
         var data = doc.data();
-        var campos = Object.values(data);
 
-        campos.forEach(function (valor) {
-          var optionElement = document.createElement("option");
-          optionElement.value = valor;
-          optionElement.textContent = valor;
-          selectElement.appendChild(optionElement);
+        Object.keys(data).forEach((key) => {
+          if (key !== "carimbo") {
+            const option = document.createElement("option");
+            option.value = data[key];
+            option.textContent = data[key];
+            selectElement.appendChild(option);
+          }
         });
       } else {
         console.log("Documento não encontrado.");
@@ -480,10 +490,9 @@ document.getElementById("selecionarFiltroPaiEdit").addEventListener("change", fu
     .catch(function (error) {
       console.log("Erro ao buscar os valores:", error);
     });
+});
 
 
-
-})
 
 var numOpcaoFilho = 2;
 var totalFilho = numOpcaoFilho - 1;
@@ -600,42 +609,62 @@ function editarFiltroFilho() {
   // Defina o caminho do documento que deseja apagar
   const documentoRef = db.collection('FiltroFilho').doc(valorSelecionado);
 
-  // Apague as informações do documento
-  documentoRef
-    .delete()
-    .then(() => {
-      console.log('Documento apagado com sucesso.');
+  documentoRef.get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const dadosAtuais = docSnapshot.data();
+        const camposParaApagar = Object.keys(dadosAtuais);
+
+        const batch = db.batch();
+
+        camposParaApagar.forEach((campo) => {
+          // Exclui os campos individualmente
+          batch.update(documentoRef, {
+            [campo]: firebase.firestore.FieldValue.delete()
+          });
+        });
+
+        batch.commit()
+          .then(() => {
+            console.log("Campos apagados com sucesso.");
+
+            for (let i = 1; i <= totalOpcoesEditFilho; i++) {
+              const opcao = "opc" + i + "EditFilho";
+              const campo = "opc" + i;
+              const valor = document.getElementById(opcao).value;
+
+              const filtro = {
+                [campo]: valor,
+                FiltroPai: filtroPai,
+                OpcPai: opcPai
+              };
+
+              // Insere os novos dados no documento
+              documentoRef.set(filtro, {
+                  merge: true
+                })
+                .then(() => {
+                  console.log('Novos dados inseridos com sucesso.');
+                  location.reload();
+                })
+                .catch((error) => {
+                  console.error('Erro ao inserir os novos dados:', error);
+                });
+            }
+          })
+          .catch((error) => {
+            console.error("Erro ao apagar campos:", error);
+          });
+      } else {
+        console.error("O documento não existe.");
+      }
     })
     .catch((error) => {
-      console.error('Erro ao apagar o documento:', error);
+      console.error('Erro ao obter o documento:', error);
     });
-
-  for (let i = 1; i <= totalOpcoesEditFilho; i++) {
-    const opcao = "opc" + i + "EditFilho";
-    const campo = "opc" + i;
-    console.log(opcao)
-    const valor = document.getElementById(opcao).value;
-
-    const filtro = {
-      [campo]: valor,
-      FiltroPai: filtroPai,
-      OpcPai: opcPai
-    };
-
-    // Insira os novos dados no documento
-    documentoRef
-      .set(filtro, {
-        merge: true
-      })
-      .then(() => {
-        console.log('Novos dados inseridos com sucesso.');
-        location.reload();
-      })
-      .catch((error) => {
-        console.error('Erro ao inserir os novos dados:', error);
-      });
-  }
 }
+
+
 
 var totalOpcoesEditFilho = 0;
 var numOpcaoEditFilho = totalOpcoesEditFilho + 1;
@@ -807,7 +836,7 @@ function listarFiltrosMecanismos() {
 
           const data = doc.data();
           Object.keys(data).forEach((key) => {
-            if (key !== "filtropai" && key !== "dataupload") {
+            if (key !== "carimbo") {
               const option = document.createElement("option");
               option.value = data[key];
               option.textContent = data[key];
@@ -1285,7 +1314,7 @@ function handleSelectChange(event) {
               optionDefault.textContent = "Sem Filtro";
               select.appendChild(optionDefault);
               Object.keys(data).forEach((key) => {
-                if ([key] != "filtropai" && [key] != "dataupload") {
+                if ([key] != "carimbo") {
                   const option = document.createElement("option");
                   option.value = data[key];
                   option.textContent = data[key];
@@ -1440,40 +1469,61 @@ function enviarEditarmecanismo() {
   const valorSelecionado = select.value;
   const documentoRef = db.collection('mecanismos').doc(valorSelecionado);
 
-  documentoRef
-    .delete()
-    .then(() => {
-      console.log('Documento apagado com sucesso.');
+  documentoRef.get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const dadosAtuais = docSnapshot.data();
+        const camposParaApagar = Object.keys(dadosAtuais);
+        camposParaApagar.push("IDMecanismo");
+
+        const batch = db.batch();
+
+        camposParaApagar.forEach((campo) => {
+          batch.update(documentoRef, {
+            [campo]: firebase.firestore.FieldValue.delete()
+          });
+        });
+
+        batch.commit()
+          .then(() => {
+            console.log("Campos apagados com sucesso.");
+
+            const dadosParaAtualizar = {};
+
+            const selects = document.querySelectorAll('.filtro-selectEdit');
+            selects.forEach((select) => {
+              const categoriaSelecionada = select.value;
+              const id = select.id.replaceAll("_", " ");
+
+              dadosParaAtualizar[id] = categoriaSelecionada;
+            });
+
+            dadosParaAtualizar["IDMecanismo"] = IDMecanismo; // Adiciona o campo IDMecanismo aos dados para atualização
+
+            documentoRef.set(dadosParaAtualizar, {
+                merge: true
+              })
+              .then(() => {
+                console.log("Document successfully updated!");
+                location.reload();
+              })
+              .catch((error) => {
+                console.error("Error updating document: ", error);
+              });
+          })
+          .catch((error) => {
+            console.error("Error deleting fields: ", error);
+          });
+      } else {
+        console.error("Document does not exist.");
+      }
     })
     .catch((error) => {
-      console.error('Erro ao apagar o documento:', error);
+      console.error("Error getting document: ", error);
     });
-
-  const selects = document.querySelectorAll('.filtro-selectEdit');
-  selects.forEach((select) => {
-    const categoriaSelecionada = select.value;
-    const id = select.id.replaceAll("_", " ")
-
-
-    const dados = {
-      [id]: categoriaSelecionada,
-      "IDMecanismo": IDMecanismo // Adiciona o campo IDMecanismo ao documento
-    }
-
-    db.collection("mecanismos")
-      .doc(nome)
-      .set(dados, {
-        merge: true
-      })
-      .then(() => {
-        console.log("Document successfully updated!");
-        location.reload();
-      })
-      .catch((error) => {
-        console.error("Error updating document: ", error);
-      });
-  });
 }
+
+
 
 
 function deletarMecanismo() {
@@ -1596,40 +1646,58 @@ function enviarEditarFluxograma() {
   const valorSelecionado = select.value;
   const documentoRef = db.collection('fluxograma').doc(valorSelecionado);
 
-  documentoRef
-    .delete()
-    .then(() => {
-      console.log('Documento apagado com sucesso.');
+  documentoRef.get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        const dadosAtuais = docSnapshot.data();
+        const camposParaApagar = Object.keys(dadosAtuais);
+
+        const batch = db.batch();
+
+        camposParaApagar.forEach((campo) => {
+          batch.delete(documentoRef.collection("subcollection").doc(campo)); // Substitua "subcollection" pelo nome da sua subcoleção, se houver
+        });
+
+        batch.commit()
+          .then(() => {
+            console.log("Campos apagados com sucesso.");
+
+            const dadosParaAtualizar = {};
+
+            const selects = document.querySelectorAll('.edit-filtro-select');
+            selects.forEach((select) => {
+              const categoriaSelecionada = select.value;
+              const id1 = select.id.replaceAll("_", " ");
+              const id = id1.replaceAll("Edit", "");
+
+              dadosParaAtualizar[id] = categoriaSelecionada;
+            });
+
+            dadosParaAtualizar["IDFluxograma"] = IDFluxograma;
+
+            documentoRef.set(dadosParaAtualizar, {
+                merge: true
+              })
+              .then(() => {
+                console.log("Document successfully updated!");
+                location.reload();
+              })
+              .catch((error) => {
+                console.error("Error updating document: ", error);
+              });
+          })
+          .catch((error) => {
+            console.error("Erro ao apagar campos:", error);
+          });
+      } else {
+        console.error("O documento não existe.");
+      }
     })
     .catch((error) => {
-      console.error('Erro ao apagar o documento:', error);
+      console.error('Erro ao obter o documento:', error);
     });
-
-  const selects = document.querySelectorAll('.edit-filtro-select');
-  selects.forEach((select) => {
-    const categoriaSelecionada = select.value;
-    const id1 = select.id.replaceAll("_", " ")
-    const id = id1.replaceAll("Edit","")
-
-    const dados = {
-      [id]: categoriaSelecionada,
-      "IDFluxograma": IDFluxograma // Adiciona o campo IDFluxograma ao documento
-    }
-
-    db.collection("fluxograma")
-      .doc(nome)
-      .set(dados, {
-        merge: true
-      })
-      .then(() => {
-        console.log("Document successfully updated!");
-        location.reload();
-      })
-      .catch((error) => {
-        console.error("Error updating document: ", error);
-      });
-  });
 }
+
 
 function deletarFluxograma() {
   const db = firebase.firestore();

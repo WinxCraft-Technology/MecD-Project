@@ -25,15 +25,11 @@ selects.forEach((select) => {
 
 function exibirDocumentos() {
   const db = firebase.firestore();
-
-  // Obtém a referência para a div 'resultado'
   const divReferencia = document.getElementById("resultado");
-
-  // Limpa o conteúdo da div 'resultado'
   divReferencia.innerHTML = "";
 
-  // Obtém a lista de documentos
   db.collection("filtros")
+    .orderBy("carimbo") // Ordena os documentos pelo campo "carimbo"
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -67,7 +63,7 @@ function exibirDocumentos() {
               select.appendChild(optionDefault);
 
               Object.keys(data).forEach((key) => {
-                if (key !== "filtropai" && key !== "dataupload") {
+                if (key !== "carimbo") {
                   const option = document.createElement("option");
                   option.value = data[key];
                   option.textContent = data[key];
@@ -84,9 +80,8 @@ function exibirDocumentos() {
     .catch((error) => {
       console.error("Error getting documents:", error);
     });
-
-
 }
+
 
 
 async function atualizarLista() {
