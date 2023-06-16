@@ -112,40 +112,42 @@ function addOption() {
 document.getElementById("editarFiltro").addEventListener("click", adminEditar);
 
 //Exibe a lista com os filtros criados, para selecioanr um
+let adminEditarExecuted = 0;
+
 function adminEditar() {
-  // Referência para o Firestore
-  var db = firebase.firestore();
+  if (adminEditarExecuted < 1) {
+    // Referência para o Firestore
+    const db = firebase.firestore();
 
-  // Referência para o elemento select
-  var selectElement = document.getElementById("nameEdit");
-  selectElement.innerHTML = ""
-  var optionElement = document.createElement("option");
-  optionElement.value = "Lista de Filtros";
-  optionElement.textContent = "Lista de Filtros";
-  optionElement.selected = "true";
-  optionElement.disabled = "true";
-  selectElement.appendChild(optionElement);
+    // Referência para o elemento select
+    const selectElement = document.getElementById("nameEdit");
+    selectElement.innerHTML = '<option value="Lista de Filtros" selected disabled>Lista de Filtros</option>';
 
-  // Buscar os nomes dos documentos no Firestore
-  db.collection("filtros")
-    .get()
-    .then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        var nomeDocumento = doc.id;
+    // Buscar os nomes dos documentos no Firestore
+    db.collection("filtros")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const nomeDocumento = doc.id;
 
-        // Criar um elemento option
-        var optionElement = document.createElement("option");
-        optionElement.value = nomeDocumento;
-        optionElement.textContent = nomeDocumento;
+          // Criar um elemento option
+          const optionElement = document.createElement("option");
+          optionElement.value = nomeDocumento;
+          optionElement.textContent = nomeDocumento;
 
-        // Adicionar o option ao select
-        selectElement.appendChild(optionElement);
+          // Adicionar o option ao select
+          selectElement.appendChild(optionElement);
+        });
+      })
+      .catch((error) => {
+        console.log("Erro ao buscar os valores:", error);
       });
-    })
-    .catch(function (error) {
-      console.log("Erro ao buscar os valores:", error);
-    });
+
+    // Atualiza o valor da variável de controle
+    adminEditarExecuted++;
+  }
 }
+
 
 
 // Exibir nos inputs os valores atuais dos campos
@@ -536,57 +538,52 @@ function addOptionFilho() {
 
 document.getElementById("editarFiltroFilho").addEventListener("click", adminEditarFilho);
 
+let adminEditarFilhoExecuted = 0;
+
 function adminEditarFilho() {
-  var db = firebase.firestore();
-  var selectElement = document.getElementById("nameEditFilho");
-  selectElement.innerHTML = "";
-  var optionElement = document.createElement("option");
-  optionElement.value = "Lista de Filtros Filhos";
-  optionElement.textContent = "Lista de Filtros Filhos";
-  optionElement.selected = true;
-  optionElement.disabled = true;
-  selectElement.appendChild(optionElement);
+  if (adminEditarFilhoExecuted < 1) {
+    const db = firebase.firestore();
 
-  db.collection("FiltroFilho")
-    .get()
-    .then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        var nomeDocumento = doc.id;
-        var optionElement = document.createElement("option");
-        optionElement.value = nomeDocumento;
-        optionElement.textContent = nomeDocumento;
-        selectElement.appendChild(optionElement);
+    const selectElement = document.getElementById("nameEditFilho");
+    selectElement.innerHTML = '<option value="Lista de Filtros Filhos" selected disabled>Lista de Filtros Filhos</option>';
+
+    db.collection("FiltroFilho")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const nomeDocumento = doc.id;
+          const optionElement = document.createElement("option");
+          optionElement.value = nomeDocumento;
+          optionElement.textContent = nomeDocumento;
+          selectElement.appendChild(optionElement);
+        });
+      })
+      .catch((error) => {
+        console.log("Erro ao buscar os valores:", error);
       });
-    })
-    .catch(function (error) {
-      console.log("Erro ao buscar os valores:", error);
-    });
 
-  var selectElement2 = document.getElementById("selecionarFiltroPaiEdit");
-  selecionarFiltroPaiEdit.innerHTML = "";
-  var optionElement2 = document.createElement("option");
-  optionElement2.value = "Lista de Filtros Principais";
-  optionElement2.textContent = "Lista de Filtros Principais";
-  optionElement2.selected = true;
-  optionElement2.disabled = true;
-  selectElement2.appendChild(optionElement2);
+    const selectElement2 = document.getElementById("selecionarFiltroPaiEdit");
+    selectElement2.innerHTML = '<option value="Lista de Filtros Principais" selected disabled>Lista de Filtros Principais</option>';
 
-  db.collection("filtros")
-    .get()
-    .then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        var nomeDocumento2 = doc.id;
-        var optionElement3 = document.createElement("option");
-        optionElement3.value = nomeDocumento2;
-        optionElement3.textContent = nomeDocumento2;
-        selectElement2.appendChild(optionElement3);
+    db.collection("filtros")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const nomeDocumento2 = doc.id;
+          const optionElement3 = document.createElement("option");
+          optionElement3.value = nomeDocumento2;
+          optionElement3.textContent = nomeDocumento2;
+          selectElement2.appendChild(optionElement3);
+        });
+      })
+      .catch((error) => {
+        console.log("Erro ao buscar os valores:", error);
       });
-    })
-    .catch(function (error) {
-      console.log("Erro ao buscar os valores:", error);
-    });
 
+    adminEditarFilhoExecuted++;
+  }
 }
+
 
 function editarFiltroFilho() {
   const selectElement = document.getElementById('nameEditFilho');
@@ -773,117 +770,105 @@ function addOptionEditFilho() {
 
 var totalFiltros;
 
+let listarFiltrosMecanismosExecuted = 0;
+
 function listarFiltrosMecanismos() {
   document.getElementById("editarMecanismo").style.display = "none";
   document.getElementById("addMecanismo").style.display = "block";
-  const db = firebase.firestore();
+  if (listarFiltrosMecanismosExecuted < 1) {
+    const db = firebase.firestore();
+    const divResultado = document.getElementById("lista_filtros");
+    divResultado.innerHTML = "";
 
-  // Obtém a referência para a div 'resultado'
-  const divResultado = document.getElementById("lista_filtros");
+    db.collection("filtros")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const div = document.createElement("div");
+          const id = doc.id.replaceAll(" ", "_");
+          div.className = id;
+          div.id = "div" + id;
+          divResultado.appendChild(div);
 
-  // Limpa o conteúdo da div 'resultado'
-  divResultado.innerHTML = "";
+          const label = document.createElement("label");
+          label.textContent = doc.id;
+          div.appendChild(label);
 
-  // Obtém a lista de documentos
-  db.collection("filtros")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const div = document.createElement("div");
-        const id = doc.id.replaceAll(" ", "_");
-        div.className = id;
-        div.id = "div" + id;
-        divResultado.appendChild(div);
+          const select = document.createElement("select");
+          select.id = id;
+          select.className = "filtro-select-mecanismos-add";
+          select.addEventListener("change", ativarFiltroFilho);
+          div.appendChild(select);
 
-        // Cria a label com o nome do documento
-        const label = document.createElement("label");
-        label.textContent = doc.id;
-        div.appendChild(label);
+          const optionDefault = document.createElement("option");
+          optionDefault.value = "Sem Filtro";
+          optionDefault.textContent = "Sem Filtro";
+          select.appendChild(optionDefault);
 
-        // Cria o select para as coleções
-        const select = document.createElement("select");
-        select.id = id
-        select.className = "filtro-select-mecanismos-add"
-        select.addEventListener("change", ativarFiltroFilho)
-        div.appendChild(select);
-
-        // Obtém as coleções do documento
-        db.collection("filtros")
-          .doc(doc.id)
-          .get()
-          .then((docSnapshot) => {
-            if (docSnapshot.exists) {
-              const data = docSnapshot.data();
-              // Itera sobre as coleções
-              const optionDefault = document.createElement("option");
-              optionDefault.value = "Sem Filtro";
-              optionDefault.textContent = "Sem Filtro";
-              select.appendChild(optionDefault);
-              Object.keys(data).forEach((key) => {
-                if ([key] != "filtropai" && [key] != "dataupload") {
-                  const option = document.createElement("option");
-                  option.value = data[key];
-                  option.textContent = data[key];
-                  select.appendChild(option);
-                }
-              });
+          const data = doc.data();
+          Object.keys(data).forEach((key) => {
+            if (key !== "filtropai" && key !== "dataupload") {
+              const option = document.createElement("option");
+              option.value = data[key];
+              option.textContent = data[key];
+              select.appendChild(option);
             }
-          })
-          .catch((error) => {
-            console.error("Error getting document:", error);
           });
+        });
+      })
+      .catch((error) => {
+        console.error("Error getting documents:", error);
       });
-    })
-    .catch((error) => {
-      console.error("Error getting documents:", error);
-    });
 
-  criarSelects()
+    criarSelects();
+
+    listarFiltrosMecanismosExecuted = 1;
+  }
 }
+
+
+
+let listarFiltrosFluxogramaExecuted = 0;
 
 function listarFiltrosFluxograma() {
   document.getElementById("editarFluxograma").style.display = "none";
   document.getElementById("addFluxograma").style.display = "block";
-  const db = firebase.firestore();
+  if (listarFiltrosFluxogramaExecuted < 1) {
+    const db = firebase.firestore();
+    const select = document.getElementById("FiltroPrincipalAdd");
 
-  // Obtém o select com o ID "FiltroPrincipalAdd"
-  const select = document.getElementById("FiltroPrincipalAdd");
+    db.collection("filtros")
+      .doc("Tipo de Industria")
+      .get()
+      .then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          const data = docSnapshot.data();
+          select.innerHTML = "";
 
-  // Obtém o documento "Tipo de Industria" da coleção "filtros"
-  db.collection("filtros")
-    .doc("Tipo de Industria")
-    .get()
-    .then((docSnapshot) => {
-      if (docSnapshot.exists) {
-        const data = docSnapshot.data();
+          const optionDefault = document.createElement("option");
+          optionDefault.value = "Sem Filtro";
+          optionDefault.textContent = "Sem Filtro";
+          select.appendChild(optionDefault);
 
-        // Limpa as opções existentes
-        select.innerHTML = "";
+          Object.values(data).forEach((value) => {
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting document:", error);
+      });
 
-        // Adiciona a opção padrão
-        const optionDefault = document.createElement("option");
-        optionDefault.value = "Sem Filtro";
-        optionDefault.textContent = "Sem Filtro";
-        select.appendChild(optionDefault);
+    adicionarOptionsFluxogramaFilho();
 
-        // Itera sobre os valores no documento
-        Object.values(data).forEach((value) => {
-          // Cria o option com o valor
-          const option = document.createElement("option");
-          option.value = value;
-          option.textContent = value;
-
-          // Adiciona o option ao select
-          select.appendChild(option);
-        });
-      }
-    })
-    .catch((error) => {
-      console.error("Error getting document:", error);
-    });
-
-  adicionarOptionsFluxogramaFilho();
+    listarFiltrosFluxogramaExecuted = 1;
+  }
 }
+
+
 
 function adicionarOptionsFluxogramaFilho() {
   const db = firebase.firestore();
@@ -908,7 +893,7 @@ function adicionarOptionsFluxogramaFilho() {
               const option = document.createElement("option");
               option.value = data[key];
               option.textContent = data[key];
-              option.classList.add(paiReplace,"optionfilho")
+              option.classList.add(paiReplace, "optionfilho")
               option.style.display = "none"
               divResultado.appendChild(option);
             }
@@ -943,39 +928,43 @@ function ativarFiltroFilhoFluxogramaAdd() {
   }
 }
 
+let listarFiltrosFluxogramaEditExecuted = 0;
+
 function listarFiltrosFluxogramaEdit() {
-  document.getElementById("editarFluxograma").style.display = "block";
-  document.getElementById("addFluxograma").style.display = "none";
-  const db = firebase.firestore();
+  if (listarFiltrosFluxogramaEditExecuted < 1) {
+    const db = firebase.firestore();
 
-  const select = document.getElementById("FiltroPrincipalEdit");
+    const select = document.getElementById("FiltroPrincipalEdit");
 
-  db.collection("filtros")
-    .doc("Tipo de Industria")
-    .get()
-    .then((docSnapshot) => {
-      if (docSnapshot.exists) {
-        const data = docSnapshot.data();
+    db.collection("filtros")
+      .doc("Tipo de Industria")
+      .get()
+      .then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          const data = docSnapshot.data();
 
-        select.innerHTML = "";
-        const optionDefault = document.createElement("option");
-        optionDefault.value = "Sem Filtro";
-        optionDefault.textContent = "Sem Filtro";
-        select.appendChild(optionDefault);
+          select.innerHTML = "";
+          const optionDefault = document.createElement("option");
+          optionDefault.value = "Sem Filtro";
+          optionDefault.textContent = "Sem Filtro";
+          select.appendChild(optionDefault);
 
-        Object.values(data).forEach((value) => {
-          const option = document.createElement("option");
-          option.value = value;
-          option.textContent = value;
-          select.appendChild(option);
-        });
-      }
-    })
-    .catch((error) => {
-      console.error("Error getting document:", error);
-    });
+          Object.values(data).forEach((value) => {
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting document:", error);
+      });
 
-  adicionarOptionsFluxogramaFilhoEdit();
+    adicionarOptionsFluxogramaFilhoEdit();
+
+    listarFiltrosFluxogramaEditExecuted = 1;
+  }
 }
 
 function adicionarOptionsFluxogramaFilhoEdit() {
@@ -1195,26 +1184,28 @@ function ativarFiltroFilho() {
 let editarMecanismoEmUso = false;
 
 function editarMecanismo() {
+  // Exibe a seção de edição e oculta a seção de adição
   document.getElementById("editarMecanismo").style.display = "block";
   document.getElementById("addMecanismo").style.display = "none";
 
   const db = firebase.firestore();
 
-  const select_mecanismo = document.getElementById("select_nomeMecanismo_edit");
+  const selectMecanismo = document.getElementById("select_nomeMecanismo_edit");
   const divResultado = document.getElementById("filtros_editar");
-  select_mecanismo.innerHTML = "";
+  selectMecanismo.innerHTML = "";
 
   // Limpa o conteúdo da div 'filtros_editar'
   divResultado.innerHTML = "";
 
-  const option = document.createElement("option");
-  option.value = "Selecione um mecanismo para editar";
-  option.textContent = "Selecione um mecanismo para editar";
-  option.disabled = true;
-  option.selected = true;
+  // Adiciona a opção padrão ao seletor de mecanismos
+  const optionDefault = document.createElement("option");
+  optionDefault.value = "Selecione um mecanismo para editar";
+  optionDefault.textContent = "Selecione um mecanismo para editar";
+  optionDefault.disabled = true;
+  optionDefault.selected = true;
+  selectMecanismo.appendChild(optionDefault);
 
-  select_mecanismo.appendChild(option);
-
+  // Obtém os mecanismos da coleção "mecanismos"
   db.collection("mecanismos")
     .get()
     .then((querySnapshot) => {
@@ -1222,8 +1213,7 @@ function editarMecanismo() {
         const option = document.createElement("option");
         option.value = doc.id;
         option.textContent = doc.id;
-
-        select_mecanismo.appendChild(option);
+        selectMecanismo.appendChild(option);
       });
     });
 
@@ -1234,6 +1224,7 @@ function editarMecanismo() {
   document.getElementById("input_IDMecanismo_edit").value = "";
 }
 
+
 // Adiciona o evento de alteração apenas uma vez
 const select_mecanismo = document.getElementById("select_nomeMecanismo_edit");
 select_mecanismo.addEventListener("change", handleSelectChange);
@@ -1242,7 +1233,7 @@ function handleSelectChange(event) {
   if (!editarMecanismoEmUso) {
     return;
   }
-
+  document.getElementById("label_editarmecanismo").style.display = "block"
   const selectElement = document.getElementById("select_nomeMecanismo_edit");
   const valorSelecionado = selectElement.value;
   document.getElementById("input_nomeMecanismo_edit").value = valorSelecionado;
