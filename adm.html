@@ -44,20 +44,19 @@
       <div class="iniciomain">
         <!--Gerenciamento de Filtros-->
         <section class="section">
-          <h2>Gerenciamento de Filtros</h2>
+          <h2>Gerenciamento de Filtros Principais</h2>
           <div class="envio">
-            <h3>Adicionar e Editar filtros</h3>
-            <button class="btn-adm" id="addFiltro">Adicionar Filtro</button>
-            <button class="edit" id="editarFiltro">Editar Filtros</button>
-
+            <h3>Adicionar e Editar Filtros Principais</h3>
+            <button class="btn-adm" id="addFiltro">Adicionar Filtro Principal</button>
+            <button class="edit" id="editarFiltro">Editar Filtros Principais</button>
             <div class="adicionarfiltros" id="div_addfiltro" style="display: none">
               <form>
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" placeholder="Tipo do seu filtro. Exemplo: Tipo de dano"
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Nome do filtro principal. Exemplo: Tipo de dano"
                   required />
 
                 <h4>
-                  Adicione, abaixo, as opções correspondentes a este filtro.
+                  Adicione abaixo as opções correspondentes a este filtro principal.
                 </h4>
 
                 <div id="divopc1">
@@ -74,21 +73,112 @@
 
             <div class="editarfiltros" id="div_editarfiltro" style="display: none">
               <form>
-                <label for="name">Escolha um filtro para alterar suas opções:</label>
-                <select class="select" name="nameEdit" id="nameEdit"></select>
+                <div>
+                  <label for="name">Escolha um filtro principal para alterar suas opções</label>
+                  <select class="select" name="nameEdit" id="nameEdit"></select>
+                </div>
                 <br />
                 <div id="optionsEdit"></div>
                 <br />
                 <input class="btn-adm" type="button" value="Adicionar opção" onclick="addOptionEdit()" />
                 <input class="btn-adm-envio" type="button" value="Enviar" onclick="editarFiltro()" />
-                <input class="removedois" type="button" value="Deletar Filtro" onclick="openModal()" />
+                <input class="removedois" type="button" value="Deletar Filtro Principal" onclick="openModal()" />
               </form>
             </div>
           </div>
         </section>
 
         <!--Modal para confirmar exclusão de filtro-->
-        <div id="myModal" class="modal">
+        <div id="myModalFilho" class="modalFilho">
+          <div class="modal-contentFilho">
+            <p>Deseja realmente excluir?</p>
+            <button class="btn-adm" type="submit" onclick="confirmDeleteFilho()">
+              Sim
+            </button>
+            <button class="remove" onclick="closeModalFilho()">Não</button>
+          </div>
+        </div>
+
+        <!--Gerenciamento de Filtros Filhos-->
+        <section class="section">
+          <h2>Gerenciamento de Filtro Filho</h2>
+          <div class="envio">
+            <h3>Adicionar e Editar Filtro Filho</h3>
+            <button class="btn-adm" id="addFiltroFilho" onclick="mostrarModalAdicionarFiltroFilho()">Adicionar Filtro
+              Filho</button>
+            <button class="edit" id="editarFiltroFilho" onclick="mostrarModalEditarFiltrosFilho()">Editar Filtro
+              Filho</button>
+            <div class="adicionarfiltros" id="div_addfiltroFilho" style="display: none">
+              <form>
+                <label for="nameFilho">Nome</label>
+                <input type="text" id="nameFilho" name="nameFilho"
+                  placeholder="Tipo do seu filtro filho. Exemplo: Subtipo de dano" required />
+
+                <div>
+                  <label for="selecionarFiltroPai">Selecione um filtro principal como referência para este filtro
+                    filho</label>
+
+                  <select name="selecionarFiltroPai" id="selecionarFiltroPai">
+
+                  </select>
+                </div>
+                <div>
+                  <label for="selecionarOpcFiltroPai">Selecione a opção que ativará este filtro</label>
+                  <select name="selecionarOpcFiltroPai" id="selecionarOpcFiltroPai">
+
+                  </select>
+                </div>
+
+                <h4>
+                  Adicione, abaixo, as opções correspondentes a este filtro filho.
+                </h4>
+
+                <div id="divopc1Filho">
+                  <input id="opc1Filho" type="text" placeholder="Insira o conteúdo da opção. Exemplo: Físico/Químico" />
+                </div>
+
+                <!--Inputs gerados através do Javascript-->
+                <div id="novasOptionsFilho"></div>
+
+                <input class="btn-adm" type="button" value="Adicionar opção" onclick="addOptionFilho()" />
+                <input class="btn-adm-envio" type="button" value="Enviar" onclick="adicionarFiltroFilho()" />
+              </form>
+            </div>
+
+            <div class="editarfiltros" id="div_editarfiltroFilho" style="display: none">
+              <form>
+                <label for="nameFilho">Escolha um filtro filho para alterar suas opções</label>
+                <select class="select" name="nameEditFilho" id="nameEditFilho"></select>
+                <br />
+                <div id="div_filtropai_edit" style="display: none">
+                  <div>
+                    <label for="selecionarFiltroPaiEdit">Selecione um filtro principal como referência para este filtro
+                      filho</label>
+
+                    <select name="selecionarFiltroPaiEdit" id="selecionarFiltroPaiEdit">
+
+                    </select>
+                  </div>
+                  <div>
+                    <label for="selecionarOpcFiltroPaiEdit">Selecione a opção que ativará este filtro</label>
+                    <select name="selecionarOpcFiltroPaiEdit" id="selecionarOpcFiltroPaiEdit">
+
+                    </select>
+                  </div>
+                </div>
+                <br />
+                <div id="optionsEditFilho"></div>
+
+                <input class="btn-adm" type="button" value="Adicionar opção" onclick="addOptionEditFilho()" />
+                <input class="btn-adm-envio" type="button" value="Enviar" onclick="editarFiltroFilho()" />
+                <input class="removedois" type="button" value="Deletar Filtro Filho" onclick="openModalFilho()" />
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!--Modal para confirmar exclusão de filtro-->
+        <div id="myModalFilho" class="modal">
           <div class="modal-content">
             <p>Deseja realmente excluir?</p>
             <button class="btn-adm" type="submit" onclick="confirmDelete()">
@@ -97,6 +187,7 @@
             <button class="remove" onclick="closeModal()">Não</button>
           </div>
         </div>
+
 
         <!--Gerenciamento de Mecanismos-->
         <section class="sectionadm">
@@ -119,17 +210,6 @@
               <label for="select_filtros">Selecione os filtros correspondentes a este Mecanismo de
                 Dano</label>
 
-              <label>Tipo de Industria</label>
-              <select name="FiltroPrincipal1" id="FiltroPrincipal1" class="filtro-select"
-                onclick="atualizarFiltrosFilho1()">
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
-              </select>
-              <label for="FiltroFilho">Unidade de Processo</label>
-              <select name="Unidade-de-Processo" id="FiltroFilho1" class="filtro-select">
-                <option value="Sem Filtro">Sem Filtro</option>
-              </select>
               <div id="lista_filtros"></div>
 
               <br />
@@ -148,18 +228,8 @@
               <input type="text" id="input_IDMecanismo_edit"
                 placeholder="Insira aqui o link do Mecanismo de Dano. Exemplo: 1914" />
 
-              <label>Tipo de Industria</label>
-              <select name="FiltroPrincipal2" id="FiltroPrincipal2" class="filtro-selectEdit"
-                onclick="atualizarFiltrosFilho2()">
-                <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
-              </select>
-              <label for="FiltroFilho2">Unidade de Processo</label>
-              <select name="Unidade-de-Processo" id="FiltroFilho2" class="filtro-selectEdit">
-                <option value="Sem Filtro">Sem Filtro</option>
-              </select>
-
+              <label for="select_filtros">Selecione os filtros correspondentes a este Mecanismo de
+                Dano</label>
               <div id="filtros_editar"></div>
 
               <br />
@@ -187,7 +257,7 @@
 
 
         <!--Gerenciamento de Fluxogramas-->
-        <section class="sectionFluxograma">
+        <section class="sectionadm">
           <h2>Gerenciamento de Fluxogramas</h2>
           <div class="envio">
             <h3>Adicionar e Editar Fluxogramas</h3>
@@ -207,15 +277,11 @@
               <label for="select_filtros">Selecione os filtros correspondentes a este Fluxograma de Dano</label>
 
               <label>Tipo de Industria</label>
-              <select name="FiltroPrincipal" id="FiltroPrincipal3" class="add-filtro-select"
-                onclick="atualizarFiltrosFilho3()">
+              <select name="FiltroPrincipal" id="FiltroPrincipalAdd" class="add-filtro-select" onchange="ativarFiltroFilhoFluxogramaAdd()">
                 <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
               </select>
               <label for="FiltroFilho">Unidade de Processo</label>
-              <select name="Unidade-de-Processo" id="FiltroFilho3" class="add-filtro-select">
-                <option value="Sem Filtro">Sem Filtro</option>
+              <select name="Unidade-de-Processo" id="FiltroFilhoAdd" class="add-filtro-select">
               </select>
 
               <br />
@@ -236,15 +302,12 @@
                 placeholder="Insira aqui o link do Fluxograma de Dano. Exemplo: 1914" />
 
               <label>Tipo de Industria</label>
-              <select name="FiltroPrincipal" id="FiltroPrincipal4" class="edit-filtro-select"
-                onclick="atualizarFiltrosFilho4()">
+              <select name="FiltroPrincipal" id="FiltroPrincipalEdit" class="edit-filtro-select"
+                onchange="ativarFiltroFilhoFluxogramaEdit()">
                 <option value="Sem Filtro">Sem Filtro</option>
-                <option value="Petroquimica">Petroquímica</option>
-                <option value="Refinaria">Refinaria</option>
               </select>
               <label for="FiltroFilho">Unidade de Processo</label>
-              <select name="Unidade-de-Processo" id="FiltroFilho4" class="edit-filtro-select">
-                <option value="Sem Filtro">Sem Filtro</option>
+              <select name="Unidade-de-Processo" id="FiltroFilhoEdit" class="edit-filtro-select">
               </select>
 
               <br /><br />

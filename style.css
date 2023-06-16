@@ -416,6 +416,7 @@
   font-size: 1.2rem;
   background-color: var(--second-color);
   color: var(--third-color);
+  width: 100%;
 }
 
 #alterar-pdf {
@@ -492,7 +493,7 @@
   background-color: var(--main-color);
   color: var(--third-color);
   padding: 0.5rem;
-  height: 3rem;
+  height: 2.5rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -506,7 +507,7 @@
 .removedois {
   display: inline-block;
   padding: 0.5rem;
-  height: 3rem;
+  height: 2.5rem;
   background-color: red;
   color: var(--third-color);
   border: none;
@@ -547,7 +548,8 @@
 
 .modal,
 .modalMecanismo,
-.modalFluxograma {
+.modalFluxograma,
+.modalFilho {
   display: none;
   position: fixed;
   z-index: 1;
@@ -562,7 +564,8 @@
 .modal-content,
 .modal-contentEdit,
 .modal-contentMecanismo,
-.modal-contentFluxograma {
+.modal-contentFluxograma,
+.modal-contentFilho {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
@@ -680,37 +683,26 @@ td {
 }
 
 select {
-  width: 100%;
+  width: 80%;
   padding: 5px;
   font-size: 16px;
   border: 1px solid var(--main-color);
   border-radius: 5px;
   background-color: var(--third-color);
   color: var(--main-color);
+  text-align: center;
 }
+
 
 select option {
   background-color: var(--third-color);
   color: var(--main-color);
 }
 
-.btn,
-.add,
-.btn-adm,
-.btn-adm-envio,
-.removedois,
-.deletebutton,
-.remove,
-.edit,
-.close,
-input[type="submit"] {
-}
-
 .section {
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex: 1;
 }
 
 ::placeholder {
