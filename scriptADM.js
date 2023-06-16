@@ -1503,7 +1503,8 @@ function adicionarFluxograma() {
   const selects = document.querySelectorAll('.add-filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const id = select.id.replaceAll("_", " ")
+    const id2 = select.id.replaceAll("_", " ")
+    const id = id2.replaceAll("Add", "")
 
     const dados = {
       [id]: categoriaSelecionada,
@@ -1607,7 +1608,8 @@ function enviarEditarFluxograma() {
   const selects = document.querySelectorAll('.edit-filtro-select');
   selects.forEach((select) => {
     const categoriaSelecionada = select.value;
-    const id = select.id.replaceAll("_", " ")
+    const id1 = select.id.replaceAll("_", " ")
+    const id = id1.replaceAll("Edit","")
 
     const dados = {
       [id]: categoriaSelecionada,

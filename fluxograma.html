@@ -57,9 +57,7 @@
                   class="filtro-select"
                   onchange="atualizarLista()"
                 >
-                  <option value="Sem Filtro">Sem Filtro</option>
-                  <option value="Petroquimica">Petroquímica</option>
-                  <option value="Refinaria">Refinaria</option>
+
                 </select>
                 <label for="FiltroFilho">Unidade Operacional</label>
                 <select
@@ -68,7 +66,6 @@
                   class="filtro-select"
                   onchange="atualizarLista()"
                 >
-                  <option value="Sem Filtro">Sem Filtro</option>
                 </select>
 
                 <div id="resultado"></div>
@@ -94,7 +91,7 @@
               <br>
               <div class="right-side-down">
                 <h3 class="white">Relação dos Fluxogramas Selecionados</h3>
-                <select id="lista" name="opcoes"></select>
+                <select id="lista" name="opcoes" onchange="atualizarHrefBtnPdf()"></select>
               </div>
             </div>
             <form action="">

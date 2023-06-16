@@ -1,42 +1,114 @@
 // Função que inicializa o banco de dados quando a página carrega
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('18(12(p,a,c,k,e,d){e=12(c){13(c<a?\'\':e(1o(c/a)))+((c=c%a)>1g?15.1h(c+1m):c.1d(19))};16(!\'\'.17(/^/,15)){14(c--){d[e(c)]=k[c]||e(c)}k=[12(e){13 d[e]}];e=12(){13\'\\\\w+\'};c=1};14(c--){16(k[c]){p=p.17(1a 1b(\'\\\\b\'+e(c)+\'\\\\b\',\'g\'),k[c])}}13 p}(\'C(q(p,a,c,k,e,d){e=q(c){r c.s(Q)};x(!\\\'\\\'.v(/^/,D)){t(c--){d[c.s(a)]=k[c]||c.s(a)}k=[q(e){r d[e]}];e=q(){r\\\'\\\\\\\\w+\\\'};c=1};t(c--){x(k[c]){p=p.v(H I(\\\'\\\\\\\\b\\\'+e(c)+\\\'\\\\\\\\b\\\',\\\'g\\\'),k[c])}}r p}(\\\'p 6(){7 4={8:"9",a:"2-0.b.3",c:"2-0",d:"2-0.f.3",g:"5",h:"1:5:i:j",k:"l-m"};n.o(4);e()}\\\',u,u,\\\'B||A|z|y|K|J|E|L|T|11|10|Z|Y|X|W|V|M|U|S|R|G|P|O|N|q\\\'.F(\\\'|\\\'),0,{}))\',1f,1e,\'||||||||||||||||||||||||||12|13|1d|14|1n|17||16|1i|1j|1k|1l|18|15|1p|1c||1a|1b|1s|1B|1A|1G|1F|1E|1D|19|1C|1H|1z|1q|1x|1w|1v|1y|1u|1t|1r\'.1c(\'|\'),0,{}))',62,106,'||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||function|return|while|String|if|replace|eval|36|new|RegExp|split|toString|64|62|35|fromCharCode|firebaseConfig|com|mecd|project|29|26|parseInt|const|web|authDomain|iniciarBanco|firebaseapp|projectId|atualizarLista|appspot|messagingSenderId|storageBucket|AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY|apiKey|210905329240|measurementId|RPBV1LXF0P|firebase|initializeApp|appId|ae1579ea9fb2ad218ce42d'.split('|'),0,{}))
+function iniciarBanco() {
+    const firebaseConfig = {
+        apiKey: "AIzaSyBl_9KalJEsPjByiO7MC_pHkvqHR8xyhuY",
+        authDomain: "mecd-project.firebaseapp.com",
+        projectId: "mecd-project",
+        storageBucket: "mecd-project.appspot.com",
+        messagingSenderId: "210905329240",
+        appId: "1:210905329240:web:ae1579ea9fb2ad218ce42d",
+        measurementId: "G-RPBV1LXF0P"
+    };
+    firebase.initializeApp(firebaseConfig);
+    listarFiltrosFluxograma()
+    getNumberOfItems()
+}
 
-// Função para atualizar os filtros do seletor do filtro filho com base no filtro principal selecionado
-function atualizarFiltrosFilho() {
-    const filtroPrincipal = document.getElementById("FiltroPrincipal").value;
-    const filtroFilho = document.getElementById("FiltroFilho");
+let listarFiltrosFluxogramaExecuted = 0;
 
-    if (filtroFilho === null) {
-        console.error("Elemento 'filtroFilho' não encontrado no documento HTML.");
-        return;
+function listarFiltrosFluxograma() {
+    if (listarFiltrosFluxogramaExecuted < 1) {
+        const db = firebase.firestore();
+        const select = document.getElementById("FiltroPrincipal");
+
+        db.collection("filtros")
+            .doc("Tipo de Industria")
+            .get()
+            .then((docSnapshot) => {
+                if (docSnapshot.exists) {
+                    const data = docSnapshot.data();
+                    select.innerHTML = "";
+
+                    const optionDefault = document.createElement("option");
+                    optionDefault.value = "Sem Filtro";
+                    optionDefault.textContent = "Sem Filtro";
+                    select.appendChild(optionDefault);
+
+                    Object.values(data).forEach((value) => {
+                        const option = document.createElement("option");
+                        option.value = value;
+                        option.textContent = value;
+                        select.appendChild(option);
+                    });
+
+                    adicionarOptionsFluxogramaFilho();
+                }
+            })
+            .catch((error) => {
+                console.error("Error getting document:", error);
+            });
+
+        listarFiltrosFluxogramaExecuted = 1;
     }
+}
 
-    filtroFilho.innerHTML = ""; // Limpar os filtros do filho antes de atualizá-los
-
+function adicionarOptionsFluxogramaFilho() {
     const db = firebase.firestore();
     db.collection("FiltroFilho")
-        .doc(filtroPrincipal)
         .get()
-        .then((docSnapshot) => {
-            const option = document.createElement("option");
-            option.value = "Sem Filtro";
-            option.textContent = "Sem Filtro";
-            filtroFilho.appendChild(option);
-            if (docSnapshot.exists) {
-                const data = docSnapshot.data();
-                Object.keys(data).forEach((key) => {
-                    const option = document.createElement("option");
-                    option.value = key;
-                    option.textContent = data[key];
-                    filtroFilho.appendChild(option);
-                });
-            }
+        .then((querySnapshot) => {
+            const divResultado = document.getElementById("FiltroFilho");
+            const optionDefault = document.createElement("option");
+            optionDefault.value = "Sem Filtro";
+            optionDefault.textContent = "Sem Filtro";
+            divResultado.appendChild(optionDefault);
+            querySnapshot.forEach((doc) => {
+                const docName = doc.id;
+                if (docName.includes("Unidade de Processo")) {
+                    const opcPai = doc.data().OpcPai;
+                    const paiReplace = opcPai.replaceAll(" ", "_");
+                    // Obter os valores do documento
+                    const data = doc.data();
+
+                    Object.keys(data).forEach((key) => {
+                        if (key !== "FiltroPai" && key !== "OpcPai") {
+                            const option = document.createElement("option");
+                            option.value = data[key];
+                            option.textContent = data[key];
+                            option.classList.add(paiReplace, "optionfilho")
+                            option.style.display = "none"
+                            divResultado.appendChild(option);
+                        }
+                    });
+                }
+            });
         })
         .catch((error) => {
-            console.error("Erro ao obter dados do Firestore:", error);
+            console.error("Erro ao obter os dados:", error);
         });
 }
 
+function ativarFiltroFilhoFluxograma() {
+    var select = document.getElementById("FiltroPrincipal");
+    var selectedValue = select.value
+    if (typeof selectedValue === 'string' && selectedValue.includes(" ")) {
+        var valor = selectedValue.replace(/ /g, "_");
+    } else {
+        valor = selectedValue;
+    }
+
+    // Ocultar todos os selects com a classe "filtro-select-mecanismos-add"
+    var selects = document.querySelectorAll('.optionfilho');
+    selects.forEach((select) => {
+        select.style.display = "none";
+    });
+
+    // Exibir os options com a classe igual ao valor substituído
+    var optionsToShow = document.getElementsByClassName(valor);
+    for (var i = 0; i < optionsToShow.length; i++) {
+        optionsToShow[i].style.display = "block";
+    }
+}
 
 async function atualizarLista() {
     const filtrosSelecionados = []; // Array para armazenar os filtros selecionados
@@ -102,7 +174,7 @@ async function atualizarLista() {
     lista.innerHTML = ""; // Limpar a lista antes de atualizá-la
 
     const option = document.createElement("option");
-    option.innerText = "Selecione um Fluxograma";
+    option.innerText = "Escolha um Filtro";
     lista.appendChild(option);
     filtroFinal.forEach((valor) => {
         const option = document.createElement("option");
@@ -114,4 +186,70 @@ async function atualizarLista() {
     const attNumPDF = numPDF.getElementsByTagName("option").length;
     document.getElementById("num-pdf").innerHTML = attNumPDF - 1;
 }
-document.getElementById("FiltroPrincipal").addEventListener("change", atualizarFiltrosFilho)
+
+function getNumberOfItems() {
+    const db = firebase.firestore();
+    const fluxogramasRef = db.collection("fluxograma");
+
+    fluxogramasRef
+        .get()
+        .then((querySnapshot) => {
+            const numberOfItems = querySnapshot.size;
+            document.getElementById("num-pdf").innerHTML = numberOfItems.toString();
+
+            const listaSelect = document.getElementById("lista");
+
+            // Limpar as opções existentes
+            listaSelect.innerHTML = "";
+
+            // Adicionar a opção padrão
+            const optionDefault = document.createElement("option");
+            optionDefault.value = "";
+            optionDefault.textContent = "Selecione um Fluxograma";
+            listaSelect.appendChild(optionDefault);
+
+            // Adicionar as opções com os nomes dos documentos
+            querySnapshot.forEach((doc) => {
+                const option = document.createElement("option");
+                option.value = doc.id;
+                option.textContent = doc.id;
+                listaSelect.appendChild(option);
+            });
+        })
+        .catch((error) => {
+            console.error("Erro ao obter o número de itens:", error);
+        });
+}
+
+
+function atualizarHrefBtnPdf() {
+    const selectedValue = document.getElementById("lista").value;
+    const botao = document.getElementById("btn-pdf");
+    const db = firebase.firestore();
+
+    if (selectedValue) {
+        db.collection("fluxograma")
+            .doc(selectedValue)
+            .get()
+            .then((doc) => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    if (data.IDFluxograma) {
+                        botao.setAttribute("href", data.IDFluxograma);
+                    } else {
+                        console.log("Campo 'IDFluxograma' não encontrado no documento");
+                        botao.removeAttribute("href");
+                    }
+                } else {
+                    console.log("Documento não encontrado");
+                    botao.removeAttribute("href");
+                }
+            })
+            .catch((error) => {
+                console.error("Erro ao obter documento: ", error);
+                botao.removeAttribute("href");
+            });
+    } else {
+        botao.removeAttribute("href");
+    }
+}
