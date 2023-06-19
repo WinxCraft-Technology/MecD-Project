@@ -205,7 +205,7 @@ function getNumberOfItems() {
             // Adicionar a opção padrão
             const optionDefault = document.createElement("option");
             optionDefault.value = "";
-            optionDefault.textContent = "Selecione um Fluxograma";
+            optionDefault.textContent = "Selecione um Desenho";
             listaSelect.appendChild(optionDefault);
 
             // Adicionar as opções com os nomes dos documentos
